@@ -1,4 +1,4 @@
-body{
+body .landing{
     background: linear-gradient(to bottom ,rgba(0, 0, 0, 0.63),rgba(65, 64, 64, 0.484)), url(img/bg01.jpg) ;
     background-repeat: no-repeat;
     background-size: cover;
