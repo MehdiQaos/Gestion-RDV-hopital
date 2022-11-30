@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="dash.css" />
+    <title>Library Management System</title>
+</head>
+
+<body>
+    <div class="d-flex shadow-sm bg-light" id="wrapper" >
+        <!-- Sidebar -->
+        <div class="bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center d-flex flex-column py-4 fs-4 border-bottom mt-5">
+                <div class="d-flex align-items-center">
+                    <img src="img/user.png" width="40px" class="rounded-circle me-3" alt="">
+                    <div>
+                        <p style="margin:-5px;">admin</p>
+                        <p class="text-secondary fs-6">admin@admin.com</p>
+                    </div>
+                </div>
+                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 " type="button">Log out</button> </div>
+            <div class="list-group list-group-flush my-3">
+                <a href="#" class="list-group-item list-group-item-action  text-secondary "><i
+                        class="uil uil-chart-bar fs-4 me-2"></i>dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action   fw-bold"><i
+                        class="uil uil-medkit me-2 fs-4" ></i>Doctors</a>
+                <a href="#" class="list-group-item list-group-item-action  fw-bold"><i
+                        class="uil uil-stopwatch me-2 fs-4" ></i>Schedule</a>        
+                <a href="#" class="list-group-item list-group-item-action   fw-bold"><i
+                        class="uil uil-bookmark me-2 fs-4"></i>Appointement</a>
+                <a href="#" class="list-group-item list-group-item-action fw-bold"><i
+                        class="uil uil-accessible-icon-alt fs-4 me-2"></i>Patient</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 justify-content-between">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left mycolor fs-4 me-3" id="menu-toggle"></i>
+                    <!-- <h2 class="fs-2 m-0"> </h2> -->
+                    <div class="input-group ms-5">
+                        <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <button type="button" class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</button>
+                      </div>
+                </div>
+            <div class="d-flex">
+                <div class=" me-3">
+                  <p class="fs-5 text-secondary " style="margin-bottom: -5px;">Today's date</p>
+                  <p class="fs-5 text-black fw-bold">2022-11-23</p>
+                </div>
+                <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>
+            </div>
+
+
+            </nav>
+            <div class="container-fluid px-4">
+                <div class="row g-3 my-2">
+                    <div class="col-md-3">
+                        <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded border">
+                            <div>                      
+                                <h3 class="fs-2 mycolor">3</h3>
+                                <p class="fs-5 text-black">Doctors</p>
+                            </div>    
+                            <i class="uil uil-medkit fs-3 mycolor box rounded py-2  px-3"></i>           
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded border">
+                            <div>
+                         
+                                <h3 class="fs-2 mycolor">3</h3>
+                                <p class="fs-5 text-black">Patients</p>
+                            </div>
+                            <i class="uil uil-accessible-icon-alt fs-3 mycolor box rounded py-2  px-3 "></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded  border"> 
+                            <div>
+                                <h3 class="fs-2 mycolor">2</h3>
+                                <p class="fs-5 text-black">New Booking</p>
+                            </div>
+                            <i class="uil uil-bookmark fs-3 mycolor rounded py-2  px-3 box"></i>
+                        </div>
+                    </div>
+
+                    
+                    <div class="col-md-3">
+                        <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded border"> 
+                            <div>
+                                <h3 class="fs-2 mycolor">2</h3>
+                                <p class="fs-5 text-black">Today sessions</p>
+                            </div>
+                            <i class="uil uil-heart-rate fs-3 mycolor  rounded py-2  px-3 box"></i>
+                        </div>
+                    </div>
+                </div>
+
+                  <section class="mt-5 d-flex justify-content-between">
+                        <div  style="width: 49%; height: 35em;" class="position-relative" >
+                           <p class="mycolor fs-4 fw-bold">Upcoming Appointements until Next Tuesday</p>
+                           <p>Here's a quick access to Upcoming Appointements until 7 days <br> More details available in @Appointement section.</p>
+                           <div class="card-body table-responsive position-relative" style="height: 25em; overflow: scroll;
+                           background-image:  url(img/notfound.svg);
+                           background-repeat: no-repeat;
+                           background-size:15em;
+                           background-position: bottom;
+                           ">
+                           <table class="table border-secondary text-center table-hover ">
+                            <tr class="">
+                                <td class="mycolor fw-bold ">Appointement number</td>
+                                <td class="mycolor fw-bold">Patient name</td>
+                                <td class="mycolor fw-bold">Doctor</td>
+                                <td class="mycolor fw-bold">Session</td>
+                            </tr>     
+                           </table>
+                           
+                        </div>
+                        <button class="w-100 btn mycolor button1 position-absolute bottom-0">Show all Appointements</button>
+                        
+                        </div>
+                        <div style="width: 49%; height: 35em;" class="position-relative" >
+                            <p class="mycolor fs-4 fw-bold">Upcoming Sessions until Next Tuesday</p>
+                           <p>Here's a quick access to Upcoming Sessions that Scheduled until 7 days <br> Add,remove and many features available in @Schedule section.</p>
+                           <div class="card-body table-responsive position-relative" style="height: 25em; overflow: scroll; background-image:  url(img/notfound.svg);
+                           background-repeat: no-repeat;
+                           background-size:15em;
+                           background-position: bottom;">
+                           <table class="table border-secondary text-center table-hover">
+                            <tr class="">
+                                <td class="mycolor fw-bold ">Session Title</td>
+                                <td class="mycolor fw-bold">Doctor</td>
+                                <td class="mycolor fw-bold">Scheduled Date & Time</td>
+                                </tr>
+                            
+                           </table>
+                        </div>
+                        <button class="w-100 btn mycolor button1 position-absolute bottom-0">Show all Sessions</button>
+
+
+                        </div>
+            
+
+
+
+
+
+
+
+                  </section>
+        
+
+    <!-- /#page-content-wrapper -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
+</body>
+
+</html>
