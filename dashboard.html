@@ -16,7 +16,7 @@
     <div class="d-flex shadow-sm bg-light" id="wrapper" >
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center d-flex flex-column py-4 fs-4 border-bottom mt-5">
+            <div class="sidebar-heading text-center d-flex flex-column py-4 fs-5 border-bottom mt-5">
                 <div class="d-flex align-items-center">
                     <img src="img/photos/user.png" width="40px" class="rounded-circle me-3" alt="">
                     <div>
@@ -24,7 +24,7 @@
                         <p class="text-secondary fs-6">admin@admin.com</p>
                     </div>
                 </div>
-                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 " type="button">Log out</button> </div>
+                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action  text-secondary "><i
                         class="uil uil-chart-bar fs-4 me-2"></i>dashboard</a>
@@ -41,7 +41,7 @@
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 justify-content-between">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left mycolor fs-4 me-3" id="menu-toggle"></i>
@@ -51,10 +51,10 @@
                         <button type="button" class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</button>
                       </div>
                 </div>
-            <div class="d-flex">
-                <div class=" me-3">
-                  <p class="fs-5 text-secondary " style="margin-bottom: -5px;">Today's date</p>
-                  <p class="fs-5 text-black fw-bold">2022-11-23</p>
+            <div class="d-flex align-items-center end-50">
+                <div class="pt-3 me-3">
+                  <p class="fs-6 text-secondary" style="margin-bottom: -5px;">Today's date</p>
+                  <p class="fs-6 text-black fw-bold">2022-11-23</p>
                 </div>
                 <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>
             </div>
@@ -62,8 +62,10 @@
 
             </nav>
             <div class="container-fluid px-4">
-                <div class="row g-3 my-2">
-                    <div class="col-md-3">
+                <h3 class="fw-bold" style="color: #007A69;"><i
+                    class="uil uil-chart-bar fs-4 me-2"></i> Status</h3>
+                <div class="row g-3 my-2 d-flex justify-content-around">
+                    <div class="col-lg-3 col-md-5 col-11">
                         <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded border">
                             <div>                      
                                 <h3 class="fs-2 mycolor">3</h3>
@@ -73,7 +75,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-5 col-11">
                         <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded border">
                             <div>
                          
@@ -84,7 +86,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-5 col-11">
                         <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded  border"> 
                             <div>
                                 <h3 class="fs-2 mycolor">2</h3>
@@ -95,7 +97,7 @@
                     </div>
 
                     
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-5 col-11">
                         <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded border"> 
                             <div>
                                 <h3 class="fs-2 mycolor">2</h3>
@@ -107,11 +109,11 @@
                 </div>
 
                   <section class="mt-5 d-flex justify-content-between">
-                        <div  style="width: 49%; height: 35em;" class="position-relative" >
-                           <p class="mycolor fs-4 fw-bold">Upcoming Appointements until Next Tuesday</p>
-                           <p>Here's a quick access to Upcoming Appointements until 7 days <br> More details available in @Appointement section.</p>
+                        <div  style="width: 49%; height: 35em;" class="position-relative appointment-table rounded shadowborder" >
+                           <p class="ms-3 mycolor fs-4 fw-bold">Upcoming Appointements until Next Tuesday</p>
+                           <p class="ms-3">Here's a quick access to Upcoming Appointements until 7 days <br> More details available in @Appointement section.</p>
                            <div class="card-body table-responsive position-relative" style="height: 25em; overflow: scroll;
-                           background-image:  url(img/notfound.svg);
+                           background-image:  url(img/icons/notfound.svg);
                            background-repeat: no-repeat;
                            background-size:15em;
                            background-position: bottom;
@@ -129,9 +131,9 @@
                         <button class="w-100 btn mycolor button1 position-absolute bottom-0">Show all Appointements</button>
                         
                         </div>
-                        <div style="width: 49%; height: 35em;" class="position-relative" >
-                            <p class="mycolor fs-4 fw-bold">Upcoming Sessions until Next Tuesday</p>
-                           <p>Here's a quick access to Upcoming Sessions that Scheduled until 7 days <br> Add,remove and many features available in @Schedule section.</p>
+                        <div style="width: 49%; height: 35em;" class="position-relative appointment-table rounded shadowborder" >
+                            <p class="ms-3 mycolor fs-4 fw-bold">Upcoming Sessions until Next Tuesday</p>
+                           <p class="ms-3">Here's a quick access to Upcoming Sessions that Scheduled until 7 days <br> Add,remove and many features available in @Schedule section.</p>
                            <div class="card-body table-responsive position-relative" style="height: 25em; overflow: scroll; background-image:  url(img/icons/notfound.svg);
                            background-repeat: no-repeat;
                            background-size:15em;
@@ -146,19 +148,79 @@
                            </table>
                         </div>
                         <button class="w-100 btn mycolor button1 position-absolute bottom-0">Show all Sessions</button>
-
-
                         </div>
-            
-
-
-
-
-
-
-
                   </section>
         
+                  <h3 class="fw-bold mt-5 pt-5" style="color: #007A69;"><i class="uil uil-medkit me-2 fs-4" ></i>Doctors</h3>
+                  <section class="pt-2">
+                    <div class="activity d-flex justify-content-between mb-4">
+                        <div class="title col-6">
+                           <span class="text fs-5 ">Add New Doctor</span>
+                         </div>
+                         <div class="ms-auto">
+                                    <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" ><i class="uil uil-plus text-white" onclick=""></i>&emsp; Add Doctor</button>
+                         </div> 
+                         </div>
+                
+                        <div>
+                        <p class="fs-5 ms-2">All Doctors(0)</p>
+                         <div class="card-body table-responsive mt-5">
+                                           <table class="table border-secondary text-center table-hover ">
+                                            <tr class="">
+                                                <td class="mycolor fw-bold ">Doctor Name</td>
+                                                <td class="mycolor fw-bold">Email</td>
+                                                <td class="mycolor fw-bold">Speciality</td>
+                                                <td class="mycolor fw-bold">Events</td>
+                                            </tr>     
+                                           </table>
+                         </div>
+                        </div>
+                
+                   </section>
+
+
+
+
+
+                   <div class="modal fade" id="modal-doctor">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="" method="POST" name="form_add_doctor">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add New Doctor</h5>
+                                    <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+                                </div>
+                                <div class="modal-body">
+                                        <input type="hidden" id="doctor-id">
+                                        <div class="mb-3">
+                                            <label class="form-label">Doctor Name</label>
+                                            <input type="text" name="doctorname" class="form-control" id="doctor-name"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input type="text" name="doctoremail" class="form-control" id="doctor-email"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Speciality</label>
+                                            <input type="text" name="speciality" class="form-control" id="doctor-speciality"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Password</label>
+                                            <input type="text" name="doctorpassword" class="form-control" id="doctorpassword"/>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Phone Number</label>
+                                            <input type="text" name="doctornumber" class="form-control" id="doctornumber"/>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+                                    <button type="submit" name="savedoctor" class="btn mycolor button1" id="doctor-save-btn">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
     <!-- /#page-content-wrapper -->
     </div>
