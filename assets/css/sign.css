@@ -7,15 +7,18 @@
 }
 
 .bg-firstColor{
-  background-color: #007A69 !important;
+  background-color: #00b9a0 !important;
 }
 .bg-secondColor{
   background-color: #CCF2E5 !important;
 }
 .text-firstColor{
-  color: #007A69 !important;
+  color: #00b9a0 !important;
 }
 .text-secondColor{
   color: #CCF2E5 !important;
+}
+.border-firstColor{
+  border: 2px solid #00b9a0;
 }
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/assets/css/sign.css">
     
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -17,10 +17,10 @@
 </head>
 <body class="row m-0 p-0 flex-column">
 <div class="col-lg-5 col-md-6 col-11 m-auto d-flex justify-content-between pt-1 mt-5">
-    <button class="m-auto d-block w-50 p-2 bg-white text-primary fw-bold border-primary border-bottom-0" style="border-radius: 5px 5px 0px 0px ;" id="lg-Btn">
+    <button class="m-auto d-block w-50 p-2 bg-white text-firstColor fw-bold border-firstColor border-bottom-0" style="border-radius: 5px 5px 0px 0px ;" id="lg-Btn">
         Log In
     </button>
-    <button class="m-auto d-block w-50 p-2 bg-primary text-white fw-bold border-primary border-bottom-0" style="border-radius: 5px 5px 0px 0px ;" id="su-Btn">
+    <button class="m-auto d-block w-50 p-2 bg-firstColor text-white fw-bold border-firstColor border-bottom-0" style="border-radius: 5px 5px 0px 0px ;" id="su-Btn">
         Sign Up
     </button>
 </div>
@@ -41,7 +41,7 @@
         <input class="border-0 shadow-sm p-2" style="border: 0.3px solid black;" type="password" name="password" id="password" placeholder="Password">
     </div>
     <div class="w-100 d-flex flex-column justify-content-center">
-        <button class="my-2 mb-4 text-center w-50 border-0 rounded bg-primary py-1 text-white m-auto">Log In</button>
+        <button class="my-2 mb-4 text-center w-50 border-0 rounded bg-firstColor py-1 text-white m-auto">Log In</button>
     </div>
 
 </form>
@@ -72,8 +72,8 @@
     </div>
     <div class="w-100 d-flex flex-column justify-content-center">
         <div class="d-flex justify-content-between col-9 m-auto">
-            <button style="width: 45%; background-color: rgb(91, 219, 255);" class="my-2 mb-4 text-center  border-0 rounded py-1 text-primary  m-auto">Reset</button>
-        <button style="width: 45%;" class="my-2 mb-4 text-center  border-0 rounded bg-primary py-1 text-white m-auto">Next</button></div>
+            <button style="width: 45%;" class="my-2 mb-4 text-center bg-secondColor  border-0 rounded py-1 text-firstColor  m-auto">Reset</button>
+        <button style="width: 45%;" class="my-2 mb-4 text-center  border-0 rounded bg-firstColor py-1 text-white m-auto">Next</button></div>
         
     </div>
 
@@ -88,13 +88,13 @@
     let upBtn = document.getElementById('su-Btn');
 
     function whoIsActive(buttonActive,buttonNotActive){
-        buttonActive.classList.remove('bg-primary');
+        buttonActive.classList.remove('bg-firstColor');
         buttonActive.classList.remove('text-white');
-        buttonActive.classList.add('text-primary');
+        buttonActive.classList.add('text-firstColor');
         buttonActive.classList.add('bg-white');
-        buttonNotActive.classList.add('bg-primary');
+        buttonNotActive.classList.add('bg-firstColor');
         buttonNotActive.classList.add('text-white');
-        buttonNotActive.classList.remove('text-primary');
+        buttonNotActive.classList.remove('text-firstColor');
         buttonNotActive.classList.remove('bg-white');
     }
 
