@@ -26,9 +26,9 @@
                 </div>
                     <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
             <div class="list-group list-group-flush my-3">
-                <a href="#" class="list-group-item list-group-item-action  text-secondary "><i
+                <a href="#dashboard" class="list-group-item list-group-item-action  text-secondary "><i
                         class="uil uil-chart-bar fs-4 me-2"></i>dashboard</a>
-                <a href="#" class="list-group-item list-group-item-action   fw-bold"><i
+                <a href="#doctors" class="list-group-item list-group-item-action   fw-bold"><i
                         class="uil uil-medkit me-2 fs-4" ></i>Doctors</a>
                 <a href="#" class="list-group-item list-group-item-action  fw-bold"><i
                         class="uil uil-stopwatch me-2 fs-4" ></i>Schedule</a>        
@@ -42,7 +42,7 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 justify-content-between">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 justify-content-between" id="dashboard">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left mycolor fs-4 me-3" id="menu-toggle"></i>
                     <!-- <h2 class="fs-2 m-0"> </h2> -->
@@ -109,10 +109,10 @@
                 </div>
 
                   <section class="mt-5 d-flex justify-content-between">
-                        <div  style="width: 49%; height: 35em;" class="position-relative appointment-table rounded shadowborder" >
+                        <div  style="width: 49%; height: 25em;" class="position-relative appointment-table rounded shadowborder" >
                            <p class="ms-3 mycolor fs-4 fw-bold">Upcoming Appointements until Next Tuesday</p>
                            <p class="ms-3">Here's a quick access to Upcoming Appointements until 7 days <br> More details available in @Appointement section.</p>
-                           <div class="card-body table-responsive position-relative" style="height: 25em; overflow: scroll;
+                           <div class="card-body table-responsive position-relative" style="height: 15em; overflow: scroll;
                            background-image:  url(img/icons/notfound.svg);
                            background-repeat: no-repeat;
                            background-size:15em;
@@ -131,10 +131,10 @@
                         <button class="w-100 btn mycolor button1 position-absolute bottom-0">Show all Appointements</button>
                         
                         </div>
-                        <div style="width: 49%; height: 35em;" class="position-relative appointment-table rounded shadowborder" >
+                        <div style="width: 49%; height: 25em;" class="position-relative appointment-table rounded shadowborder" >
                             <p class="ms-3 mycolor fs-4 fw-bold">Upcoming Sessions until Next Tuesday</p>
                            <p class="ms-3">Here's a quick access to Upcoming Sessions that Scheduled until 7 days <br> Add,remove and many features available in @Schedule section.</p>
-                           <div class="card-body table-responsive position-relative" style="height: 25em; overflow: scroll; background-image:  url(img/icons/notfound.svg);
+                           <div class="card-body table-responsive position-relative" style="height: 15em; overflow: scroll; background-image:  url(img/icons/notfound.svg);
                            background-repeat: no-repeat;
                            background-size:15em;
                            background-position: bottom;">
@@ -151,26 +151,30 @@
                         </div>
                   </section>
         
-                  <h3 class="fw-bold mt-5 pt-5" style="color: #007A69;"><i class="uil uil-medkit me-2 fs-4" ></i>Doctors</h3>
-                  <section class="pt-2">
-                    <div class="activity d-flex justify-content-between mb-4">
-                        <div class="title col-6">
-                           <span class="text fs-5 ">Add New Doctor</span>
-                         </div>
-                         <div class="ms-auto">
-                                    <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" ><i class="uil uil-plus text-white" onclick=""></i>&emsp; Add Doctor</button>
-                         </div> 
-                         </div>
-                
-                        <div>
-                        <p class="fs-5 ms-2">All Doctors(0)</p>
-                         <div class="card-body table-responsive mt-5">
+                  <h3 class="fw-bold mt-5 pt-5
+                  mb-5" style="color: #007A69;"><i class="uil uil-medkit me-2 fs-4" ></i>Doctors</h3>
+                  <section class="pt-2" id="doctors">
+                    
+                        <div class="d-flex justify-content-between">
+                            <p class="fs-5 ms-2">All Doctors(0)</p>
+                            <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" ><i class="uil uil-plus text-white" onclick=""></i>&emsp; Add Doctor</button>
+                        </div>
+                         <div class="card-body table-responsive mt-2" style="height: 75vh; overflow: scroll;">
                                            <table class="table border-secondary text-center table-hover ">
                                             <tr class="">
                                                 <td class="mycolor fw-bold ">Doctor Name</td>
                                                 <td class="mycolor fw-bold">Email</td>
                                                 <td class="mycolor fw-bold">Speciality</td>
                                                 <td class="mycolor fw-bold">Events</td>
+                                            </tr> 
+                                            <tr class="">
+                                                <td class="text-dark">Ossama</td>
+                                                <td class="text-dark">ossama@gmail.com</td>
+                                                <td class="text-dark">cardiac</td>
+                                                <td class="text-dark">
+                                                    <button class="btn mycolor button1 rounded-pill"><i class="mycolor uil uil-eye"></i>view</button>
+                                                    <button class="btn mycolor button1 rounded-pill"><i class="mycolor uil uil-trash"></i>remove</button>
+                                                </td>
                                             </tr>     
                                            </table>
                          </div>
@@ -181,7 +185,7 @@
 
 
 
-
+<!-- forms that should be in a separate fille includable -->
                    <div class="modal fade" id="modal-doctor">
                     <div class="modal-dialog">
                         <div class="modal-content">
