@@ -162,28 +162,6 @@ a, a:focus, a:hover {
   justify-content: center;
   align-items: center;
 }
-.hero-area:before {
-  content: "";
-  background: rgba(0, 0, 0, 0.63);
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-.hero-area .block {
-  color: #fff;
-}
-
-
-
-.dark-bg {
-  background: rgba(0, 0, 0, 0.7);
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: -1;
-}
 
 .slider-item {
   background-size: cover;
