@@ -15,15 +15,19 @@
 
     <title>Document</title>
 </head>
-<body class="row m-0 p-0">
-<div class="col-12 pt-1">
-    <button class="m-auto rounded bg-primary border-0 d-block" id="hehe">
-        <i class="bi bi-toggle-off text-white"></i>
+<body class="row m-0 p-0 flex-column">
+<div class="col-lg-5 col-md-6 col-11 m-auto d-flex justify-content-between pt-1 mt-5">
+    <button class="m-auto d-block w-50 p-2 bg-white text-primary fw-bold border-primary border-bottom-0" style="border-radius: 5px 5px 0px 0px ;" id="lg-Btn">
+        Log In
+    </button>
+    <button class="m-auto d-block w-50 p-2 bg-primary text-white fw-bold border-primary border-bottom-0" style="border-radius: 5px 5px 0px 0px ;" id="su-Btn">
+        Sign Up
     </button>
 </div>
 
 
-<form action="" class="col-lg-5 col-md-6 col-11 m-auto mt-5 shadow rounded py-4" id="sign-in">
+
+<form action="" class="col-lg-5 col-md-6 col-11 m-auto shadow rounded py-4" id="sign-in">
     <div class="w-100 my-3 mb-5">
         <h3 class="text-center">Welcome Back</h3>
         <p class="text-center text-secondary">login with your details to continue</p>
@@ -38,11 +42,10 @@
     </div>
     <div class="w-100 d-flex flex-column justify-content-center">
         <button class="my-2 mb-4 text-center w-50 border-0 rounded bg-primary py-1 text-white m-auto">Log In</button>
-        <p class="text-center text-secondary">Don't have an account? <a href="" class="text-dark fw-bold" id="sign-up"> Sign Up</a></p>
     </div>
 
 </form>
-<form action="" class="col-lg-5 d-none col-md-6 col-11 m-auto mt-4 shadow rounded py-2" id="sign-up">
+<form action="" class="col-lg-5 d-none col-md-6 col-11 m-auto shadow rounded py-2" id="sign-up">
     <div class="w-100 my-3 mb-2">
         <h3 class="text-center">Let's Get Started</h3>
         <p class="text-center text-secondary">add your personal details to continue</p>
@@ -72,14 +75,38 @@
             <button style="width: 45%; background-color: rgb(91, 219, 255);" class="my-2 mb-4 text-center  border-0 rounded py-1 text-primary  m-auto">Reset</button>
         <button style="width: 45%;" class="my-2 mb-4 text-center  border-0 rounded bg-primary py-1 text-white m-auto">Next</button></div>
         
-        <p class="text-center text-secondary">Already have an account? <a href="" class="text-dark fw-bold"> Log In</a></p>
     </div>
 
 </form>
+
+
+
 <script>
-    document.getElementById("hehe").addEventListener('click',(e)=>{
-        document.getElementById('sign-up').classList.toggle('d-none');
-        document.getElementById('sign-in').classList.toggle('d-none');
+    let upForm = document.getElementById('sign-up');
+    let inForm = document.getElementById('sign-in');
+    let inBtn = document.getElementById('lg-Btn');
+    let upBtn = document.getElementById('su-Btn');
+
+    function whoIsActive(buttonActive,buttonNotActive){
+        buttonActive.classList.remove('bg-primary');
+        buttonActive.classList.remove('text-white');
+        buttonActive.classList.add('text-primary');
+        buttonActive.classList.add('bg-white');
+        buttonNotActive.classList.add('bg-primary');
+        buttonNotActive.classList.add('text-white');
+        buttonNotActive.classList.remove('text-primary');
+        buttonNotActive.classList.remove('bg-white');
+    }
+
+    inBtn.addEventListener('click',(e)=>{
+        upForm.classList.add('d-none');
+        inForm.classList.remove('d-none');
+        whoIsActive(inBtn,upBtn);
+    })
+    upBtn.addEventListener('click',(e)=>{
+        upForm.classList.remove('d-none');
+        inForm.classList.add('d-none');
+        whoIsActive(upBtn , inBtn);
     })
 </script>
 
