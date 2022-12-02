@@ -144,6 +144,55 @@
                                     <td class="mycolor fw-bold">Doctor</td>
                                     <td class="mycolor fw-bold">Session</td>
                                 </tr>     
+                                <tr class="bg-light border-bottom-0">
+                                    <td class="text-dark">Appointement number</td>
+                                    <td class="text-dark">Patient name</td>
+                                    <td class="text-dark">Doctor</td>
+                                    <td class="text-dark">Session</td>
+                                </tr>     
+                                <tr class="bg-light border-bottom-0">
+                                    <td class="text-dark">Appointement number</td>
+                                    <td class="text-dark">Patient name</td>
+                                    <td class="text-dark">Doctor</td>
+                                    <td class="text-dark">Session</td>
+                                </tr>     
+                                <tr class="bg-light border-bottom-0">
+                                    <td class="text-dark">Appointement number</td>
+                                    <td class="text-dark">Patient name</td>
+                                    <td class="text-dark">Doctor</td>
+                                    <td class="text-dark">Session</td>
+                                </tr>     
+                                <tr class="bg-light border-bottom-0">
+                                    <td class="text-dark">Appointement number</td>
+                                    <td class="text-dark">Patient name</td>
+                                    <td class="text-dark">Doctor</td>
+                                    <td class="text-dark">Session</td>
+                                </tr>     
+                                <tr class="bg-light border-bottom-0">
+                                    <td class="text-dark">Appointement number</td>
+                                    <td class="text-dark">Patient name</td>
+                                    <td class="text-dark">Doctor</td>
+                                    <td class="text-dark">Session</td>
+                                </tr>     
+                                <tr class="bg-light border-bottom-0">
+                                    <td class="text-dark">Appointement number</td>
+                                    <td class="text-dark">Patient name</td>
+                                    <td class="text-dark">Doctor</td>
+                                    <td class="text-dark">Session</td>
+                                </tr>     
+                                <tr class="bg-light border-bottom-0">
+                                    <td class="text-dark">Appointement number</td>
+                                    <td class="text-dark">Patient name</td>
+                                    <td class="text-dark">Doctor</td>
+                                    <td class="text-dark">Session</td>
+                                </tr>     
+                                <tr class="bg-light border-bottom-0">
+                                    <td class="text-dark">Appointement number</td>
+                                    <td class="text-dark">Patient name</td>
+                                    <td class="text-dark">Doctor</td>
+                                    <td class="text-dark">Session</td>
+                                </tr>     
+                                  
                             </table>
                            
                         </div>
@@ -178,7 +227,7 @@
                     
                         <div class="d-flex justify-content-between">
                             <p class="fs-5 ms-2">All Doctors(0)</p>
-                            <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" ><i class="uil uil-plus text-white" onclick=""></i>&emsp; Add Doctor</button>
+                            <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="add-doctor-btn"><i class="uil uil-plus text-white" onclick=""></i>&emsp; Add Doctor</button>
                         </div>
                          <div class="card-body table-responsive mt-2" style="height: 60vh; overflow: scroll;">
                                            <table class="table border-secondary text-center table-hover ">
@@ -193,9 +242,9 @@
                                                 <td class="text-dark">ossama@gmail.com</td>
                                                 <td class="text-dark">cardiac</td>
                                                 <td class="text-dark">
-                                                    <button class="btn mycolor button1 rounded-pill"><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
+                                                    <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="update-btn"><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
                                                     <button class="btn mycolor button1 rounded-pill"><i class="mycolor me-1 uil uil-eye"></i>view</button>
-                                                    <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" ><i class="mycolor me-1 uil uil-trash"></i>remove</button>
+                                                    <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" id="remove-btn"><i class="mycolor me-1 uil uil-trash"></i>remove</button>
                                                 </td>
                                             </tr>     
                                            </table>
@@ -369,7 +418,9 @@
                         <div class="modal-content">
                             <form action="" method="POST" name="form_add_doctor">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Add New Doctor</h5>
+
+                                    <h5 class="modal-title" id="add-title">Add New Doctor</h5>
+                                    <h5 class="modal-title d-none" id="edit-title">Edit Doctor</h5>
                                     <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
                                 </div>
                                 <div class="modal-body">
@@ -397,7 +448,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                                    <button type="submit" name="savedoctor" class="btn mycolor button1" id="doctor-save-btn">Save</button>
+                                    <button type="submit" name="updateDoctor" class="btn mycolor button1 d-none" id="doctor-update-btn">update</button>
+                                    <button type="submit" name="saveDoctor" class="btn mycolor button1" id="doctor-save-btn">Save</button>
                                 </div>
                             </form>
                         </div>
