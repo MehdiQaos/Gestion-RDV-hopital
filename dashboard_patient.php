@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php
+    include_once("assets/php/autoloader.php");
+    $git = new db_connect;
+
+     ?>
 
 <head>
     <meta charset="UTF-8" />
