@@ -7,8 +7,8 @@
                         <p class="fw-bold pt-3">Are you sure you want to remove this Doctor?</p>
                     </div>
                     <div class="d-flex justify-content-around w-75 m-auto">
-                        <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-                        <button type="submit" name="" class="btn mycolor button1" id="session-save-btn">remove</button>
+                        <button type="submit" class="btn btn-white" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" name="" class="btn text-white bg-danger" id="session-save-btn">remove</button>
                     </div>
                 </form>
             </div>

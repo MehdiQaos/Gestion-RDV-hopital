@@ -46,7 +46,7 @@
                 </div>
 
                   <section class="mt-5 d-flex justify-content-between">
-                        <div  style="width: 49%; height: 25em;" class="position-relative appointment-table rounded shadowborder" >
+                        <form method="post"  style="width: 49%; height: 25em;" class="position-relative appointment-table rounded shadowborder" >
                            <p class="ms-3 mycolor fs-4 fw-bold">Upcoming Appointements until Next Tuesday</p>
                            <p class="ms-3">Here's a quick access to Upcoming Appointements until 7 days <br> More details available in @Appointement section.</p>
                            <div class="card-body table-responsive position-relative" style="height: 15em; overflow: scroll;
@@ -114,10 +114,10 @@
                             </table>
                            
                         </div>
-                        <button class="w-100 btn mycolor button1 position-absolute bottom-0">Show all Appointements</button>
+                        <button class="w-100 btn mycolor button1 position-absolute bottom-0" name="allAppointment" type="submit">Show all Appointements</button>
                         
-                        </div>
-                        <div style="width: 49%; height: 25em;" class="position-relative appointment-table rounded shadowborder" >
+                        </form>
+                        <form method="post" style="width: 49%; height: 25em;" class="position-relative appointment-table rounded shadowborder" >
                             <p class="ms-3 mycolor fs-4 fw-bold">Upcoming Sessions until Next Tuesday</p>
                            <p class="ms-3">Here's a quick access to Upcoming Sessions that Scheduled until 7 days <br> Add,remove and many features available in @Schedule section.</p>
                            <div class="card-body table-responsive position-relative" style="height: 15em; overflow: scroll; background-image:  url(img/icons/notfound.svg);
@@ -133,7 +133,7 @@
                             
                            </table>
                         </div>
-                        <button class="w-100 btn mycolor button1 position-absolute bottom-0">Show all Sessions</button>
-                        </div>
+                        <button class="w-100 btn mycolor button1 position-absolute bottom-0" name="allSessions" type="submit">Show all Sessions</button>
+                        </form>
                   </section>
                 </section>

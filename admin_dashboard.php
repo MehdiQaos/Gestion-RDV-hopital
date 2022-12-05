@@ -38,8 +38,10 @@
             <?php
                 if(isset($_POST['dashboard-displayer']))            include 'admin_includes/dashboard.php';
                 else if(isset($_POST['doctors-displayer']))         include './admin_includes/doctors.php';
-                else if(isset($_POST['schedule-displayer']))        include './admin_includes/schedule.php';
-                else if(isset($_POST['appointments-displayer']))    include './admin_includes/appointment.php';
+                else if(isset($_POST['schedule-displayer']) || isset($_POST['allSessions']))        
+                                                                    include './admin_includes/schedule.php';
+                else if(isset($_POST['appointments-displayer']) || isset($_POST['allAppointment']))    
+                                                                    include './admin_includes/appointment.php';
                 else if(isset($_POST['patients-displayer']))        include './admin_includes/patient.php';
                 else                                                include 'admin_includes/dashboard.php';
 
