@@ -110,3 +110,11 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #007A69;
 }
+
+a{
+  cursor: pointer !important;
+}
+
+.invalid{
+  border: 1px solid red ;
+}

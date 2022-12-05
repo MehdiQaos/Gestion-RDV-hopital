@@ -52,7 +52,11 @@
     }
 
     signUpForm.keyup(function(){
-
+        firstName.keyup(function(){
+            if(firstName = ''){
+                
+            }
+        })
         
 
         console.log('hello every thing is good');
