@@ -4,7 +4,11 @@ USE hopitalDB;
 
 CREATE TABLE Specialities (
     id INT PRIMARY KEY AUTO_INCREMENT,
+<<<<<<< HEAD
     name VARCHAR(255)
+=======
+    name VARCHAR(255),
+>>>>>>> c0baa5df6f9bddbb3356289b999e851bbaa99306
 );
 
 CREATE TABLE Admins (
