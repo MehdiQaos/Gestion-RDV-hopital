@@ -77,4 +77,17 @@ addDoctor.click(function(){
     saveBtn.removeClass('d-none');
     updateTitle.addClass('d-none');
     updateBtn.addClass('d-none');
-})
+});
+
+function displayDate(){
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    // This arrangement can be altered based on how we want the date's format to appear.
+    let currentDate = `${day}-${month}-${year}`;
+    document.getElementById('current-date').innerHTML = currentDate;
+    
+}
