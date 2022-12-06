@@ -2,7 +2,7 @@
                     
                     <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 justify-content-between" id="dashboard">
                         <div class="d-flex align-items-center">
-                            <i class="fas fa-align-left mycolor fs-4 " id="menu-togglee"></i>
+                            <i class="fas fa-align-left mycolor fs-4 " id="menu-toggle_d"></i>
                             <!-- <h2 class="fs-2 m-0"> </h2> -->
                             <div class="input-group ms-5" style="width:500px;">
                                 <input type="search" class="form-control rounded" placeholder="Search Doctor Name or Email" aria-label="Search" aria-describedby="search-addon" />
@@ -50,3 +50,13 @@
                          </div>
                         
                    </section>
+                   <script>
+        var el = document.getElementById("wrapper");
+      
+        var toggleButton_d = document.getElementById("menu-toggle_d");
+
+        toggleButton_d.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+      
+    </script>

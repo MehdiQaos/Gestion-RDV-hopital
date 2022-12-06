@@ -1,7 +1,7 @@
    <div  id="dashboard">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 justify-content-between">
                 <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left mycolor fs-4 me-3" id="menu-toggle"></i>
+                    <i class="fas fa-align-left mycolor fs-4 me-3" id="menu-toggle_da"></i>
                     <!-- <h2 class="fs-2 m-0"> </h2> -->
                     <h3 class="fw-bold ms-5 mt-1" style="color: #007A69;"> Home</h3>
                     
@@ -113,3 +113,13 @@
                   </section>
         </div>
 </div>
+<script>
+        var el = document.getElementById("wrapper");
+    
+        var toggleButton_da = document.getElementById("menu-toggle_da");
+
+        toggleButton_da.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+      
+    </script>

@@ -1,7 +1,7 @@
 <section class="p-4 pt-0 " id="sessions">
                     <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4 justify-content-between" id="dashboard">
                         <div class="d-flex align-items-center">
-                            <i class="fas fa-align-left mycolor fs-4 " id="menu-togglee"></i>
+                            <i class="fas fa-align-left mycolor fs-4 " id="menu-toggle_a"></i>
                             <!-- <h2 class="fs-2 m-0"> </h2> -->
                             <h3 class="fw-bold ms-5 mt-1" style="color: #007A69;">My Booking History</h3>
                         </div>
@@ -62,3 +62,11 @@
                          
                        
                    </section>
+                   <script>
+        var el = document.getElementById("wrapper");
+        var toggleButton_a = document.getElementById("menu-toggle_a");
+
+        toggleButton_a.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>

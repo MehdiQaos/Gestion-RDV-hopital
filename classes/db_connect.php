@@ -18,6 +18,5 @@ class db_connect{
         }
     }
 }
-$conn = new db_connect;
-$pdo = $conn->connection();
+
 ?>

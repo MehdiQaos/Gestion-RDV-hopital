@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php
-    include_once("assets/php/autoloader.php");
+    include_once("autoloader.php");
     $git = new db_connect;
-
      ?>
 
 <head>
@@ -31,45 +30,48 @@
                 </div>
                     <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
             <div class="list-group list-group-flush my-3">
-                <a href="dashboard_patient.php?file=dash" class="list-group-item list-group-item-action  text-secondary " onclick="show_dash()"><i
+                <a href="dashboard_patient.php?file=dash" class="list-group-item list-group-item-action  text-secondary "><i
                         class="uil uil-home fs-4 me-2"></i>Home</a>
-                <a  href="dashboard_patient.php?file=doct" class="list-group-item list-group-item-action   fw-bold" onclick="show_doct()"><i
+                <a  href="dashboard_patient.php?file=doct" class="list-group-item list-group-item-action   fw-bold"><i
                         class="uil uil-medkit me-2 fs-4" ></i>All Doctors</a>
-                <a  href="dashboard_patient.php?file=session" class="list-group-item list-group-item-action  fw-bold" onclick="show_sess()"><i
+                <a  href="dashboard_patient.php?file=session" class="list-group-item list-group-item-action  fw-bold" ><i
                         class="uil uil-stopwatch me-2 fs-4" ></i>Scheduled Sessions</a>        
-                <a  href="dashboard_patient.php?file=appoint" class="list-group-item list-group-item-action   fw-bold"onclick="show_booking()"><i
+                <a  href="dashboard_patient.php?file=appoint" class="list-group-item list-group-item-action   fw-bold"><i
                         class="uil uil-bookmark me-2 fs-4"></i>My Booking</a>
-                <a  href="dashboard_patient.php?file=settings" class="list-group-item list-group-item-action fw-bold" onclick="show_settings()"><i
+                <a  href="dashboard_patient.php?file=settings" class="list-group-item list-group-item-action fw-bold"><i
                         class="uil uil-setting fs-4 me-2"></i>Settings</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
         <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
-            
         <?php
          if(isset($_GET["file"])){
             if($_GET['file']=="dash"){
-                include("includes/patient_includes/patient_dash.php");
+                include("includes/patient/patient_dash.php");
                 }
                 else if($_GET['file']=="doct"){
-                    include("includes/patient_includes/patient_doct.php");
+                    include("includes/patient/patient_doct.php");
                 }
                 else if($_GET['file']=="session"){
-                    include("includes/patient_includes/patient_session.php");
+                    include("includes/patient/patient_session.php");
                }
                else if($_GET['file']=="appoint"){
-                  include("includes/patient_includes/patient_apoint.php");
+                  include("includes/patient/patient_apoint.php");
                }
                else{
-                  include("includes/patient_includes/patient_settings.php");
+                  include("includes/patient/patient_settings.php");
+                  include("includes/modals/patient_profile.php");
+                  include("includes/modals/patient_delete.php");
                } 
          }
          else{
-            include("includes/patient_includes/patient_dash.php");
+            include("includes/patient/patient_dash.php");
 
          }
+          
         ?>
+        
         </div>
 <!-- forms that should be in a separate fille includable -->
                    <div class="modal fade" id="modal-doctor">
@@ -116,19 +118,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        var el = document.getElementById("wrapper");
-        var toggleButton = document.getElementById("menu-toggle");
 
-        toggleButton.onclick = function () {
-            el.classList.toggle("toggled");
-        };
-        var toggleButtonn = document.getElementById("menu-togglee");
-
-        toggleButtonn.onclick = function () {
-            el.classList.toggle("toggled");
-        };
-    </script>
     <script src="assets/js/script_patient.js"></script>
 </body>
 
