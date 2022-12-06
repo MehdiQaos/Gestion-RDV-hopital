@@ -82,4 +82,3 @@ CREATE TABLE Appointments (
 --     cin VARCHAR(255) NOT NULL,
 --     birthday DATE NOT NULL
 -- );
-
