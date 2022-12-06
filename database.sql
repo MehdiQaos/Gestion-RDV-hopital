@@ -4,12 +4,12 @@ USE hopitalDB;
 
 CREATE TABLE Roles (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255),
+    name VARCHAR(255)
 )
 
 CREATE TABLE Specialities (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255),
+    name VARCHAR(255)
 );
 
 CREATE TABLE Users (
@@ -82,3 +82,4 @@ CREATE TABLE Appointments (
 --     cin VARCHAR(255) NOT NULL,
 --     birthday DATE NOT NULL
 -- );
+
