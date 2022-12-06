@@ -77,7 +77,7 @@
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
         <label class="mb-2" for="birthday" >Date Of Birth :</label>
-        <input class="border-0 shadow-sm p-2" type="date" name="birthday" id="birthday">
+        <input class="border-0 shadow-sm p-2" type="date" name="birthday" id="birthday" required>
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
         <label class="mb-2" for="password" >Password :</label>

@@ -21,7 +21,7 @@
     <div class="d-flex shadow-sm bg-light" id="wrapper" >
         <!-- Sidebar -->
         <?php 
-        include './admin_includes/sidebar.php';?>
+        include './includes/admin/sidebar.php';?>
         
         <!-- /#sidebar-wrapper -->
 
@@ -32,37 +32,37 @@
 <!-- navbar part ( search and the calender) -->
 
 <?php 
-    include './admin_includes/navbar.php';?>
+    include './includes/admin/navbar.php';?>
         
     <div class="container-fluid px-4">
             <?php
-                if(isset($_POST['dashboard-displayer']))            include 'admin_includes/dashboard.php';
-                else if(isset($_POST['doctors-displayer']))         include './admin_includes/doctors.php';
+                if(isset($_POST['dashboard-displayer']))            include 'includes/admin/dashboard.php';
+                else if(isset($_POST['doctors-displayer']))         include './includes/admin/doctors.php';
                 else if(isset($_POST['schedule-displayer']) || isset($_POST['allSessions']))        
-                                                                    include './admin_includes/schedule.php';
+                                                                    include './includes/admin/schedule.php';
                 else if(isset($_POST['appointments-displayer']) || isset($_POST['allAppointment']))    
-                                                                    include './admin_includes/appointment.php';
-                else if(isset($_POST['patients-displayer']))        include './admin_includes/patient.php';
-                else                                                include 'admin_includes/dashboard.php';
+                                                                    include './includes/admin/appointment.php';
+                else if(isset($_POST['patients-displayer']))        include './includes/admin/patient.php';
+                else                                                include 'includes/admin/dashboard.php';
 
             ?>    
     </div>
                 
 <!-- forms -->
     <?php 
-        include './admin_includes/forms/add_edit_doctor.php';
+        include './includes/admin/forms/add_edit_doctor.php';
     ?>
     
     <?php 
-        include './admin_includes/forms/session_modal.php';
+        include './includes/admin/forms/session_modal.php';
     ?>  
     
     <?php 
-        include './admin_includes/forms/view_doctor.php';
+        include './includes/admin/forms/view_doctor.php';
     ?>  
     
     <?php 
-        include './admin_includes/forms/remove_doctor.php';
+        include './includes/admin/forms/remove_doctor.php';
     ?>  
     <!-- /#page-content-wrapper -->
     </div>
