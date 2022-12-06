@@ -23,16 +23,27 @@
     })
 
 
+<<<<<<< HEAD
 
     // validation of the sign up Form 
 
+=======
+>>>>>>> main
     let signUpForm  =   $('#sign-up');
     let firstName   =   $('#name1');
     let lastName    =   $('#name2');
     let email       =   $('#email');
+<<<<<<< HEAD
     let cin         =   $('#cin');
     let birthday    =   $('#birthday');
     let password    =   $('#password');
+=======
+
+    let cin         =   $('#cin');
+    let birthday    =   $('#birthday');
+    let password    =   $('#password');
+
+>>>>>>> main
     let passConf    =   $('#pass-confirmation');
     let message    =   $('#message');
 
@@ -41,7 +52,11 @@
     }
 
     function checkEmail(email){
+<<<<<<< HEAD
         return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{1,4}$/.test(email);
+=======
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+>>>>>>> main
     }
 
     function checkPassword(password){
@@ -55,6 +70,7 @@
     }
 
 
+<<<<<<< HEAD
         let result = true;
         let tester = $('#tester');
 
@@ -74,10 +90,13 @@
             }
         }
 
+=======
+>>>>>>> main
         firstName.keyup(function(){
             if(firstName.val() == '' || !checkName(firstName.val())){
                 firstName.addClass('invalid');
                 message.text('Write A Valid First Name');
+<<<<<<< HEAD
 
 
                 result = false;
@@ -86,6 +105,11 @@
                 message.text('');
 
                 result = true;
+=======
+            }else{
+                firstName.removeClass('invalid');
+                message.text('');
+>>>>>>> main
             }
             
         })
@@ -94,6 +118,7 @@
             if(lastName.val() == '' || !checkName(lastName.val())){
                 lastName.addClass('invalid');
                 message.text('Write A Valid Last Name');
+<<<<<<< HEAD
 
                 result = false;
             }else{
@@ -101,6 +126,11 @@
                 message.text('');
 
                 result = true;
+=======
+            }else{
+                lastName.removeClass('invalid');
+                message.text('');
+>>>>>>> main
             }
         })
 
@@ -108,6 +138,7 @@
             if(email.val() == '' || !checkEmail(email.val())){
                 email.addClass('invalid');
                 message.text('Write A Valid Email');
+<<<<<<< HEAD
 
                 result = false;
             }else{
@@ -117,6 +148,12 @@
                 result = true;
             }
             tester.text(result);
+=======
+            }else{
+                email.removeClass('invalid');
+                message.text('');
+            }   
+>>>>>>> main
         })
 
 
@@ -124,6 +161,7 @@
             if(cin.val() == '' || !checkCin(cin.val())){
                 cin.addClass('invalid');
                 message.text('CIN most have just letters and numbers');
+<<<<<<< HEAD
 
                 result = false;
             }else{
@@ -131,6 +169,11 @@
                 message.text('');
 
                 result = true;
+=======
+            }else{
+                cin.removeClass('invalid');
+                message.text('');
+>>>>>>> main
             }
         })
 
@@ -138,6 +181,7 @@
             if(password.val() == '' || !checkPassword(password.val())){
                 password.addClass('invalid');
                 message.text('At Least 8 Characters, One Uppercase, And One Number');
+<<<<<<< HEAD
 
                 result = false;
             }else{
@@ -145,6 +189,11 @@
                 message.text('');
 
                 result = true;
+=======
+            }else{
+                password.removeClass('invalid');
+                message.text('');
+>>>>>>> main
             }
         })
 
@@ -152,6 +201,7 @@
             if(passConf.val() == '' || passConf.val() != password.val()){
                 passConf.addClass('invalid');
                 message.text('Passwords are not match');
+<<<<<<< HEAD
 
                 result = false;
             }else{
@@ -173,5 +223,95 @@
                 message.text('');
 
                 result = true;
+=======
+            }else{
+                passConf.removeClass('invalid');
+                message.text('');
+            }
+        })
+
+
+        function validForm(){
+            if( firstName.val() != '' && 
+                checkName(firstName.val())&&
+                lastName.val() != '' && 
+                checkName(lastName.val()) &&
+                email.val() != '' && 
+                checkEmail(email.val()) &&
+                cin.val() != '' && 
+                checkCin(cin.val()) &&
+                password.val() != '' && 
+                checkPassword(password.val()) &&
+                passConf.val() != '' && 
+                passConf.val() == password.val()){
+
+                    result = true;
+
+                }else {
+                    result = false; 
+                }
+                return result;
+        }
+
+
+      signUpForm.submit(function(e){
+            
+            if(validForm() == true){
+                console.log('hello');
+            }else{
+                console.log('invalid');
+                e.preventDefault();
+            }
+        })
+
+        
+
+    let emailIn       =   $('#emailIn');
+    let passwordIn    =   $('#passwordIn');
+    let signInForm  =   $('#sign-in');
+    let message2    =   $('#message2');
+
+
+
+        emailIn.keyup(function(){
+            if(emailIn.val() == '' || !checkEmail(emailIn.val())){
+                emailIn.addClass('invalid');
+                message2.text('Write A Valid Email');
+            }else{
+                emailIn.removeClass('invalid');
+                message2.text('');
+            }   
+        })
+
+        passwordIn.keyup(function(){
+            if(passwordIn.val() == '' ){
+                passwordIn.addClass('invalid');
+                message2.text('Password cant be empty');
+            }else{
+                passwordIn.removeClass('invalid');
+                message2.text('');
+            }
+        })
+
+        let result2;
+        function validSignIn(){
+            if(emailIn.val() != '' && checkEmail(emailIn.val()) && passwordIn.val() != '' ){
+
+                    result2 = true;
+
+                }else {
+                    result2 = false; 
+                }
+                return result2;
+        }
+
+        signInForm.submit(function(e){
+            
+            if(validSignIn() == true){
+                console.log('hello');
+            }else{
+                console.log('invalid');
+                e.preventDefault();
+>>>>>>> main
             }
         })

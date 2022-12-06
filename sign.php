@@ -36,12 +36,13 @@
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
         <label class="mb-2" for="email">Email :</label>
-        <input class="border-0 shadow-sm p-2" style="border: 0.3px solid black;" type="email" onkeyup="checkEmail(this);" name="email" id="email" placeholder="Email Address">
+        <input class="border-0 shadow-sm p-2" style="border: 0.3px solid black;" type="email" name="email" id="emailIn" placeholder="Email Address">
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
         <label class="mb-2" for="password" >Password :</label>
-        <input class="border-0 shadow-sm p-2" style="border: 0.3px solid black;" type="password" onkeyup="checkPassword(this);" name="password" id="password" placeholder="Password">
+        <input class="border-0 shadow-sm p-2" style="border: 0.3px solid black;" type="password" name="password" id="passwordIn" placeholder="Password">
     </div>
+    <p id="message2" class="text-danger text-center" style="font-size: 10px; margin-bottom: 0px;"></p>
     <div class="w-100 d-flex flex-column justify-content-center">
         <button class="my-2 mb-4 text-center w-50 border-0 rounded button1 mycolor py-1 m-auto">Log In</button>
     </div>
@@ -61,30 +62,30 @@
     <div class="d-flex flex-column my-2 col-9 m-auto">
         <label class="mb-2" for="email">Name :</label>
         <div class="w-100 d-flex">
-            <input class="border-0 shadow-sm p-2 col-6 me-2" type="name1" name="name1" id="name1" onkeyup="checkName(this);" placeholder="First Name">
-        <input class="border-0 shadow-sm p-2 col-6" type="name2" name="name2" id="name2" onkeyup="checkName(this);" placeholder="Last Name">
+            <input class="border-0 shadow-sm p-2 col-6 me-2" type="name1" name="name1" id="name1" placeholder="First Name">
+        <input class="border-0 shadow-sm p-2 col-6" type="name2" name="name2" id="name2" placeholder="Last Name">
         </div>
         
     </div>
     <div class="d-flex flex-column my-2 col-9 m-auto">
         <label class="mb-2" for="email">Email :</label>
-        <input class="border-0 shadow-sm p-2" type="email" name="email" id="email" onkeyup="checkEmail(this);" placeholder="Email Address">
+        <input class="border-0 shadow-sm p-2" type="email" name="email" id="email" placeholder="Email Address">
     </div>
     <div class="d-flex flex-column my-2 col-9 m-auto">
         <label class="mb-2" for="cin" >CIN :</label>
-        <input class="border-0 shadow-sm p-2" type="text" name="cin" id="cin" onkeyup="checkCin(this);" placeholder="CIN">
+        <input class="border-0 shadow-sm p-2" type="text" name="cin" id="cin" placeholder="CIN">
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
         <label class="mb-2" for="birthday" >Date Of Birth :</label>
-        <input class="border-0 shadow-sm p-2" type="date" name="birthday" id="birthday">
+        <input class="border-0 shadow-sm p-2" type="date" name="birthday" id="birthday" required>
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
         <label class="mb-2" for="password" >Password :</label>
-        <input class="border-0 shadow-sm p-2" type="password" name="password" id="password" onkeyup="checkPassword(this);" placeholder="At Least 8 Characters, One Uppercase, And One Number">
+        <input class="border-0 shadow-sm p-2" type="password" name="password" id="password" placeholder="At Least 8 Characters, One Uppercase, And One Number">
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
         <label class="mb-2" for="pass-confirmation" >Password Confirmation :</label>
-        <input class="border-0 shadow-sm p-2" type="password" name="pass-confirmation" id="pass-confirmation" onkeyup="checkPass2(this);" placeholder="Repeat Your Password">
+        <input class="border-0 shadow-sm p-2" type="password" name="pass-confirmation" id="pass-confirmation" placeholder="Repeat Your Password">
     </div>
     <p id="message" class="text-danger text-center" style="font-size: 10px; margin-bottom: 0px;"></p>
     <div class="w-100 d-flex flex-column justify-content-center">
@@ -96,8 +97,8 @@
 
 </form>
 <!-- sign up form ends here  -->
-
-
 <script src="assets/js/sign.js"></script>
+
+
 </body>
 </html>
