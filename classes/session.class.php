@@ -1,5 +1,7 @@
 <?php
 
+include __DIR__ . 'autoloader.php';
+
 class Session {
     private $id,
             $title,
@@ -7,15 +9,20 @@ class Session {
             $start_date,
             $end_date,
             $max_num;
-    private $filter;
+    private $filter = "FUTURE_SESSIONS";
     
     public function add_session() {
 
     }
 
     public function view_sessions() {
-        $pdo = DB();
-        $sql = 'SELECT * FROM Sessions;';
+        // $pdo = db_connect();
+        $pdo = new PDO();
+        $sql = 'SELECT * FROM Sessions';
+        if ($this->filter == "FUTURE_SESSIONS") {
+            $current_date = date('Y-m-d H:i:s');
+            $sql .= 
+        }
         $pdo->prepare($sql);
     }
 }
