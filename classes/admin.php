@@ -1,4 +1,4 @@
 <?php
-include "../autoloader.php";
+include __DIR__."/../autoloader.php";
 
 ?>

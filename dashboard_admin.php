@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+include "scripts/scripts.php";
+?>
 <html lang="en">
 
 <head>

@@ -31,7 +31,10 @@
                                         <p class="m-0">2020/11/03</p>
                                         <p class="m-0">Starts at <span class="fw-bold">@ 18:00 (24h)</span></p>
                                     </div>
-                                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 w-100" type="button">Log out</button> </div>
+                                    <form action="" method="post">
+                                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 w-100" type="submit" name="book">Book Now</button>
+                                    </form>
+                                 </div>
                                 </div>
                             </div>
                            

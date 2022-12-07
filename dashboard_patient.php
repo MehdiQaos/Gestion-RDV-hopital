@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
+<?php
+include "scripts/scripts.php";
+?>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -45,6 +46,7 @@
         <?php
          if(isset($_GET["file"])){
             if($_GET['file']=="dash"){
+                $countArr = get_count_data();
                 include("includes/patient/patient_dash.php");
                 }
                 else if($_GET['file']=="doct"){
@@ -63,6 +65,7 @@
                } 
          }
          else{
+            $countArr = get_count_data();
             include("includes/patient/patient_dash.php");
 
          }
