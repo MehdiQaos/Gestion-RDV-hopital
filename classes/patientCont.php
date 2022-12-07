@@ -1,5 +1,5 @@
 <?php
-include "autoloader_classes.php";
+include "../autoloader_classes.php";
 class patientCont{
     public function patientLogin($email,$password,$table){
         $patient1 = new patient;
@@ -10,7 +10,6 @@ class patientCont{
             }
             else if($result["role_id"]==2){
                 echo "doctor";
-
             }
             else{
                 echo "<h1>good job<h1>";

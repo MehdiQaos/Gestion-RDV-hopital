@@ -11,6 +11,9 @@
                 <div class="pt-3 me-3">
                   <p class="fs-6 text-secondary" style="margin-bottom: -5px;">Today's date</p>
                   <p class="fs-6 text-black fw-bold" id="current-date">
+                    <?php 
+                      echo date("d-m-Y");
+                    ?>
                   </p>
                 </div>
                 <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>

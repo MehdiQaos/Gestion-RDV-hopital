@@ -1,18 +1,24 @@
 <?php
-include "autoloader_classes.php";
-abstract class user{
+include "../autoloader_classes.php";
+abstract class User{
+
     private $id;
     private $full_name;
     private $email;
     private $phone;
     private $photo;
     private $password;
+    private $cin;
+    private $role;
+
     public function __get($var){
         return $this->$var;
     }
+
     public function __set($var,$val){
         $this->$var = $val;
     }
+
     public function login($email,$password,$table){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();

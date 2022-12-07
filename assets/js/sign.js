@@ -30,6 +30,7 @@
 
     let cin         =   $('#cin');
     let birthday    =   $('#birthday');
+    let phone    =   $('#phone');
     let password    =   $('#password');
 
     let passConf    =   $('#pass-confirmation');
@@ -51,6 +52,10 @@
     function checkCin(cin){
         return /^[A-Za-z0-9]+$/.test(cin);
         // just numbers and letters
+    }
+
+    function checkPhone(phone){
+        return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(phone);
     }
 
 
@@ -86,6 +91,30 @@
         })
 
 
+
+
+        // PHONE NUMBER VALIDATION 
+        // valid formats
+        // (123) 456-7890
+        // (123)456-7890
+        // 123-456-7890
+        // 123.456.7890
+        // 1234567890
+        // +31636363634
+        // 075-63546725
+
+        
+        phone.keyup(function(){
+            if(phone.val() == '' || !checkPhone(phone.val())){
+                phone.addClass('invalid');
+                message.text('Write A Valid phone number');
+            }else{
+                phone.removeClass('invalid');
+                message.text('');
+            }   
+        })
+
+
         cin.keyup(function(){
             if(cin.val() == '' || !checkCin(cin.val())){
                 cin.addClass('invalid');
@@ -116,7 +145,7 @@
             }
         })
 
-
+let result;
         function validForm(){
             if( firstName.val() != '' && 
                 checkName(firstName.val())&&
@@ -129,7 +158,10 @@
                 password.val() != '' && 
                 checkPassword(password.val()) &&
                 passConf.val() != '' && 
-                passConf.val() == password.val()){
+                passConf.val() == password.val() &&
+                phone.val() != '' && 
+                checkPhone(phone.val())
+                ){
 
                     result = true;
 

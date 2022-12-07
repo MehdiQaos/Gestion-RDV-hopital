@@ -1,6 +1,6 @@
 <?php
-include "autoloader_classes.php";
-class patient extends user{
+include "../autoloader_classes.php";
+class patient extends User{
     private $birthday;
     private $cin;
     public function signup($info_patient){

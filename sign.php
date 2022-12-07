@@ -80,6 +80,10 @@
         <input class="border-0 shadow-sm p-2" type="date" name="birthday" id="birthday" required>
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
+        <label class="mb-2" for="phone" >Phone Number :</label>
+        <input class="border-0 shadow-sm p-2" type="string" name="phone" id="phone" placeholder="+12312312312">
+    </div>
+    <div class="d-flex flex-column my-3 col-9 m-auto">
         <label class="mb-2" for="password" >Password :</label>
         <input class="border-0 shadow-sm p-2" type="password" name="password" id="password" placeholder="At Least 8 Characters, One Uppercase, And One Number">
     </div>

@@ -1,6 +1,6 @@
 <?php
-include "autoloader_classes.php";
-class patientView{
+include "../autoloader_classes.php";
+class patientView {
 
 }
 ?>

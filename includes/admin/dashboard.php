@@ -67,50 +67,7 @@
                                     <td class="text-dark">Patient name</td>
                                     <td class="text-dark">Doctor</td>
                                     <td class="text-dark">Session</td>
-                                </tr>     
-                                <tr class="bg-light border-bottom-0">
-                                    <td class="text-dark">Appointement number</td>
-                                    <td class="text-dark">Patient name</td>
-                                    <td class="text-dark">Doctor</td>
-                                    <td class="text-dark">Session</td>
-                                </tr>     
-                                <tr class="bg-light border-bottom-0">
-                                    <td class="text-dark">Appointement number</td>
-                                    <td class="text-dark">Patient name</td>
-                                    <td class="text-dark">Doctor</td>
-                                    <td class="text-dark">Session</td>
-                                </tr>     
-                                <tr class="bg-light border-bottom-0">
-                                    <td class="text-dark">Appointement number</td>
-                                    <td class="text-dark">Patient name</td>
-                                    <td class="text-dark">Doctor</td>
-                                    <td class="text-dark">Session</td>
-                                </tr>     
-                                <tr class="bg-light border-bottom-0">
-                                    <td class="text-dark">Appointement number</td>
-                                    <td class="text-dark">Patient name</td>
-                                    <td class="text-dark">Doctor</td>
-                                    <td class="text-dark">Session</td>
-                                </tr>     
-                                <tr class="bg-light border-bottom-0">
-                                    <td class="text-dark">Appointement number</td>
-                                    <td class="text-dark">Patient name</td>
-                                    <td class="text-dark">Doctor</td>
-                                    <td class="text-dark">Session</td>
-                                </tr>     
-                                <tr class="bg-light border-bottom-0">
-                                    <td class="text-dark">Appointement number</td>
-                                    <td class="text-dark">Patient name</td>
-                                    <td class="text-dark">Doctor</td>
-                                    <td class="text-dark">Session</td>
-                                </tr>     
-                                <tr class="bg-light border-bottom-0">
-                                    <td class="text-dark">Appointement number</td>
-                                    <td class="text-dark">Patient name</td>
-                                    <td class="text-dark">Doctor</td>
-                                    <td class="text-dark">Session</td>
-                                </tr>     
-                                  
+                                </tr>
                             </table>
                            
                         </div>
