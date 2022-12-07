@@ -1,11 +1,12 @@
-CREATE DATABASE IF NOT EXISTS hopitalDB;
+DROP DATABASE IF EXISTS hopitalDB;
+CREATE DATABASE hopitalDB;
 
 USE hopitalDB;
 
 CREATE TABLE Roles (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255)
-)
+);
 
 CREATE TABLE Specialities (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -27,7 +28,6 @@ CREATE TABLE Users (
     FOREIGN KEY (role_id) REFERENCES Roles(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
 CREATE TABLE Sessions (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
@@ -45,40 +45,33 @@ CREATE TABLE Appointments (
     order_in_session INT NOT NULL,
     reference_number VARCHAR(255),
     patient_id INT NOT NULL,
-    doctor_id INT NOT NULL,
     session_id INT NOT NULL,
     FOREIGN KEY (session_id) REFERENCES Sessions(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (patient_id) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (doctor_id) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (patient_id) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- CREATE TABLE Admins (
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     full_name VARCHAR(255) NOT NULL,
---     email VARCHAR(255) NOT NULL,
---     phone VARCHAR(255) NOT NULL,
---     password VARCHAR(255) NOT NULL,
---     photo VARCHAR(255)
--- );
+INSERT INTO Roles (name)
+VALUES ("admin"),
+       ("doctor"),
+       ("patient");
 
--- CREATE TABLE Doctors (
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     full_name VARCHAR(255) NOT NULL,
---     email VARCHAR(255) NOT NULL,
---     phone VARCHAR(255) NOT NULL,
---     password VARCHAR(255) NOT NULL,
---     photo VARCHAR(255),
---     speciality_id INT,
---     FOREIGN KEY (speciality_id) REFERENCES Specialities(id) ON DELETE CASCADE
--- );
-
--- CREATE TABLE Patients (
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     full_name VARCHAR(255) NOT NULL,
---     email VARCHAR(255) NOT NULL,
---     phone VARCHAR(255) NOT NULL,
---     password VARCHAR(255) NOT NULL,
---     photo VARCHAR(255),
---     cin VARCHAR(255) NOT NULL,
---     birthday DATE NOT NULL
--- );
+INSERT INTO Specialities (name)
+VALUES ("Allergy and immunology"),
+       ("Anesthesiology"),
+       ("Dermatology"),
+       ("Diagnostic radiology"),
+       ("Family medicine"),
+       ("Internal medicine"),
+       ("Medical genetics"),
+       ("Neurology"),
+       ("Nuclear medicine"),
+       ("Obstetrics and gynecology"),
+       ("Ophthalmology"),
+       ("Pathology"),
+       ("Pediatrics"),
+       ("Physical medicine and rehabilitation"),
+       ("Preventive medicine"),
+       ("Psychiatry"),
+       ("Radiation oncology"),
+       ("Surgery"),
+       ("Urology");
