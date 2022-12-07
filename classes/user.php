@@ -1,5 +1,5 @@
 <?php
-include "autoloader_classes.php";
+include "../autoloader.php";
 abstract class user{
     private $id;
     private $full_name;
@@ -7,6 +7,7 @@ abstract class user{
     private $phone;
     private $photo;
     private $password;
+    private $role_id;
     public function __get($var){
         return $this->$var;
     }

@@ -29,7 +29,7 @@
 
 <!-- log in form starts here  -->
 
-<form action="" class="col-lg-5 d-none col-md-6 col-11 m-auto shadow rounded py-4" id="sign-in">
+<form action="scripts/scripts.php" method="post" class="col-lg-5 d-none col-md-6 col-11 m-auto shadow rounded py-4" id="sign-in">
     <div class="w-100 my-3 mb-5">
         <h3 class="text-center">Welcome Back</h3>
         <p class="text-center text-secondary">login with your details to continue</p>
@@ -44,7 +44,7 @@
     </div>
     <p id="message2" class="text-danger text-center" style="font-size: 10px; margin-bottom: 0px;"></p>
     <div class="w-100 d-flex flex-column justify-content-center">
-        <button class="my-2 mb-4 text-center w-50 border-0 rounded button1 mycolor py-1 m-auto">Log In</button>
+        <button type="submit" name="login" class="my-2 mb-4 text-center w-50 border-0 rounded button1 mycolor py-1 m-auto">Log In</button>
     </div>
 
 </form>
@@ -54,7 +54,7 @@
 
 <!-- sign up form starts here  -->
 
-<form action="" class="col-lg-5 col-md-6 col-11 m-auto shadow rounded py-2" id="sign-up">
+<form action="scripts/scripts.php" method="post" class="col-lg-5 col-md-6 col-11 m-auto shadow rounded py-2" id="sign-up">
     <div class="w-100 my-3 mb-2">
         <h3 class="text-center">Let's Get Started</h3>
         <p class="text-center text-secondary">add your personal details to continue</p>
@@ -62,8 +62,8 @@
     <div class="d-flex flex-column my-2 col-9 m-auto">
         <label class="mb-2" for="email">Name :</label>
         <div class="w-100 d-flex">
-            <input class="border-0 shadow-sm p-2 col-6 me-2" type="name1" name="name1" id="name1" placeholder="First Name">
-        <input class="border-0 shadow-sm p-2 col-6" type="name2" name="name2" id="name2" placeholder="Last Name">
+            <input class="border-0 shadow-sm p-2 col-6 me-2" type="name1" name="first_name" id="name1" placeholder="First Name">
+        <input class="border-0 shadow-sm p-2 col-6" type="name2" name="last_name" id="last_name" placeholder="Last Name">
         </div>
         
     </div>
@@ -91,7 +91,7 @@
     <div class="w-100 d-flex flex-column justify-content-center">
         <div class="d-flex justify-content-between col-9 m-auto">
             <button style="width: 45%;" class="my-2 mb-4 text-center bg-white  myborder rounded py-1 mycolor  m-auto">Reset</button>
-        <button style="width: 45%;" class="my-2 mb-4 text-center  border-0 rounded button1 py-1 mycolor m-auto">Next</button></div>
+        <button style="width: 45%;" type="submit" name="signup" class="my-2 mb-4 text-center  border-0 rounded button1 py-1 mycolor m-auto">Next</button></div>
         
     </div>
 
