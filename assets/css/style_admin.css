@@ -17,6 +17,10 @@
   color:#007A69;
 }
 
+.myborder{
+ border: 1px solid #CCF2E5;
+}
+
 .button1{
     background-color:#CCF2E5;
 }
@@ -24,7 +28,7 @@
  
   #sidebar-wrapper {
     min-height: 100vh;
-    margin-left: -19rem;
+    margin-left: -15rem;
   }
   
   #sidebar-wrapper .sidebar-heading {
@@ -33,7 +37,7 @@
   }
   
   #sidebar-wrapper .list-group {
-    width: 19rem;
+    width: 15rem;
   }
   
   #page-content-wrapper {
@@ -66,7 +70,7 @@
     }
   
     #wrapper.toggled #sidebar-wrapper {
-      margin-left: -19rem;
+      margin-left: -15rem;
     }
   }
 
@@ -105,4 +109,13 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #007A69;
+}
+
+a{
+  cursor: pointer !important;
+}
+
+.invalid{
+  background-color: rgba(255, 0, 0, 0.1);  
+  border: 1px solid red ;
 }
