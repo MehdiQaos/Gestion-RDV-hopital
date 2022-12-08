@@ -96,7 +96,54 @@ class Session {
         return $result;
     }
 
-    public function search_session() {
-        // search by what?
+    private function validateDate($date, $format = 'Y-m-d') {
+        $d = DateTime::createFromFormat('Y-m-d', $date);
+        if ($d && $d->format('Y-m-d') == $date)
+            return $d->format($format);
+        $d = DateTime::createFromFormat('d-m-Y', $date);
+        if ($d && $d->format('d-m-Y') == $date)
+            return $d->format($format);
+        $d = DateTime::createFromFormat('Y/m/d', $date);
+        if ($d && $d->format('Y/m/d') == $date)
+            return $d->format($format);
+        $d = DateTime::createFromFormat('d/m/Y', $date);
+        if ($d && $d->format('d/m/Y') == $date)
+            return $d->format($format);
+        return false;
+    }
+
+    public function search_session($patient_id, $input) {
+        // $input can be doctor name, doctor email, date of session
+        $name_pattern = "/^[a-zA-Z ]+$/";
+        $input = trim($input);
+
+        $db = new db_connect();
+        $pdo = $db->connection();
+        $sql = 'SELECT S.id, S.title, S.description, S.start_time, S.end_time, S.max_num, S.occupied, S.doctor_id, U.full_name as doctor_name
+                FROM Sessions as S
+                INNER JOIN Appointments as A ON S.id = A.session_id
+                INNER JOIN Users as U ON S.doctor_id = U.id
+                WHERE A.patient_id = :patient_id
+                ';
+        $params = ['patient_id' => $patient_id];
+
+        if ($d = $this->validateDate($input)) {
+            $sql .= 'AND DATE(S.end_time) = :date;';
+            $params['date'] = $d;
+        }
+        else if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
+            $sql .= 'AND U.email LIKE :email;';
+            $params['email'] = $input;
+        }
+        else if (preg_match($name_pattern, $input)) {
+            $sql .= 'AND U.full_name LIKE :full_name;';
+            $params['full_name'] = "%" . $input . "%";
+        } else {
+            return null;
+        }
+        
+        $stm = $pdo->prepare($sql);
+        $stm->execute($params);
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 }
