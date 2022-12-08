@@ -1,4 +1,3 @@
-
 <?php
 
 spl_autoload_register(function($className) { 
@@ -7,8 +6,6 @@ spl_autoload_register(function($className) {
         require $file; 
     }
     else{
-       echo "not found";
-      
+       echo "not found"; // TODO: change to return false;
     }
 });
-?>
