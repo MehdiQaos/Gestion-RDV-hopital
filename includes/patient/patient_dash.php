@@ -82,7 +82,7 @@
                            
                         </div>
                         <div style=" height: 25em;border: 1px black;" class="col-6 position-relative  rounded shadowborder mt-3" >
-                            <p class=" mt-2 ms-3 mycolor fs-4 fw-bold">Upcoming Sessions until Next Tuesday</p>
+                            <p class=" mt-2 ms-3 mycolor fs-4 fw-bold">Your Upcoming Booking</p>
                           
                            <div class="card-body table-responsive position-relative" style="height: 15em; overflow: scroll; background-image:  url(img/icons/notfound.svg);
                            background-repeat: no-repeat;
@@ -90,6 +90,7 @@
                            background-position: bottom;">
                            <table class="table table-light" style="border: 0.5px solid rgb(184, 181, 181);border-radius: 20px;">
                             <thead>
+                                
                             <tr class="" style="border-bottom: 2px #007A69 solid;">
                                 <td class="mycolor fw-bold ">Appoint.Number</td>
                                 <td class="mycolor fw-bold">Session Title</td>
@@ -98,12 +99,17 @@
                             </tr>
                             </thead>
                             <tbody class=" border-none">
+                            <?php $rows = viewAppointment();
+                                if(is_array($rows)){
+                                    foreach($rows as $row){
+                                 ?>
                             <tr class="">
-                                <td class="text-dark">1</td>
-                                <td class="text-dark">Session Title</td>
-                                <td class="text-dark">Doctor</td>
-                                <td class="text-dark">10/11/2022</td>
+                                <td class="text-dark"><?= $row["order_in_session"];?></td>
+                                <td class="text-dark"><?= $row["seesion_title"];?></td>
+                                <td class="text-dark"><?= $row["doctor_name"];?></td>
+                                <td class="text-dark"><?= $row["booking_date"];?></td>
                             </tr>
+                            <?php }}?>
                             </tbody>
                             
                            </table>

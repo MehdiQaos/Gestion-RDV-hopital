@@ -2,6 +2,8 @@
 <html lang="en">
 <?php
 include "scripts/scripts.php";
+include "scripts/session_check.php";
+
 ?>
 <head>
     <meta charset="UTF-8" />
@@ -22,11 +24,11 @@ include "scripts/scripts.php";
                 <div class="d-flex align-items-center">
                     <img src="img/photos/user.png" width="40px" class="rounded-circle me-3" alt="">
                     <div>
-                        <p style="margin:-5px;">admin</p>
-                        <p class="text-secondary fs-6">admin@admin.com</p>
+                        <p style="margin:-5px;"><?= $_SESSION["user_name"]?></p>
+                        <p class="text-secondary fs-6"><?= $_SESSION["user_email"]?></p>
                     </div>
                 </div>
-                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
+                    <a href="scripts/logout.php" class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 ">Log out</a> </div>
             <div class="list-group list-group-flush my-3">
                 <a href="dashboard_patient.php?file=dash" class="list-group-item list-group-item-action  text-secondary "><i
                         class="uil uil-home fs-4 me-2"></i>Home</a>

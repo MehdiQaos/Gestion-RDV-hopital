@@ -1,8 +1,10 @@
 <?php
 // include "../autoloader.php";
 include __DIR__."/../autoloader.php";
+session_start();
 if(isset($_POST["login"])) login();
 if(isset($_POST["signup"])) signup();
+if(isset($_POST["book"]))   addAppointment();
 
 
 
@@ -15,15 +17,17 @@ function login(){
         $user->password  = $pass;
         $result = $user->login();
         if($result!=false){
+                $_SESSION["user_id"]=$result["id"];
+                $_SESSION["user_name"]=$result["full_name"];
+                $_SESSION["user_email"]=$result["email"];
+                $_SESSION["user_photo"]=$result["photo"];
             if($result["role_id"] ==1){
-                echo "admin";
+                header("location:../dashboard_admin.php");
             }
             else if($result["role_id"]==2){
-                echo "doctor";
-
+                header("location:../dashboard_doctor.php");
             }
             else{
-                echo "<h1>good job<h1>";
                 header("location:../dashboard_patient.php");
             }
         }
@@ -67,6 +71,26 @@ function signup(){
 function  get_count_data(){
    return user::count_data();
 }
-function 
+function addAppointment(){
+    $appointment1 = new appointment(NULL,"2023-10-04 18:12:12","2","sbdf12",1,1);
+    if($appointment1->addAppointment()){
+        echo "good";
+    }
+    else{
+        echo "bad";
+    }
 
-?>
+   
+}
+function viewAppointment(){
+    $filter="doctor";
+    $rows = appointment::viewAppointment($filter);
+    if($rows){
+        return $rows;
+        
+        
+    }
+    else{
+        return "no records";
+    }
+}

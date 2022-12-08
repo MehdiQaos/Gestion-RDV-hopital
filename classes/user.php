@@ -37,7 +37,7 @@ class user{
     public static function count_data(){
         $db_connect = new db_connect ;
         $pdo = $db_connect->connection() ;
-        $today = date("Y-m-d");
+        $today =date("Y-m-d h:i:s");
         $patientrow = $pdo->query("select  * from  Users where role_id='3'");
         $doctorrow = $pdo->query("select  * from Users where role_id='2'");
         $appointmentrow = $pdo->query("select  * from  appointments where booking_date>='$today';");
