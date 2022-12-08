@@ -7,6 +7,15 @@
  };
 
 
+ function resetForm(){
+    $('#doctor-id').val('');
+    $('#doctor-name').val('');
+    $('#doctor-email').val('');
+    $('#doctor-speciality').val(1);
+    $('#doctor-password').val('');
+    $('#doctor-number').val('');
+}
+
 
 let update = $('#update-btn');
 let addDoctor = $('#add-doctor-btn');
@@ -23,11 +32,14 @@ update.click(function(){
     updateTitle.removeClass('d-none');
     updateBtn.removeClass('d-none');
 })
+
 addDoctor.click(function(){
     addTitle.removeClass('d-none');
     saveBtn.removeClass('d-none');
     updateTitle.addClass('d-none');
     updateBtn.addClass('d-none');
+
+    resetForm();
 });
 
 
@@ -45,4 +57,14 @@ console.log("$('#doctorId')");
 
 function removeDoctor(doctorId){
     $('#doctorId').val(doctorId);
+}
+
+function viewDoctor(image,name,email,speciality,phone){
+    $('#view-doctor').show();
+    $('#imageDoctor').attr("src", "./img/photos/user.png");
+    $('#nameDoctor').val(name);
+    $('#emailDoctor').val(email);
+    $('#specialityDoctor').val(speciality);
+    $('#phoneDoctor').val(phone);
+
 }

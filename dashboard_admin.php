@@ -44,9 +44,9 @@ require_once 'classes/doctor.php';
     include './includes/admin/navbar.php';
    
         ?>
-        <script>
+        <!-- <script>
             showAlert("?= $_SESSION['adminAdded']?");
-        </script>
+        </script> -->
         
         
     <div class="container-fluid px-4">

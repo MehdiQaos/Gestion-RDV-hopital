@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal-doctor">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="" method="POST" name="form_add_doctor">
+                            <form action="./classes/scripts.php" method="POST" name="form_add_doctor">
                                 <div class="modal-header">
 
                                     <h5 class="modal-title" id="add-title">Add New Doctor</h5>
@@ -9,7 +9,7 @@
                                     <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
                                 </div>
                                 <div class="modal-body">
-                                        <input type="hidden" id="doctor-id">
+                                        <input type="hidden" id="doctor-id" name="doctorId">
                                         <div class="mb-3">
                                             <label class="form-label">Doctor Name</label>
                                             <input type="text" name="doctorName" class="form-control" id="doctor-name"/>
