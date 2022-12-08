@@ -3,9 +3,12 @@
         private $_instance = null;
 
         public function __construct() {
-            $dsn = "mysql:host=" . Config::get('mysql/host') . "dbname=" . Config::get('mysql/db_name');
-            $user = Config::get('mysql/username');
-            $password = Config::get('mysql/password');
+            // $dsn = "mysql:host=" . Config::get('mysql/host') . "dbname=" . Config::get('mysql/db_name');
+            $dsn = "mysql:host=localhost;dbname=hopitalDB";
+            // $user = Config::get('mysql/username');
+            $user = 'root';
+            // $password = Config::get('mysql/password');
+            $password = '';
             $options = [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             ];
