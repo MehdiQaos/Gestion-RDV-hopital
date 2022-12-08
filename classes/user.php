@@ -1,5 +1,8 @@
 <?php
-include "../autoloader_classes.php";
+// include "../autoloader_classes.php";
+// include './user.php';
+require_once 'db_connect.php';
+
 abstract class User{
 
     private $id;

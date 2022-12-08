@@ -12,27 +12,33 @@
                                         <input type="hidden" id="doctor-id">
                                         <div class="mb-3">
                                             <label class="form-label">Doctor Name</label>
-                                            <input type="text" name="doctorname" class="form-control" id="doctor-name"/>
+                                            <input type="text" name="doctorName" class="form-control" id="doctor-name"/>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Picture</label>
-                                            <input type="file" name="doctor-pic" class="form-control" id="doctorpic" accept="jpg , jpeg , png"/>
+                                            <input type="file" name="doctorPic" class="form-control" id="doctorpic" accept="jpg , jpeg , png"/>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Email</label>
-                                            <input type="text" name="doctoremail" class="form-control" id="doctor-email"/>
+                                            <input type="text" name="doctorEmail" class="form-control" id="doctor-email"/>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Speciality</label>
-                                            <input type="text" name="speciality" class="form-control" id="doctor-speciality"/>
+                                            <select name="speciality" class="form-control" id="doctor-speciality">
+                                                <option value="1">hello</option>
+                                                <option value="2">OSSAMA</option>
+                                                <option value="3">MEHDI</option>
+                                                <option value="4">KARIM</option>
+                                                <option value="5">ghita</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>
-                                            <input type="text" name="doctorpassword" class="form-control" id="doctorpassword"/>
+                                            <input type="text" name="doctorPassword" class="form-control" id="doctorpassword"/>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Phone Number</label>
-                                            <input type="text" name="doctornumber" class="form-control" id="doctornumber"/>
+                                            <input type="text" name="doctorNumber" class="form-control" id="doctornumber"/>
                                         </div>
                                         
                                 </div>

@@ -1,5 +1,10 @@
 <?php
-include "../autoloader_classes.php";
+// include "../autoloader_classes.php";
+
+
+require_once 'user.php';
+
+require_once 'db_connect.php';
 class patient extends User{
     private $birthday;
     private $cin;

@@ -1,6 +1,7 @@
 <?php
-include "../autoloader_classes.php";
-session_start();
+// include "../autoloader_classes.php";
+require_once 'user.php';
+require_once 'db_connect.php';
 
 class Doctor extends User {
     private $speciality;
@@ -37,42 +38,66 @@ class Doctor extends User {
                         $this->speciality]);
                         if($query){
                             $_SESSION['doctorAdded'] = 'doctor added successfully';
-                            header('location: ../dashboard_admin.php');
+                            header('location: dashboard_admin.php');
                         }else{
                             $_SESSION['failed'] = 'something goes wrong';
-                            header('location: ../dashboard_admin.php');
+                            header('location: dashboard_admin.php');
                         }
                         
                 }else{
             $_SESSION['failed'] = 'The email is already exist !!';
-            header('location: ../dashboard_admin.php');
+            header('location: dashboard_admin.php');
         }
     }
 
-    public function viewDoctor(){
+    public static function viewDoctors(){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
-        $sql = "SELECT * FROM Users WHERE Users.role_id=?";
+        $sql = "SELECT Users.*, specialities.name AS speciality FROM Users INNER JOIN specialities ON specialities.id = Users.doc_speciality_id WHERE Users.role_id= ? ";
         $query =  $pdo->prepare($sql);
-        $query->execute([$this->role]);
+        $query->execute([2]);
         $count = $query->rowCount();
 
         if($count != 0){
             while($result = $query->fetch()){
                 ?>
+            <tr class="">
                 <td class="text-dark"><?=  $result['full_name']; ?></td>
                 <td class="text-dark"><?=  $result['email']; ?></td>
                 <td class="text-dark"><?=  $result['speciality']; ?></td>
                 <td class="text-dark">
-                        <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="update-btn"><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
+                        <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="update-btn"
+                        onclick="fillForm(
+                            <?=  $result['id']; ?>,
+                            '<?=  $result['full_name']; ?>',
+                            '<?=  $result['email']; ?>',
+                            <?=  $result['speciality']; ?>,
+                            '<?=  $result['password']; ?>',
+                            '<?=  $result['phone']; ?>'
+                            
+                        )"
+                        ><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
                         <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#view-doctor" id="view-doctor-btn"><i class="mycolor me-1 uil uil-eye"></i>view</button>
                         <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" id="remove-btn"><i class="mycolor me-1 uil uil-trash"></i>remove</button>
                 </td>
+            </tr>
                     <?php
                     $count++;
                }
         }else{
             $_SESSION['noDoctors'] = 'There is no doctors for the moment';
         }
+    }
+
+
+    public static function countDoctors(){
+        $db_connect = new db_connect;
+        $pdo = $db_connect->connection();
+        $sql = "SELECT * FROM Users WHERE Users.role_id= ? ";
+        $query =  $pdo->prepare($sql);
+        $query->execute([2]);
+        $count = $query->rowCount();
+
+        return "$count";
     }
 }

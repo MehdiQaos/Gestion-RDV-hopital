@@ -1,3 +1,10 @@
+<?php 
+include 'classes/scripts.php';
+require_once 'classes/doctor.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +17,8 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="assets/css/style_admin.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js"></script>
 
 
 
@@ -21,10 +30,10 @@
     <div class="d-flex shadow-sm bg-light" id="wrapper" >
         <!-- Sidebar -->
         <?php 
-        include './includes/admin/sidebar.php';?>
+        include './includes/admin/sidebar.php';
+        include './includes/admin/alert.php';?>
         
         <!-- /#sidebar-wrapper -->
-
         <!-- Page Content -->
         <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
 
@@ -32,7 +41,17 @@
 <!-- navbar part ( search and the calender) -->
 
 <?php 
-    include './includes/admin/navbar.php';?>
+    include './includes/admin/navbar.php';
+    if(isset($_SESSION['adminAdded'])){
+        var_dump($_SESSION['adminAdded']);
+        // ?
+        // <script>
+        //     showAlert("?= $_SESSION['adminAdded']?");
+        // /script
+        // ?php
+        // unset($_SESSION['adminAdded']);
+    }            
+    ?>
         
     <div class="container-fluid px-4">
             <?php

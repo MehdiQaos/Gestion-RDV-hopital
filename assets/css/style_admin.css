@@ -9,6 +9,11 @@
 
 }
 
+body{
+  width: 100%;
+  overflow: hidden;
+}
+
 .box{
     background-color: #9f9f9f27;
 }
@@ -119,3 +124,7 @@ a{
   background-color: rgba(255, 0, 0, 0.1);  
   border: 1px solid red ;
 }
+
+
+
+
