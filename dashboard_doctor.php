@@ -25,7 +25,7 @@
                     </div>
                 </div>
                     <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
-            <form method="POST" action="doctor_dashboard.php" class="list-group list-group-flush my-3">
+            <form method="POST" action="dashboard_doctor.php" class="list-group list-group-flush my-3">
                 <button type="submit" name="dashboard" class="list-group-item list-group-item-action fw-bold"><i
                         class="uil uil-chart-bar fs-4 me-2"></i>Dashboard</button>
                 <button type="submit" name="appointements" class="list-group-item list-group-item-action fw-bold"><i
