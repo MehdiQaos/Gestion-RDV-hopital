@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal-doctor">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="" method="POST" name="form_add_doctor">
+                            <form action="classes/doctorCont.php" method="POST" name="form_add_doctor">
                                 <div class="modal-header">
 
                                     <h5 class="modal-title" id="add-title">Add New Doctor</h5>
@@ -12,7 +12,7 @@
                                         <input type="hidden" id="doctor-id">
                                         <div class="mb-3">
                                             <label class="form-label">Doctor Name</label>
-                                            <input type="text" name="doctorname" class="form-control" id="doctor-name"/>
+                                            <input type="text" name="doctorName" class="form-control" id="doctor-name"/>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Picture</label>
@@ -20,19 +20,27 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Email</label>
-                                            <input type="text" name="doctoremail" class="form-control" id="doctor-email"/>
+                                            <input type="text" name="doctorEmail" class="form-control" id="doctor-email"/>
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Speciality</label>
-                                            <input type="text" name="speciality" class="form-control" id="doctor-speciality"/>
+                                            <label class="form-label" for ="speciality">Speciality</label>
+                                            <select class="form-control" name="speciality" id="">
+                                                <option value="1">CARDIAC</option>
+                                                <option value="2">HELLO</option>
+                                                <option value="3">JUJU</option>
+                                                <option value="4">POWER</option>
+                                                <!-- ?php
+                                                    listSpecialities();
+                                                ?> -->
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>
-                                            <input type="text" name="doctorpassword" class="form-control" id="doctorpassword"/>
+                                            <input type="text" name="doctorPassword" class="form-control" id="doctorpassword"/>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Phone Number</label>
-                                            <input type="text" name="doctornumber" class="form-control" id="doctornumber"/>
+                                            <input type="text" name="doctorNumber" class="form-control" id="doctornumber"/>
                                         </div>
                                         
                                 </div>

@@ -15,14 +15,10 @@
                                                 <td class="mycolor fw-bold">Events</td>
                                             </tr> 
                                             <tr class="">
-                                                <td class="text-dark">Ossama</td>
-                                                <td class="text-dark">ossama@gmail.com</td>
-                                                <td class="text-dark">cardiac</td>
-                                                <td class="text-dark">
-                                                    <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="update-btn"><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
-                                                    <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#view-doctor" id="view-doctor-btn"><i class="mycolor me-1 uil uil-eye"></i>view</button>
-                                                    <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" id="remove-btn"><i class="mycolor me-1 uil uil-trash"></i>remove</button>
-                                                </td>
+                                                <?php
+                                                    $doctor = new Doctor;
+                                                    $doctor->viewDoctor();
+                                                ?>
                                             </tr>     
                                            </table>
                          </div>

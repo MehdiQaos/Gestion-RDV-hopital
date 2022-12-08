@@ -1,3 +1,8 @@
+<?php
+    include 'autoloader_classes.php';
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +15,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="assets/css/style_admin.css" />
-
-
-
+    <script src="assets/js/main.js"></script>
     <title>Hopital system management</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/photos/favicona.png" />
 </head>
@@ -21,7 +24,9 @@
     <div class="d-flex shadow-sm bg-light" id="wrapper" >
         <!-- Sidebar -->
         <?php 
-        include './includes/admin/sidebar.php';?>
+        
+        include './includes/admin/sidebar.php';
+        ?>
         
         <!-- /#sidebar-wrapper -->
 
@@ -32,7 +37,10 @@
 <!-- navbar part ( search and the calender) -->
 
 <?php 
-    include './includes/admin/navbar.php';?>
+
+    include './includes/admin/navbar.php';
+    include './alert.php';
+    ?>
         
     <div class="container-fluid px-4">
             <?php
@@ -42,12 +50,23 @@
                                                                     include './includes/admin/schedule.php';
                 else if(isset($_POST['appointments-displayer']) || isset($_POST['allAppointment']))    
                                                                     include './includes/admin/appointment.php';
-                else if(isset($_POST['patients-displayer']))        include './includes/admin/patient.php';
-                else                                                include 'includes/admin/dashboard.php';
-
+                else if(isset($_POST['patients-displayer']))  {    
+                include './includes/admin/patient.php';
+                }else                                                include 'includes/admin/dashboard.php';
             ?>    
     </div>
                 
+    <?php
+                if(isset($_SESSION['doctorAdded'])){
+                    ?>
+                    <script>
+                        showAlert('<?= $_SESSION['doctorAdded'] ?>');
+                    </script>
+                    <?php
+                    unset($_SESSION['doctorAdded']);
+                }
+            ?> 
+
 <!-- forms -->
     <?php 
         include './includes/admin/forms/add_edit_doctor.php';

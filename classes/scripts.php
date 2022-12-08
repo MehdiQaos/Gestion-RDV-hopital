@@ -16,4 +16,23 @@ function signup(){
     $email = $_POST["email"];
     $pass = $_POST["password"];
 }
-?>
+
+
+function listSpecialities(){
+    $db_connect = new db_connect;
+    $pdo = $db_connect->connection();
+    $sql="SELECT name FROM specialities";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+
+    $count = 1;
+   while($result = $query->fetch()){
+    ?>
+        <option value="<?= $count; ?>"><?=  $result['name']; ?></option>
+        <?php
+        $count++;
+   }
+    
+}
+
+
