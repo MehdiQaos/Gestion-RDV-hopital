@@ -4,7 +4,7 @@
                     
                         <div class="d-flex justify-content-between">
                             <p class="fs-5 ms-2">All Doctors(0)</p>
-                            <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="add-doctor-btn"><i class="uil uil-plus text-white" onclick=""></i>&emsp; Add Doctor</button>
+                            <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="add-doctor-btn"><i class="uil uil-plus mycolor" onclick=""></i>&emsp; Add Doctor</button>
                         </div>
                          <div class="card-body table-responsive mt-2" style="height: 60vh; overflow: scroll;">
                                            <table class="table border-secondary text-center table-hover ">

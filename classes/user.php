@@ -2,6 +2,7 @@
 
 include __DIR__."/../autoloader.php";
 class user{
+
     private $id;
     private $full_name;
     private $email;
@@ -9,13 +10,17 @@ class user{
     private $photo ="qdvd1313";
     private $password;
     private $role_id;
+    private $cin;
+
+
     public function __get($var){
         return $this->$var;
     }
+
     public function __set($var,$val){
         $this->$var = $val;
     }
-    public function login(){
+    public function login($email,$password){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
         $sql = "SELECT * FROM Users WHERE email=:email AND password=:password";

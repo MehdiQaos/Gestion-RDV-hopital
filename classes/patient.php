@@ -1,6 +1,8 @@
 <?php
+
 include __DIR__."/../autoloader.php";
 class patient extends user{
+
     private $birthday;
     private $cin;
     public function __get($var){

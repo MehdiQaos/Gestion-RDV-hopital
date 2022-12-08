@@ -2,7 +2,7 @@
 
 class db_connect{
     private $host="localhost";
-    private $db_name="hopitaldb";
+    private $db_name="hopitalDb";
     private $username="root";
     private $pass="";
     public function connection(){
