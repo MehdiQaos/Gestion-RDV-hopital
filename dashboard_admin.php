@@ -42,16 +42,12 @@ require_once 'classes/doctor.php';
 
 <?php 
     include './includes/admin/navbar.php';
-    if(isset($_SESSION['adminAdded'])){
-        var_dump($_SESSION['adminAdded']);
-        // ?
-        // <script>
-        //     showAlert("?= $_SESSION['adminAdded']?");
-        // /script
-        // ?php
-        // unset($_SESSION['adminAdded']);
-    }            
-    ?>
+   
+        ?>
+        <script>
+            showAlert("?= $_SESSION['adminAdded']?");
+        </script>
+        
         
     <div class="container-fluid px-4">
             <?php

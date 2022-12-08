@@ -29,3 +29,20 @@ addDoctor.click(function(){
     updateTitle.addClass('d-none');
     updateBtn.addClass('d-none');
 });
+
+
+
+function fillForm(id,fullName,email,speciality,password,phone){
+    $('#doctor-id').val(id);
+    $('#doctor-name').val(fullName);
+    $('#doctor-email').val(email);
+    $('#doctor-speciality').val(speciality);
+    $('#doctor-password').val(password);
+    $('#doctor-number').val(phone);
+}
+
+console.log("$('#doctorId')");
+
+function removeDoctor(doctorId){
+    $('#doctorId').val(doctorId);
+}

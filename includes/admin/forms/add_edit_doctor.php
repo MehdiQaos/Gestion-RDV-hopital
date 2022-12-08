@@ -34,11 +34,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>
-                                            <input type="text" name="doctorPassword" class="form-control" id="doctorpassword"/>
+                                            <input type="text" name="doctorPassword" class="form-control" id="doctor-password"/>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Phone Number</label>
-                                            <input type="text" name="doctorNumber" class="form-control" id="doctornumber"/>
+                                            <input type="text" name="doctorNumber" class="form-control" id="doctor-number"/>
                                         </div>
                                         
                                 </div>

@@ -10,7 +10,8 @@ session_start();
 
 if(isset($_POST["login"])) login();
 if(isset($_POST["signup"])) signup();
-
+if(isset($_POST['saveDoctor'])) saveDoctor();
+if(isset($_POST['removeDoctor'])) removeDoctor();
 
 
 function login(){
@@ -26,9 +27,6 @@ function signup(){
 }
 
 
-
-if(isset($_POST['saveDoctor'])) saveDoctor();
-
 function saveDoctor(){
     $doctorName = $_POST['doctorName'];
     $doctorEmail = $_POST['doctorEmail'];
@@ -39,4 +37,11 @@ function saveDoctor(){
 
     $doctor = new Doctor("$doctorName","$doctorEmail","$doctorNumber",'',"$doctorPassword",$speciality);
     $doctor->createDoctor();
+}
+
+
+function removeDoctor(){
+    $id = $_POST['doctorId'];
+    Doctor::removeDoctor($id);
+    header('location: ../dashboard_admin.php');
 }

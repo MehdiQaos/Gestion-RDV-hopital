@@ -17,7 +17,6 @@ class Doctor extends User {
 
     }
 
-
     public function createDoctor(){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
@@ -71,14 +70,16 @@ class Doctor extends User {
                             <?=  $result['id']; ?>,
                             '<?=  $result['full_name']; ?>',
                             '<?=  $result['email']; ?>',
-                            <?=  $result['speciality']; ?>,
+                            <?=  $result['doc_speciality_id']; ?>,
                             '<?=  $result['password']; ?>',
                             '<?=  $result['phone']; ?>'
                             
                         )"
                         ><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
                         <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#view-doctor" id="view-doctor-btn"><i class="mycolor me-1 uil uil-eye"></i>view</button>
-                        <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" id="remove-btn"><i class="mycolor me-1 uil uil-trash"></i>remove</button>
+                        <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" id="remove-btn"
+                        onclick = "removeDoctor(<?=  $result['id']; ?>);"
+                        ><i class="mycolor me-1 uil uil-trash"></i>remove</button>
                 </td>
             </tr>
                     <?php
@@ -89,6 +90,18 @@ class Doctor extends User {
         }
     }
 
+    public static function removeDoctor($doctorId){
+        $db_connect = new db_connect;
+        $pdo = $db_connect->connection();
+        $sql = "DELETE FROM Users WHERE Users.id = ? ";
+        $query =  $pdo->prepare($sql);
+        $query->execute([$doctorId]);
+        if($query){
+            $_SESSION['doctorDeleted'] = 'doctor has been removed !';
+        }else{
+            $_SESSION['failed'] = 'something goes wrong';
+        }
+    }
 
     public static function countDoctors(){
         $db_connect = new db_connect;
