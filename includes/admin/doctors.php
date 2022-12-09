@@ -8,7 +8,7 @@
                         </div>
                          <div class="card-body table-responsive mt-2" style="height: 60vh; overflow: scroll;">
                                            <table class="table border-secondary text-center table-hover ">
-                                            <tr class="">
+                                            <tr class="top-0 position-sticky bg-light">
                                                 <td class="mycolor fw-bold ">Doctor Name</td>
                                                 <td class="mycolor fw-bold">Email</td>
                                                 <td class="mycolor fw-bold">Speciality</td>
@@ -19,8 +19,7 @@
                                                 
                                                 listDoctors();
 
-                                            ?>
-                                            </tr>     
+                                            ?> 
                                            </table>
                          </div>
                         </section>

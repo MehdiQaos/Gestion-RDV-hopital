@@ -5,10 +5,10 @@
                 <div class="m-auto my-4">
                     <img class="rounded-circle" width="130px" height="130px" alt=""  id="imageDoctor">
                 </div>
-                    <p  class="my-3">Name : <span class="fw-bold" id="nameDoctor"></span></p>
-                    <p  class="my-3">Email : <span class="fw-bold" id="emailDoctor"></span></p>
-                    <p  class="my-3">Specialty : <span class="fw-bold"  id="specialityDoctor"></span></p>
-                    <p  class="my-3">Phone : <span class="fw-bold"  id="phoneDoctor"></span></p>
+                    <p  class="my-3">Name : <span class="fw-bold float-end ms-5" id="nameDoctor"></span></p>
+                    <p  class="my-3">Email : <span class="fw-bold float-end ms-5" id="emailDoctor"></span></p>
+                    <p  class="my-3">Specialty : <span class="fw-bold float-end ms-5"  id="specialityDoctor"></span></p>
+                    <p  class="my-3">Phone : <span class="fw-bold float-end ms-5"  id="phoneDoctor"></span></p>
             </div>
         </div>
     </div>

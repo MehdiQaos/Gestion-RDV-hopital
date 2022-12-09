@@ -82,11 +82,11 @@ function listDoctors(){
     foreach($result as $item){
         ?>
     <tr class="">
-        <td class="text-dark"><?=  $item["full_name"]; ?></td>
-        <td class="text-dark"><?=  $item["email"]; ?></td>
-        <td class="text-dark"><?=  $item["speciality"]; ?></td>
-        <td class="text-dark">
-                <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="update-btn"
+        <td class="text-dark text-nowrap"><?=  $item["full_name"]; ?></td>
+        <td class="text-dark text-nowrap"><?=  $item["email"]; ?></td>
+        <td class="text-dark text-nowrap"><?=  $item["speciality"]; ?></td>
+        <td class="text-dark d-flex flex-nowrap">
+                <button class="btn ms-2 mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="update-btn"
 
                 onclick="fillForm(
                     <?=  $item['id']; ?>,
@@ -98,7 +98,7 @@ function listDoctors(){
                     
                 )"
                 ><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
-                <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#view-doctor-modal" id="view-doctor"
+                <button class="btn ms-2 mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#view-doctor-modal" id="view-doctor"
                 
                 onclick="viewDoctor(
                     '<?=  $item['photo']; ?>',
@@ -109,7 +109,7 @@ function listDoctors(){
                 );"
 
                 ><i class="mycolor me-1 uil uil-eye"></i>view</button>
-                <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" id="remove-btn"
+                <button class="btn ms-2 mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" id="remove-btn"
 
                 onclick = "removeDoctor(<?=  $item['id']; ?>);"
 
