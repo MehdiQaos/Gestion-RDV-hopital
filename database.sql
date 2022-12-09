@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS hopitalDB;
-CREATE DATABASE IF NOT EXISTS hopitalDB;
+CREATE DATABASE hopitalDB;
 
 USE hopitalDB;
 
@@ -21,13 +21,12 @@ CREATE TABLE Users (
     password VARCHAR(255) NOT NULL,
     photo VARCHAR(255),
     cin VARCHAR(255),
-    birthday DATE,
+    date_of_birth DATE,
     role_id INT,
     doc_speciality_id INT,
     FOREIGN KEY (doc_speciality_id) REFERENCES Specialities(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (role_id) REFERENCES Roles(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
 
 CREATE TABLE Sessions (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -36,6 +35,7 @@ CREATE TABLE Sessions (
     start_time DATETIME NOT NULL,
     end_time DATETIME NOT NULL,
     max_num INT NOT NULL,
+    occupied INT NOT NULL,
     doctor_id INT NOT NULL,
     FOREIGN KEY (doctor_id) REFERENCES Users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -55,24 +55,3 @@ INSERT INTO Roles (name)
 VALUES ("admin"),
        ("doctor"),
        ("patient");
-
-INSERT INTO Specialities (name)
-VALUES ("Allergy and immunology"),
-       ("Anesthesiology"),
-       ("Dermatology"),
-       ("Diagnostic radiology"),
-       ("Family medicine"),
-       ("Internal medicine"),
-       ("Medical genetics"),
-       ("Neurology"),
-       ("Nuclear medicine"),
-       ("Obstetrics and gynecology"),
-       ("Ophthalmology"),
-       ("Pathology"),
-       ("Pediatrics"),
-       ("Physical medicine and rehabilitation"),
-       ("Preventive medicine"),
-       ("Psychiatry"),
-       ("Radiation oncology"),
-       ("Surgery"),
-       ("Urology");
