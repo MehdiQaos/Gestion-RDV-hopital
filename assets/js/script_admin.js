@@ -26,12 +26,12 @@ let addTitle = $('#add-title');
 let updateBtn = $('#doctor-update-btn');
 let saveBtn = $('#doctor-save-btn');
 
-update.click(function(){
-    addTitle.addClass('d-none');
-    saveBtn.addClass('d-none');
-    updateTitle.removeClass('d-none');
-    updateBtn.removeClass('d-none');
-})
+// update.click(function(){
+//     addTitle.addClass('d-none');
+//     saveBtn.addClass('d-none');
+//     updateTitle.removeClass('d-none');
+//     updateBtn.removeClass('d-none');
+// })
 
 addDoctor.click(function(){
     addTitle.removeClass('d-none');
@@ -45,6 +45,11 @@ addDoctor.click(function(){
 
 
 function fillForm(id,fullName,email,speciality,password,phone){
+    addTitle.addClass('d-none');
+    saveBtn.addClass('d-none');
+    updateTitle.removeClass('d-none');
+    updateBtn.removeClass('d-none');
+
     $('#doctor-id').val(id);
     $('#doctor-name').val(fullName);
     $('#doctor-email').val(email);

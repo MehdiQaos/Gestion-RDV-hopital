@@ -19,6 +19,6 @@
 </div>
 
 
-    <!-- id="phoneDoctor"id="specialityDoctor"id="emailDoctor"id="nameDoctor"id="imageDoctor" -->
+<!-- id="phoneDoctor"id="specialityDoctor"id="emailDoctor"id="nameDoctor"id="imageDoctor" -->
 
 

@@ -55,7 +55,6 @@ class Admin extends User{
     }
 
     public static function editDoctorProfile($id,$full_name, $email, $phone, $photo, $password, $speciality){
-        // $doctor = new Doctor($full_name, $email, $phone, $photo, $password, $speciality);
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
         $sql = "UPDATE Users SET full_name = ? , email = ? , phone = ? , password = ? , photo = ? , doc_speciality_id = ? 
@@ -77,4 +76,3 @@ class Admin extends User{
         }
     }
 }
-?>
