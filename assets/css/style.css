@@ -12,6 +12,7 @@
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
+    
   }
   .alert.showAlert{
     opacity: 1;

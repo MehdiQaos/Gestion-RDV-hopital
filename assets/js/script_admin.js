@@ -26,12 +26,6 @@ let addTitle = $('#add-title');
 let updateBtn = $('#doctor-update-btn');
 let saveBtn = $('#doctor-save-btn');
 
-// update.click(function(){
-//     addTitle.addClass('d-none');
-//     saveBtn.addClass('d-none');
-//     updateTitle.removeClass('d-none');
-//     updateBtn.removeClass('d-none');
-// })
 
 addDoctor.click(function(){
     addTitle.removeClass('d-none');
@@ -65,11 +59,10 @@ function removeDoctor(doctorId){
 }
 
 function viewDoctor(image,name,email,speciality,phone){
-    $('#view-doctor').show();
     $('#imageDoctor').attr("src", "./img/photos/user.png");
-    $('#nameDoctor').val(name);
-    $('#emailDoctor').val(email);
-    $('#specialityDoctor').val(speciality);
-    $('#phoneDoctor').val(phone);
+    $('#nameDoctor').text(name);
+    $('#emailDoctor').text(email);
+    $('#specialityDoctor').text(speciality);
+    $('#phoneDoctor').text(phone);
 
 }

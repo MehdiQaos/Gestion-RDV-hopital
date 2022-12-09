@@ -14,4 +14,3 @@ function showAlert(msg){
             $('.alert').addClass("hide");});
 };
 
-showAlert('hello');

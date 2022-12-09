@@ -17,7 +17,7 @@
                                             
                                             <?php 
                                                 
-                                                Doctor::viewDoctors();
+                                                listDoctors();
 
                                             ?>
                                             </tr>     

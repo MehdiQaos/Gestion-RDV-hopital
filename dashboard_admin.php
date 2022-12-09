@@ -17,7 +17,6 @@ require_once 'classes/doctor.php';
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="assets/css/style_admin.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js"></script>
 
 
@@ -57,12 +56,23 @@ require_once 'classes/doctor.php';
                                                                     include './includes/admin/schedule.php';
                 else if(isset($_POST['appointments-displayer']) || isset($_POST['allAppointment']))    
                                                                     include './includes/admin/appointment.php';
-                else if(isset($_POST['patients-displayer']))        include './includes/admin/patient.php';
-                else                                                include 'includes/admin/dashboard.php';
-
+                else if(isset($_POST['patients-displayer']))  {    
+                include './includes/admin/patient.php';
+                }else                                                include 'includes/admin/dashboard.php';
             ?>    
     </div>
                 
+    <?php
+                if(isset($_SESSION['doctorAdded'])){
+                    ?>
+                    <script>
+                        showAlert('<?= $_SESSION['doctorAdded'] ?>');
+                    </script>
+                    <?php
+                    unset($_SESSION['doctorAdded']);
+                }
+            ?> 
+
 <!-- forms -->
     <?php 
         include './includes/admin/forms/add_edit_doctor.php';

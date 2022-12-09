@@ -1,7 +1,8 @@
+
 <div class="modal fade" id="modal-doctor">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="./classes/scripts.php" method="POST" name="form_add_doctor">
+                            <form action="classes/scripts.php" method="POST" name="form_add_doctor">
                                 <div class="modal-header">
 
                                     <h5 class="modal-title" id="add-title">Add New Doctor</h5>
@@ -25,11 +26,9 @@
                                         <div class="mb-3">
                                             <label class="form-label">Speciality</label>
                                             <select name="speciality" class="form-control" id="doctor-speciality">
-                                                <option value="1">hello</option>
-                                                <option value="2">OSSAMA</option>
-                                                <option value="3">MEHDI</option>
-                                                <option value="4">KARIM</option>
-                                                <option value="5">ghita</option>
+                                                <?php
+                                                    listSpecialities();
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="mb-3">

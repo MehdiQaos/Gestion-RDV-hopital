@@ -28,15 +28,15 @@ class Admin extends User{
                         $doctor->speciality]);
                         if($query){
                             $_SESSION['doctorAdded'] = 'doctor added successfully';
-                            header('location: dashboard_admin.php');
+                            header('location: ./../dashboard_admin.php');
                         }else{
                             $_SESSION['failed'] = 'something goes wrong';
-                            header('location: dashboard_admin.php');
+                            header('location: ./../dashboard_admin.php');
                         }
                         
                 }else{
             $_SESSION['failed'] = 'The email is already exist !!';
-            header('location: dashboard_admin.php');
+            header('location: ./../dashboard_admin.php');
         }
     }
 

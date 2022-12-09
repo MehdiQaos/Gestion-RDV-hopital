@@ -17,7 +17,7 @@
 </head>
 
 <p id="tester"></p>
-<body class="row m-0 p-0 flex-column">
+<body class="row m-0 p-0 flex-column pb-5">
 <div class="col-lg-5 col-md-6 col-11 m-auto d-flex justify-content-between mt-5">
     <button class="m-auto d-block w-50 p-2 button1 mycolor myborder border-bottom-0" style="border-radius: 5px 5px 0px 0px ;" id="lg-Btn">
         Log In
@@ -54,7 +54,7 @@
 
 <!-- sign up form starts here  -->
 
-<form action="" class="col-lg-5 col-md-6 col-11 m-auto shadow rounded py-2" id="sign-up">
+<form action="" class="col-lg-5 col-md-6 col-11 m-auto shadow rounded py-2 mb-5" id="sign-up">
     <div class="w-100 my-3 mb-2">
         <h3 class="text-center">Let's Get Started</h3>
         <p class="text-center text-secondary">add your personal details to continue</p>
