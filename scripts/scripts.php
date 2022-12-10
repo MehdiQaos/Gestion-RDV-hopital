@@ -102,16 +102,10 @@ function cancelAppointment(){
        
     }
 }
-function view_patient(){
+function view_patient_by_patient(){
     $filter ="patient";
     $rows =patient::view_patient($filter,$_SESSION["user_id"]);
     if($rows){
-        $id=0;
-        foreach($rows as $row){
-            if($row["user_id"]!=$id){
-                echo $row[0];
-                $id=$row["user_id"];
-            }
-        }
+       return $rows;
     }
 }

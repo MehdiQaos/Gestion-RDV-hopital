@@ -5,9 +5,6 @@ class patient extends user{
 
     private $birthday;
     private $cin;
-    public function __construct($id,$full_name){
-
-    }
     public function __get($var){
         return $this->$var;
     }

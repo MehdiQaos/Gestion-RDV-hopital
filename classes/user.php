@@ -6,8 +6,8 @@ class user{
     private $id;
     private $full_name;
     private $email;
-    private $phone = "dazdad";
-    private $photo ="qdvd1313";
+    private $phone = "null";
+    private $photo ="user.png";
     private $password;
     private $role_id;
     private $cin;

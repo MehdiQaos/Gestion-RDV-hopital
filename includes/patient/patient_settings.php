@@ -24,17 +24,16 @@
                                 <div class="">
                                     <div class="p-3  pb-2 shadow-sm d-flex  rounded border">
                                     <i class="uil uil-medkit fs-3 mycolor box rounded py-2   px-3 mb-3 mt-2"></i>  
-                                        <div class="ms-3 mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">                      
+                                        <div class="ms-3 mt-2" data-bs-toggle="modal" data-bs-target="#edit_profile_patient">                      
                                             <h3 class="fs-4 mycolor">Account Settings</h3>
                                             <p class="fs-6 text-black">Edit your account Details & Change password</p>
                                         </div>    
-                                                 
                                     </div>
                                 </div>
                                 <div class="mt-3">
                                     <div class="p-3  pb-2 shadow-sm d-flex  rounded border">
                                     <i class="uil uil-medkit fs-3 mycolor box rounded py-2   px-3 mb-3 mt-2"></i>  
-                                        <div class="ms-3 mt-2">                      
+                                        <div class="ms-3 mt-2" data-bs-toggle="modal" data-bs-target="#show_profile_patient">                      
                                             <h3 class="fs-4 mycolor">View Account Details</h3>
                                             <p class="fs-6 text-black">View Personnale information About your Account</p>
                                         </div>    
