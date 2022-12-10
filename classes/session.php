@@ -3,27 +3,41 @@
 include 'autoloader.php';
 
 class Session {
+    private $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
 
-    public function add_session($title, $description, $start_date, $end_date, $doctor_id, $max_num) {
+    public function __construct($id = null, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name = null) {
+        $this->id = $id;
+        $this->title = $title;
+        $this->occupied = $occupied;
+        $this->description = $description;
+        $this->start_time = $start_time;
+        $this->end_time = $end_time;
+        $this->doctor_id = $doctor_id;
+        $this->doctor_name = $doctor_name;
+        $this->max_num = $max_num;
+    }
+
+    public function add_session() {
         $db = new db_connect();
         $pdo = $db->connection();
         $sql = 'INSERT INTO Sessions (title, description, start_time, end_time, doctor_id, max_num)
                 VALUES (:title, :description, :start_time, :end_time, :doctor_id, :max_num);
                 ';
         $params = [
-            'title' => $title,
-            'description' => $description,
-            'start_time' => $start_date,
-            'end_time' => $end_date,
-            'doctor_id' => $doctor_id,
-            'max_num' => $max_num
+            'title' => $this->title,
+            'title' => $this->occupied,
+            'description' => $this->description,
+            'start_time' => $this->start_time,
+            'end_time' => $this->end_time,
+            'doctor_id' => $this->doctor_id,
+            'max_num' => $this->max_num
         ];
         
         $stm = $pdo->prepare($sql);
         return $stm->execute($params);
     }
 
-    public function edit_session($id, $title, $description, $start_time, $end_time, $doctor_id, $max_num) {
+    public static function edit_session($id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num) {
         $db = new db_connect();
         $pdo = $db->connection();
         $sql = 'UPDATE Sessions
@@ -42,11 +56,14 @@ class Session {
         ];
 
         $stm = $pdo->prepare($sql);
-        return $stm->execute($params);
+        if ($stm->execute($params)) {
+            return new self($id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num);
+        }
+        return null;
     }
     
-    public function cancel_session($id) {
-        if ($id == null)
+    public function cancel_session() {
+        if ($this->id == null)
             return false;
         $db = new db_connect();
         $pdo = $db->connection();
@@ -55,10 +72,10 @@ class Session {
                 ';
         
         $stm = $pdo->prepare($sql);
-        return $stm->execute(['session_id' => $id]);
+        return $stm->execute(['session_id' => $this->id]);
     }
 
-    public function view_sessions($filters = []) {
+    public static function view_sessions($filters = []) {
         // how to set $filters:
         // patient sessions: $filters['patient'] = 'patient_id'
         // doctor sessions: $filters['doctor'] = 'doctor_id'
@@ -83,20 +100,27 @@ class Session {
         }
 
         if (isset($filters["date"])) {
-            $sql .= 'DATE(end_time) = :date;'; // test if DATE(datetime) return just date
+            $sql .= 'DATE(end_time) = :date;';
             $params['date'] = $filters['date'];
         } else {
             $sql .= 'DATE(end_time) >= :date;';
             $params['date'] = $current_date;
         }
+
         $stm = $pdo->prepare($sql);
         $stm->execute($params);
-        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stm->fetchAll(PDO::FETCH_OBJ);
 
-        return $result;
+        $results = [];
+        foreach($rows as $row) {
+            $session = new self($row->id, $row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->doctor_name);
+            array_push($results, $session);
+        }
+
+        return $results;
     }
 
-    private function validateDate($date, $format = 'Y-m-d') {
+    private static function validateDate($date, $format = 'Y-m-d') {
         $d = DateTime::createFromFormat('Y-m-d', $date);
         if ($d && $d->format('Y-m-d') == $date)
             return $d->format($format);
@@ -112,38 +136,61 @@ class Session {
         return false;
     }
 
-    public function search_session($patient_id, $input) {
+    public static function search_session($patient_id, $input = null) { // patient use this method
+        // only return session which the patient is not registed yet
         // $input can be doctor name, doctor email, date of session
         $name_pattern = "/^[a-zA-Z ]+$/";
         $input = trim($input);
 
         $db = new db_connect();
         $pdo = $db->connection();
-        $sql = 'SELECT S.id, S.title, S.description, S.start_time, S.end_time, S.max_num, S.occupied, S.doctor_id, U.full_name as doctor_name
+        $sql = 'SELECT S.id, S.title, S.description, S.start_time, S.end_time, S.max_num, S.occupied, S.doctor_id, U.full_name as doctor_name, A.patient_id as appointementId
                 FROM Sessions as S
-                INNER JOIN Appointments as A ON S.id = A.session_id
+                LEFT JOIN Appointments as A ON S.id = A.session_id
                 INNER JOIN Users as U ON S.doctor_id = U.id
-                WHERE A.patient_id = :patient_id
+                WHERE S.occupied < S.max_num
+                AND (A.patient_id != :patient_id OR A.patient_id is NULL)
+                AND DATE(S.end_time) >= :min_date
                 ';
-        $params = ['patient_id' => $patient_id];
-
-        if ($d = $this->validateDate($input)) {
-            $sql .= 'AND DATE(S.end_time) = :date;';
-            $params['date'] = $d;
-        }
-        else if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
-            $sql .= 'AND U.email LIKE :email;';
-            $params['email'] = $input;
-        }
-        else if (preg_match($name_pattern, $input)) {
-            $sql .= 'AND U.full_name LIKE :full_name;';
-            $params['full_name'] = "%" . $input . "%";
-        } else {
-            return null;
-        }
         
+        $params = [
+            'patient_id' => $patient_id,
+            'min_date'       => date('Y-m-d')
+        ];
+        
+        if ($input && !empty($input)) {
+            if ($d = self::validateDate($input)) {
+                echo "date validated: $d\n"; 
+                $sql .= 'AND DATE(S.end_time) = :exact_date';
+                $params['exact_date'] = $d;
+            } 
+            else if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
+                echo "email validated: $d\n"; 
+                $sql .= 'AND U.email LIKE :email';
+                $params['email'] = $input;
+            }
+            else if (preg_match($name_pattern, $input)) {
+                $sql .= 'AND U.full_name LIKE :full_name';
+                $params['full_name'] = $input . "%";
+            } else {
+                return [];
+            }
+        }
+
+        $sql .= '
+                GROUP BY S.id;';
+
         $stm = $pdo->prepare($sql);
         $stm->execute($params);
-        return $stm->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stm->fetchAll(PDO::FETCH_OBJ);
+
+        $results = [];
+        foreach($rows as $row) {
+            $session = new self($row->id, $row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->doctor_name);
+            array_push($results, $session);
+        }
+
+        // return $rows;
+        return $results;
     }
 }
