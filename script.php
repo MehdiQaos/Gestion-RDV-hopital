@@ -3,13 +3,12 @@
 // require __DIR__ . '/includes/class-autoload.inc.php';
 require __DIR__ . '/autoloader.php';
 
-$session = new Session;
 $email = "jmacmakin0@abc.net.au";
 $doc_name = "Justus MacMakin";
 $date = "2023/02/18";
 // $result = $session->search_session(128, $email);
 // $result = $session->search_session(128, $doc_name);
-$result = $session->search_session(128, $date);
+$result = Session::search_sessions(70);
 echo "<pre>";
 var_dump($result);
 echo "</pre>";

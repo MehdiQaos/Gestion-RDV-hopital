@@ -5,7 +5,7 @@ include 'autoloader.php';
 class Session {
     private $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
 
-    public function __construct($id = null, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name = null) {
+    public function __construct($title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $id = null, $doctor_name = null) {
         $this->id = $id;
         $this->title = $title;
         $this->occupied = $occupied;
@@ -57,7 +57,7 @@ class Session {
 
         $stm = $pdo->prepare($sql);
         if ($stm->execute($params)) {
-            return new self($id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num);
+            return new self($title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $id);
         }
         return null;
     }
@@ -113,7 +113,7 @@ class Session {
 
         $results = [];
         foreach($rows as $row) {
-            $session = new self($row->id, $row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->doctor_name);
+            $session = new self($row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->id, $row->doctor_name);
             array_push($results, $session);
         }
 
@@ -136,7 +136,7 @@ class Session {
         return false;
     }
 
-    public static function search_session($patient_id, $input = null) { // patient use this method
+    public static function search_sessions($patient_id, $input = null) { // patient use this method
         // only return session which the patient is not registed yet
         // $input can be doctor name, doctor email, date of session
         $name_pattern = "/^[a-zA-Z ]+$/";
@@ -149,8 +149,12 @@ class Session {
                 LEFT JOIN Appointments as A ON S.id = A.session_id
                 INNER JOIN Users as U ON S.doctor_id = U.id
                 WHERE S.occupied < S.max_num
-                AND (A.patient_id != :patient_id OR A.patient_id is NULL)
                 AND DATE(S.end_time) >= :min_date
+                AND S.id not in (
+                    SELECT session_id
+                    FROM Appointments
+                    WHERE patient_id = :patient_id
+                )
                 ';
         
         $params = [
@@ -186,7 +190,7 @@ class Session {
 
         $results = [];
         foreach($rows as $row) {
-            $session = new self($row->id, $row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->doctor_name);
+            $session = new self($row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->id, $row->doctor_name);
             array_push($results, $session);
         }
 
