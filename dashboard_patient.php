@@ -49,8 +49,9 @@ include "scripts/session_check.php";
         <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
         <?php
          if(isset($_GET["file"])){
+            $countArr = get_count_data();
             if($_GET['file']=="dash"){
-                $countArr = get_count_data();
+               
                 include("includes/patient/patient_dash.php");
                 }
                 else if($_GET['file']=="doct"){

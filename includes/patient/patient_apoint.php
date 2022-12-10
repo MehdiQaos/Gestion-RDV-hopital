@@ -12,11 +12,9 @@
                         </div>
                         <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>
                     </div>
-        
                     </nav>        
-                    
                         <div class="d-flex justify-content-between">
-                            <p class="fs-5 ms-2">All My Bookings(0)</p>
+                            <p class="fs-5 ms-2">All My Bookings(<?= $countArr[2]?>)</p>
                
                         </div>
                         <div class="w-100 d-flex justify-content-around border align-items-center py-2 shadow-sm mt-4">
@@ -34,29 +32,29 @@
                             <button class="btn mycolor button1 rounded-pill"><i class="uil uil-filter me-2 mycolor"></i></i>Filter</button>
                          </div>
                          <div class="row pt-5 justify-content-around">
-                                  
+                         <?php
+                          $objects = viewAppointment();
+                                if(is_array($objects)){
+                                    foreach($objects as $object){
+                                 ?>
                                     <div class="col-6">
                                         <div class="p-5 pt-5 pb-1 shadow-sm  rounded  border"> 
                                             <div>
-                                                <h3 class="fs-4 mycolor">Test Session</h3>
-                                                <p class="fs-5 pt-4 text-black fw-bold mb-0">New Booking</p>
-                                                <p class="m-0">2020/11/03</p>
-                                                <p class="m-0">Starts at <span class="fw-bold">@ 18:00 (24h)</span></p>
+                                                <p class="m-0">Booking Date : <?= $object->booking_date;?></p>
+                                                <p class="m-0">Reference Number : <?= $object->ref_num;?></p>
+                                                <h3 class="fs-4 mycolor"><?= $object->session_title?></h3>
+                                                <p class="m-0">Appointment Number : </p><span class="fs-5"><?= $object->order_in_session;?></span>
+                                                
+                                                <p class="fs-5 pt-4 text-black fw-bold mb-0">Doctor : <?=$object->doctor_name?></p>
+                                                <p class="m-0">Starts at <span class="fw-bold"><?= $object->start_date?></span></p>
                                             </div>
-                                            <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 w-100" type="button">Log out</button>
+                                            <form action="" method="post">
+                                                <input type="hidden" name="app_id" value="<?= $object->id?>">
+                                            <button type="submit" name="cancel_app" class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 w-100">Cancel appointment</a>
+                                            </form>
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="p-5 pt-5 pb-1 shadow-sm  rounded  border"> 
-                                            <div>
-                                                <h3 class="fs-4 mycolor">Test Session</h3>
-                                                <p class="fs-5 pt-4 text-black fw-bold mb-0">New Booking</p>
-                                                <p class="m-0">2020/11/03</p>
-                                                <p class="m-0">Starts at <span class="fw-bold">@ 18:00 (24h)</span></p>
-                                            </div>
-                                            <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 w-100" type="button">Log out</button>
-                                        </div>
-                                    </div>
+                                    <?php }}else{ echo "no records";}?>
                                     
                            </div>
                          

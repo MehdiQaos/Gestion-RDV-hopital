@@ -19,7 +19,7 @@
                     </nav>        
                     
                         <div class="d-flex justify-content-between">
-                            <p class="fs-5 ms-2">All Sessions(0)</p>
+                            <p class="fs-5 ms-2">All Sessions(<?= $countArr[3]?>)</p>
                
                         </div>
                          <div class="justify-content-center pt-5"style="height: 75vh; overflow: scroll;">

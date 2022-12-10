@@ -20,17 +20,18 @@ class user{
     public function __set($var,$val){
         $this->$var = $val;
     }
-    public function login($email,$password){
+    public function login(){
         $db_connect = new db_connect;
-        $pdo = $db_connect->connection();
-        $sql = "SELECT * FROM Users WHERE email=:email AND password=:password";
+        $pdo = $db_connect->connection(); 
+        $sql = "SELECT * FROM users WHERE email=:email AND password=:password";
         $stmt =  $pdo->prepare($sql);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
         $stmt->execute();
         $row = $stmt->fetch();
+       
         
-        if(!empty($row)){
+        if($row){
             return $row;
         }  
         else{
@@ -40,8 +41,8 @@ class user{
         unset($pdo);
     }
     public static function count_data(){
-        $db_connect = new db_connect ;
-        $pdo = $db_connect->connection() ;
+        $db_connect = new db_connect;
+        $pdo = $db_connect->connection();
         $today =date("Y-m-d h:i:s");
         $patientrow = $pdo->query("select  * from  Users where role_id='3'");
         $doctorrow = $pdo->query("select  * from Users where role_id='2'");

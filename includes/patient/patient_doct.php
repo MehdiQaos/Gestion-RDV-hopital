@@ -18,7 +18,7 @@
                     </div>
                     </nav>        
                         <div class="d-flex justify-content-between">
-                            <p class="fs-5 ms-4">All Doctors(0)</p>
+                            <p class="fs-5 ms-4">All Doctors(<?= $countArr[1]?>)</p>
                         </div>
                          <div class="card-body table-responsive mt-2" style="height: 75vh; overflow: scroll;">
                                            <table class="table table-light " style="border: 0.5px solid rgb(230, 229, 229);border-radius: 20px;">
@@ -54,8 +54,7 @@
         var el = document.getElementById("wrapper");
       
         var toggleButton_d = document.getElementById("menu-toggle_d");
-
-        toggleButton_d.onclick = function () {
+        toggleButton_d.onclick = function (){
             el.classList.toggle("toggled");
         };
       

@@ -5,26 +5,26 @@ session_start();
 if(isset($_POST["login"])) login();
 if(isset($_POST["signup"])) signup();
 if(isset($_POST["book"]))   addAppointment();
+if(isset($_POST["cancel_app"]))  cancelAppointment();
 
 
 
 function login(){
-        
         $email = $_POST["email"];
         $pass = $_POST["password"];
         $user = new user;
         $user->email  = $email;
         $user->password  = $pass;
-        $result = $user->login();
-        if($result!=false){
-                $_SESSION["user_id"]=$result["id"];
-                $_SESSION["user_name"]=$result["full_name"];
-                $_SESSION["user_email"]=$result["email"];
-                $_SESSION["user_photo"]=$result["photo"];
-            if($result["role_id"] ==1){
+        $resul = $user->login();
+        if($resul!=false){
+                $_SESSION["user_id"]=$resul["id"];
+                $_SESSION["user_name"]=$resul["full_name"];
+                $_SESSION["user_email"]=$resul["email"];
+                $_SESSION["user_photo"]=$resul["photo"];
+            if($resul["role_id"] ==1){
                 header("location:../dashboard_admin.php");
             }
-            else if($result["role_id"]==2){
+            else if($resul["role_id"]==2){
                 header("location:../dashboard_doctor.php");
             }
             else{
@@ -32,7 +32,6 @@ function login(){
             }
         }
         else{
-            echo "<h1>good job<h1>";
             header("location:../sign.php");
         }
        
@@ -72,25 +71,47 @@ function  get_count_data(){
    return user::count_data();
 }
 function addAppointment(){
-    $appointment1 = new appointment(NULL,"2023-10-04 18:12:12","2","sbdf12",1,1);
+    $appointment1 = new appointment(NULL,"2023-10-04 18:12:12","2","sbdf12",1,1,NULL,Null,Null);
     if($appointment1->addAppointment()){
-        echo "good";
+      
     }
     else{
-        echo "bad";
+      
     }
 
    
 }
 function viewAppointment(){
     $filter="doctor";
-    $rows = appointment::viewAppointment($filter);
-    if($rows){
-        return $rows;
+    $objects = appointment::viewAppointment($filter);
+    if($objects){
+        return $objects;
         
         
     }
     else{
         return "no records";
+    }
+}
+function cancelAppointment(){
+    $object_id =$_POST['app_id'];
+    if(appointment::cancelAppointment($object_id)){
+        echo "good";
+    }
+    else{
+       
+    }
+}
+function view_patient(){
+    $filter ="patient";
+    $rows =patient::view_patient($filter,$_SESSION["user_id"]);
+    if($rows){
+        $id=0;
+        foreach($rows as $row){
+            if($row["user_id"]!=$id){
+                echo $row[0];
+                $id=$row["user_id"];
+            }
+        }
     }
 }
