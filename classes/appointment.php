@@ -1,5 +1,5 @@
 <?php
-
+include __DIR__."/../autoloader.php";
 class appointment{
     private $id;
     private $booking_date;

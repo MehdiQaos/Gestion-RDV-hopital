@@ -48,6 +48,7 @@ include "scripts/session_check.php";
         <!-- Page Content -->
         <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
         <?php
+        view_sessions();
          if(isset($_GET["file"])){
             $countArr = get_count_data();
             if($_GET['file']=="dash"){

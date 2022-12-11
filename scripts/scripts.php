@@ -109,3 +109,24 @@ function view_patient_by_patient(){
        return $rows;
     }
 }
+
+function view_sessions(){
+    $filter=[
+        'patient'=>"true"
+    ];
+$objects = Session::view_sessions($filter);
+if($objects){
+    var_dump($objects);
+    die;
+    return $objects;
+}
+else{
+    echo "edrftgh";
+    die;
+}
+
+
+
+
+
+}
