@@ -50,6 +50,7 @@
                                             </div>
                                             <form action="" method="post">
                                                 <input type="hidden" name="app_id" value="<?= $object->id?>">
+                                                <input type="hidden" name="sess_id" value="<?= $object->session_id?>">
                                             <button type="submit" name="cancel_app" class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 w-100">Cancel appointment</a>
                                             </form>
                                         </div>

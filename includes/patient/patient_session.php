@@ -18,25 +18,35 @@
         
                     </nav>        
                     
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between ">
                             <p class="fs-5 ms-2">All Sessions(<?= $countArr[3]?>)</p>
                
                         </div>
-                         <div class="justify-content-center pt-5"style="height: 75vh; overflow: scroll;">
+                        <?php 
+                            $objects  = view_sessions();
+                            if(is_array($objects)){
+
+                            
+                            foreach($objects as $object){
+                        ?>
+                         <div class="justify-content-center"style="; overflow: scroll;">
                             <div class="" style="width: 90%;">
                                 <div class="p-5 pt-5 pb-1 shadow-sm  rounded  border"> 
                                     <div>
-                                        <h3 class="fs-4 mycolor">Test Session</h3>
+                                        <h3 class="fs-4 mycolor"><?= $object->title?></h3>
                                         <p class="fs-5 pt-4 text-black fw-bold mb-0">New Booking</p>
-                                        <p class="m-0">2020/11/03</p>
-                                        <p class="m-0">Starts at <span class="fw-bold">@ 18:00 (24h)</span></p>
+                                        <p class="m-0"><?= $object->start_time?></p>
+                                        <p class="m-0">Starts at <span class="fw-bold"><?= $object->start_time?></span></p>
                                     </div>
                                     <form action="" method="post">
+                                        <input type="hidden" name="id_session" value="<?= $object->id?>">
                                     <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 w-100" type="submit" name="book">Book Now</button>
                                     </form>
                                  </div>
                                 </div>
                             </div>
+                            <?php }}else{ echo $objects;}
+                        ?>
                            
                             
                         </div>

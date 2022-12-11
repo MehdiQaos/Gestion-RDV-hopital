@@ -28,24 +28,22 @@
                                                 <td class="mycolor fw-bold">Speciality</td>
                                                 <td class="mycolor fw-bold">Events</td>
                                             </tr> 
+                                            <?php $rows  = view_doctors();
+                                              foreach($rows as $row){
+                                              ?>
                                             <tr class="">
-                                                <td class="text-dark">Ossama</td>
-                                                <td class="text-dark">ossama@gmail.com</td>
-                                                <td class="text-dark">cardiac</td>
+                                                <td class="text-dark"><?= $row['full_name']?></td>
+                                                <td class="text-dark"><?= $row['email']?></td>
+                                                <td class="text-dark"><?= $row['name']?></td>
                                                 <td class="text-dark">
                                                     <button class="btn mycolor button1 rounded-pill"><i class="mycolor uil uil-eye pe-1"></i>view</button>
                                                     <button class="btn mycolor button1 rounded-pill "><i class="mycolor uil uil-heart-rate pe-1"></i>Sessions</button>
                                                 </td>
                                             </tr> 
-                                            <tr class="">
-                                                <td class="text-dark">Ossama</td>
-                                                <td class="text-dark">ossama@gmail.com</td>
-                                                <td class="text-dark">cardiac</td>
-                                                <td class="text-dark">
-                                                    <button class="btn mycolor button1 rounded-pill"><i class="mycolor uil uil-eye pe-1"></i>view</button>
-                                                    <button class="btn mycolor button1 rounded-pill"><i class="mycolor uil uil-heart-rate pe-1"></i>Sessions</button>
-                                                </td>
-                                            </tr>         
+                                            <?php }
+                                              ?>
+
+                                                    
                                            </table>
                          </div>
                         

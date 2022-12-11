@@ -1,8 +1,16 @@
 <?php
-include __DIR__."/../autoloader.php";
+
+include 'autoloader.php';
 
 class Session {
-    private $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
+    private $id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
+
+    public function __get($var){
+        return $this->$var;
+    }
+    public function __set($var,$val){
+        $this->$var = $val;
+    }
 
     public function __construct($title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $id = null, $doctor_name = null) {
         $this->id = $id;
@@ -20,11 +28,11 @@ class Session {
         $db = new db_connect();
         $pdo = $db->connection();
         $sql = 'INSERT INTO Sessions (title, description, start_time, end_time, doctor_id, max_num)
-                VALUES (:title, :description, :start_time, :end_time, :doctor_id, :max_num);
+                VALUES (:title, :occupied, :description, :start_time, :end_time, :doctor_id, :max_num);
                 ';
         $params = [
             'title' => $this->title,
-            'title' => $this->occupied,
+            'occupied' => $this->occupied,
             'description' => $this->description,
             'start_time' => $this->start_time,
             'end_time' => $this->end_time,
@@ -193,7 +201,6 @@ class Session {
             array_push($results, $session);
         }
 
-        // return $rows;
         return $results;
     }
 }

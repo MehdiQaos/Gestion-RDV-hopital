@@ -71,7 +71,7 @@ function  get_count_data(){
    return user::count_data();
 }
 function addAppointment(){
-    $appointment1 = new appointment(NULL,"2023-10-04 18:12:12","2","sbdf12",1,1,NULL,Null,Null);
+    $appointment1 = new appointment(NULL,"2023-10-04 18:12:12",null,"sbdf12",$_SESSION["user_id"],$_POST['id_session'],NULL,Null,Null);
     if($appointment1->addAppointment()){
       
     }
@@ -82,8 +82,8 @@ function addAppointment(){
    
 }
 function viewAppointment(){
-    $filter="doctor";
-    $objects = appointment::viewAppointment($filter);
+    $filter="patient";
+    $objects = appointment::viewAppointment($filter,$_SESSION["user_id"]);
     if($objects){
         return $objects;
         
@@ -94,9 +94,11 @@ function viewAppointment(){
     }
 }
 function cancelAppointment(){
-    $object_id =$_POST['app_id'];
-    if(appointment::cancelAppointment($object_id)){
-        echo "good";
+    $app_id =$_POST['app_id'];
+    $sess_id = $_POST['sess_id'];
+    
+    if(appointment::cancelAppointment($app_id,$sess_id)){
+       
     }
     else{
        
@@ -111,22 +113,21 @@ function view_patient_by_patient(){
 }
 
 function view_sessions(){
-    $filter=[
-        'patient'=>"true"
-    ];
-$objects = Session::view_sessions($filter);
+$objects = Session::search_sessions($_SESSION["user_id"],null);
 if($objects){
-    var_dump($objects);
-    die;
-    return $objects;
+    return $objects;  
 }
 else{
-    echo "edrftgh";
-    die;
+    return "no records";
+}
+}
+function view_doctors(){
+    $rows = Doctor::viewDoctor();
+    return $rows;
+   
 }
 
 
 
 
 
-}
