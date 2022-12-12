@@ -143,7 +143,7 @@ class Session {
         return false;
     }
 
-    public static function search_sessions($patient_id, $input = null) { // patient use this method
+    public static function search_sessions($patient_id, $input = null){ // patient use this method
         // only return session which the patient is not registed yet
         // $input can be doctor name, doctor email, date of session
         $name_pattern = "/^[a-zA-Z ]+$/";

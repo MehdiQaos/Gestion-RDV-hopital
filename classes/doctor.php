@@ -49,13 +49,11 @@ class Doctor extends User {
     public static function viewDoctor(){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
-        $sql = "SELECT * FROM Users u inner join specialities s on u.doc_speciality_id = s.id WHERE u.role_id=?";
+        $sql = "SELECT * FROM users u inner join specialities s on u.doc_speciality_id = s.id WHERE u.role_id=?";
         $query =  $pdo->prepare($sql);
         $query->execute([2]);
         $rows = $query->fetchAll();
-
-        if($rows){
-            
+        if($rows!=null){
             return $rows;
         }else{
             $_SESSION['noDoctors'] = 'There is no doctors for the moment';

@@ -20,13 +20,13 @@ class user{
     public function __set($var,$val){
         $this->$var = $val;
     }
-    public function login(){
+    public static function login($email,$password){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection(); 
         $sql = "SELECT * FROM users WHERE email=:email AND password=:password";
         $stmt =  $pdo->prepare($sql);
-        $stmt->bindParam(':email', $this->email);
-        $stmt->bindParam(':password', $this->password);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
         $stmt->execute();
         $row = $stmt->fetch();
        
@@ -54,6 +54,8 @@ class user{
         unset($pdo);
 
     }
-    
+
+
+
 }
 ?>

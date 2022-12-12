@@ -72,7 +72,7 @@
                                 <div class="col-lg-6 col-md-12 col-11">
                                     <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded border"> 
                                         <div>
-                                            <h3 class="fs-2 mycolor"><?= $countArr[3]?></h3>
+                                            <h3 class="fs-2 mycolor"><?php if(is_array(view_sessions())){ echo count(view_sessions());}else{ echo 0;};?></h3>
                                             <p class="fs-5 text-black">Today sessions</p>
                                         </div>
                                         <i class="uil uil-heart-rate fs-3 mycolor  rounded py-2  px-3 box"></i>

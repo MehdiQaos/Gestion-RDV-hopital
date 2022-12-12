@@ -19,7 +19,7 @@
                     </nav>        
                     
                         <div class="d-flex justify-content-between ">
-                            <p class="fs-5 ms-2">All Sessions(<?= $countArr[3]?>)</p>
+                            <p class="fs-5 ms-2">All Sessions(<?php if(is_array(view_sessions())){ echo count(view_sessions());}else{ echo 0;};?>)</p>
                
                         </div>
                         <?php 

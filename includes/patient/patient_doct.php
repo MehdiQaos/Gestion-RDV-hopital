@@ -29,6 +29,8 @@
                                                 <td class="mycolor fw-bold">Events</td>
                                             </tr> 
                                             <?php $rows  = view_doctors();
+                                            
+                                            if($rows!=null){
                                               foreach($rows as $row){
                                               ?>
                                             <tr class="">
@@ -40,7 +42,7 @@
                                                     <button class="btn mycolor button1 rounded-pill "><i class="mycolor uil uil-heart-rate pe-1"></i>Sessions</button>
                                                 </td>
                                             </tr> 
-                                            <?php }
+                                            <?php }}else{ echo "no doctors today thank you";}
                                               ?>
 
                                                     

@@ -27,8 +27,8 @@
 					<input type="date" class="form-control mt-3" name="edit_email" id="birth_edit"   placeholder="Birthday" value="<?= $row["birthday"]?>">
 					<input type="text" class="form-control mt-3" name="edit_email" id="cin_edit"   placeholder="CIN" value="<?= $row["cin"]?>">
 					<input type="password" class="form-control mt-3" id="current_pass3" name="pass"  placeholder="New Password">
-					<input type="password" class="form-control mt-3" id="current_pass3" name="confirm_pass"  placeholder="Current password" >
-					<input type="hidden" id="hdn_pass" value="<?= $row["birthday"]?>">
+					<input type="password" class="form-control mt-3" id="current_pass3" name="curent_pass"  placeholder="Current password" >
+					<input type="hidden" id="hdn_pass" name="curent_pass_real"value="<?= $row["password"]?>">
 					
                 <?php } ?>
 				</div>

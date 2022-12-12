@@ -34,12 +34,13 @@ class appointment{
     public function addAppointment(){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
-        $sql = "SELECT occupied FROM sessions WHERE id=:session_id";
+        $sql = "SELECT occupied,start_time FROM sessions WHERE id=:session_id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':session_id',$this->session_id); 
         if($stmt->execute()) {
             $row = $stmt->fetch();
             $this->order_in_session = $row[0]+1;
+            $this->booking_date = $row[1];
 
         }  
         else{

@@ -4,12 +4,21 @@ include __DIR__."/../autoloader.php";
 class patient extends user{
 
     private $birthday;
-    private $cin;
     public function __get($var){
         return $this->$var;
     }
     public function __set($var,$val){
         $this->$var = $val;
+    }
+    public function __construct($id,$full_name,$email,$phone,$password,$photo,$cin, $birthday,$role_id){
+        $this->full_name= $full_name;
+        $this->email = $email;
+        $this->phone  =$phone;
+        $this->password = $password;
+        $this->photo = $photo;
+        $this->cin = $cin;
+        $this->birthday  = $birthday;
+        $this->role_id  =$role_id;
     }
     public function signup(){
         $db_connect = new db_connect;
@@ -28,7 +37,7 @@ class patient extends user{
         $stmt->bindParam(':role_id',          $this->role_id);
         $stmt->bindParam(':doc_speciality_id', $fack);
         if($stmt->execute()) {
-            return true;
+            return $pdo->lastInsertId();
            
         }  
         else{
@@ -39,7 +48,7 @@ class patient extends user{
         
     }
 
-    public function checkEmail(){
+    public  function checkEmail(){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
         $sql = "SELECT email FROM Users WHERE email=:email";
@@ -83,10 +92,34 @@ class patient extends user{
         }
         unset($stmt);
         unset($pdo);
-        
-         
     }
-
-
+    public function edit_profile(){
+        $db_connect = new db_connect;
+            $fack=null;
+            $pdo = $db_connect->connection();
+            $sql = "UPDATE users SET full_name=:full_name,email=:email,phone=:phone,password=:password,photo=:photo,cin=:cin,birthday=:birthday,role_id=:role_id,doc_speciality_id=:doc_speciality_id'WHERE 1"; 
+            $stmt =  $pdo->prepare($sql);
+            $stmt->bindParam(':id',               $this->id);
+            $stmt->bindParam(':full_name',        $this->full_name);
+            $stmt->bindParam(':email',            $this->email);
+            $stmt->bindParam(':phone',            $this->phone);
+            $stmt->bindParam(':password',         $this->password); 
+            $stmt->bindParam(':photo',            $this->photo); 
+            $stmt->bindParam(':cin',              $this->cin); 
+            $stmt->bindParam(':birthday',         $this->birthday); 
+            $stmt->bindParam(':role_id',          $this->role_id);
+            $stmt->bindParam(':doc_speciality_id', $fack);
+            if($stmt->execute()) {
+                return true;
+               
+            }  
+            else{
+                return false;
+            }
+            unset($$stmt);
+            unset($pdo);
+        
+    
+    }
 }
 ?>
