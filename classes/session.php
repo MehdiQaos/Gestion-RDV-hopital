@@ -2,8 +2,40 @@
 
 include 'autoloader.php';
 
+/*
+functions to add:
+    today_sessions: 
+        admin dashboard: show all today's session
+        doctor dashboard: show all today's session of doctor only
+        patient
+    week_sessions, 
+        admin: all
+        doctor: only doctors's
+*/
 class Session {
     private $id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
+
+    public static function today_sessions($role, $user_id) {
+        $today_date = date('Y-m-d');    // date('Y-m-d H:i:s');
+        $filters = ['exact_date' => $today_date];
+        if ($role == 'patient')
+            $filters['patient'] = $user_id;
+        else if ($role == 'doctor')
+            $filters['doctor'] = $user_id;
+        
+        return self::view_sessions($filters);
+    }
+
+    public static function week_sessions($role, $user_id) {
+        $next_week = mktime(0, 0, 0, date('m'), date('d') + 7, date('Y'));
+        $filters = ['until_date' => $next_week];
+        if ($role == 'patient')
+            $filters['patient'] = $user_id;
+        else if ($role == 'doctor')
+            $filters['doctor'] = $user_id;
+        
+        return self::view_sessions($filters);
+    }
 
     public function __construct($title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $id = null, $doctor_name = null) {
         $this->id = $id;
@@ -17,7 +49,7 @@ class Session {
         $this->max_num = $max_num;
     }
 
-    public function add_session() {
+    public function add_session() { // TODO: this must be changed to static mehtod with all arguments of the new session
         $db = new db_connect();
         $pdo = $db->connection();
         $sql = 'INSERT INTO Sessions (title, description, start_time, end_time, doctor_id, max_num)
@@ -99,13 +131,21 @@ class Session {
             $params['doctor_id'] = $filters['doctor'];
         }
 
-        if (isset($filters["date"])) {
-            $sql .= 'DATE(end_time) = :date;';
-            $params['date'] = $filters['date'];
+        if (isset($filters["exact_date"])) {
+            $sql .= 'DATE(end_time) = :exact_date
+                    ';
+            $params['exact_date'] = $filters['exact_date'];
         } else {
-            $sql .= 'DATE(end_time) >= :date;';
+            $sql .= 'DATE(end_time) >= :date
+                    ';
             $params['date'] = $current_date;
         }
+
+        if (isset($filters["until_date"])) {
+            $sql .= 'DATE(end_time) < :until_date;';
+            $params['until_date'] = $filters['until_date'];
+        } else
+            $sql .= ';';
 
         $stm = $pdo->prepare($sql);
         $stm->execute($params);
