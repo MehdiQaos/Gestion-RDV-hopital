@@ -14,6 +14,17 @@ abstract class User{
     private $cin;
     private $role;
 
+    public function __construct($full_name, $email, $phone, $password, $id = null, $cin = null, $role = null, $photo = null){
+        $this->id = $id;
+        $this->full_name = $full_name;
+        $this->cin = $cin;
+        $this->role = $role;
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->photo = $photo;
+        $this->password = $password;
+    }
+
     public function __get($var){
         return $this->$var;
     }
@@ -39,6 +50,16 @@ abstract class User{
         }
         unset($$stmt);
         unset($pdo);
+    }
+
+    public static function count_users($role_id){
+        $db_connect = new db_connect;
+        $pdo = $db_connect->connection();
+        $sql = "SELECT * FROM Users WHERE Users.role_id= $role_id";
+        $query = $pdo->query($sql);
+        $count = $query->rowCount();
+
+        return $count;
     }
 }
 

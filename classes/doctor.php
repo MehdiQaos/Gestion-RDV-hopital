@@ -14,15 +14,9 @@ class Doctor extends User {
         $this->$var = $val;
     }
 
-    public function __construct($full_name, $email, $phone, $photo, $password, $speciality){
-        $this->full_name = $full_name;
-        $this->email = $email;
-        $this->phone = $phone;
-        $this->photo = $photo;
-        $this->password = $password;
+    public function __construct($full_name, $email, $phone, $password, $speciality, $id = null, $cin = null, $role = null, $photo = null){
+        parent::__construct($full_name, $email, $phone, $password, $id, $cin, 2, $photo);
         $this->speciality = $speciality;
-        $this->role = 2;
-
     }
 
     // public static function viewDoctors(){
@@ -64,28 +58,36 @@ class Doctor extends User {
         }
     }
 
+    public static function viewDoctors($input = null){
+        $input = trim($input);
 
-    public static function viewDoctors(){
+        $sql = 'SELECT Users.*, specialities.name AS speciality
+                FROM Users
+                INNER JOIN specialities ON specialities.id = Users.doc_speciality_id
+                WHERE Users.role_id = 2
+               ';
+        
+        $params = [];
+
+        if ($input && !empty($input)) {
+            $sql .= 'AND Users.email LIKE :input
+                        OR Users.full_name LIKE :input
+                    ;';
+            $params['input'] = $input . '%';
+        }
+
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
-        $sql = "SELECT Users.*, specialities.name AS speciality FROM Users INNER JOIN specialities ON specialities.id = Users.doc_speciality_id WHERE Users.role_id= ? ";
-        $query =  $pdo->prepare($sql);
-        $query->execute([2]);
-        $count = $query->rowCount();
-        $result = $query->fetchAll();
-        return $result;
-    }
+        $stm =  $pdo->prepare($sql);
+        $stm->execute($params);
+        $rows = $stm->fetchAll(PDO::FETCH_OBJ);
 
-    
+        $results = [];
+        foreach($rows as $row) {
+            $doctor = new Doctor($row->full_name, $row->email, $row->phone, $row->password, $row->speciality, $row->id, $row->cin, $row->role_id, $row->photo);
+            array_push($results, $doctor);
+        }
 
-    public static function countDoctors(){
-        $db_connect = new db_connect;
-        $pdo = $db_connect->connection();
-        $sql = "SELECT * FROM Users WHERE Users.role_id= ? ";
-        $query =  $pdo->prepare($sql);
-        $query->execute([2]);
-        $count = $query->rowCount();
-
-        return "$count";
+        return $results;
     }
 }

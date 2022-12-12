@@ -120,3 +120,8 @@ function listDoctors(){
        }
 }
 
+echo '<pre>';
+var_dump(User::count_users(1));
+var_dump(User::count_users(2));
+var_dump(User::count_users(3));
+echo '</pre>';
