@@ -1,7 +1,9 @@
 <?php
 
+
 include __DIR__."/../autoloader.php";
 class user{
+
 
     protected $id;
     protected $full_name;
@@ -51,6 +53,7 @@ class user{
         unset($stmt);
         unset($pdo);
     }
+
     public static function count_data(){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
@@ -65,8 +68,18 @@ class user{
         unset($pdo);
 
     }
+    public static function count_users($role_id){
+        $db_connect = new db_connect;
+        $pdo = $db_connect->connection();
+        $sql = "SELECT * FROM Users WHERE Users.role_id= $role_id";
+        $query = $pdo->query($sql);
+        $count = $query->rowCount();
+
+        return $count;
+    }
+    }
 
 
 
-}
+
 ?>

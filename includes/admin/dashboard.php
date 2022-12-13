@@ -8,7 +8,10 @@
                     <div class="col-lg-3 col-md-5 col-11">
                         <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded border">
                             <div>                      
-                                <h3 class="fs-2 mycolor"><?= $countArr[1]?></h3>
+                                <h3 class="fs-2 mycolor">
+                                    <?= User::count_users(2);?>
+                                </h3>
+
                                 <p class="fs-5 text-black">Doctors</p>
                             </div>    
                             <i class="uil uil-medkit fs-3 mycolor box rounded py-2  px-3"></i>           
@@ -19,7 +22,11 @@
                         <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded border">
                             <div>
                          
-                                <h3 class="fs-2 mycolor"><?= $countArr[0]?></h3>
+
+                                <h3 class="fs-2 mycolor">
+                                    <?= User::count_users(3);?>
+                                </h3>
+
                                 <p class="fs-5 text-black">Patients</p>
                             </div>
                             <i class="uil uil-accessible-icon-alt fs-3 mycolor box rounded py-2  px-3 "></i>

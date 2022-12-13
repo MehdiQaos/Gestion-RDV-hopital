@@ -1,3 +1,9 @@
+<?php 
+include 'scripts/admin_scripts.php';
+
+
+?>
+
 <!DOCTYPE html>
 <?php
 include "scripts/scripts.php";
@@ -13,6 +19,7 @@ include "scripts/scripts.php";
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="assets/css/style_admin.css" />
+    <script src="assets/js/main.js"></script>
 
 
 
@@ -24,10 +31,10 @@ include "scripts/scripts.php";
     <div class="d-flex shadow-sm bg-light" id="wrapper" >
         <!-- Sidebar -->
         <?php 
-        include './includes/admin/sidebar.php';?>
+        include './includes/admin/sidebar.php';
+        include './includes/admin/alert.php';?>
         
         <!-- /#sidebar-wrapper -->
-
         <!-- Page Content -->
         <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
 
@@ -35,22 +42,39 @@ include "scripts/scripts.php";
 <!-- navbar part ( search and the calender) -->
 
 <?php 
-    include './includes/admin/navbar.php';?>
+    include './includes/admin/navbar.php';
+   
+        ?>
+        <!-- <script>
+            showAlert("?= $_SESSION['adminAdded']?");
+        </script> -->
+        
         
     <div class="container-fluid px-4">
             <?php
                 if(isset($_POST['dashboard-displayer']))            include 'includes/admin/dashboard.php';
-                else if(isset($_POST['doctors-displayer']))         include './includes/admin/doctors.php';
+                else if(isset($_POST['doctors-displayer']) || isset($_POST['search-doctor-btn']))         include './includes/admin/doctors.php';
                 else if(isset($_POST['schedule-displayer']) || isset($_POST['allSessions']))        
                                                                     include './includes/admin/schedule.php';
                 else if(isset($_POST['appointments-displayer']) || isset($_POST['allAppointment']))    
                                                                     include './includes/admin/appointment.php';
-                else if(isset($_POST['patients-displayer']))        include './includes/admin/patient.php';
-                else                                                include 'includes/admin/dashboard.php';
-
+                else if(isset($_POST['patients-displayer']))  {    
+                include './includes/admin/patient.php';
+                }else                                                include 'includes/admin/dashboard.php';
             ?>    
     </div>
                 
+    <?php
+                if(isset($_SESSION['doctorAdded'])){
+                    ?>
+                    <script>
+                        showAlert('<?= $_SESSION['doctorAdded'] ?>');
+                    </script>
+                    <?php
+                    unset($_SESSION['doctorAdded']);
+                }
+            ?> 
+
 <!-- forms -->
     <?php 
         include './includes/admin/forms/add_edit_doctor.php';

@@ -1,8 +1,7 @@
 <?php
 
+
 include 'autoloader.php';
-
-
 /*
 functions to add:
     today_sessions: 
@@ -13,14 +12,17 @@ functions to add:
         admin: all
         doctor: only doctors's
 */
-class Session {
+class Session{
     private $id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
+
     public function __get($var){
         return $this->$var;
     }
     public function __set($var,$val){
         $this->$var = $val;
     }
+
+
 
     public static function today_sessions($role, $user_id) {
         $today_date = date('Y-m-d');    // date('Y-m-d H:i:s');
@@ -58,7 +60,9 @@ class Session {
     }
 
 
+
     public function add_session() { // TODO: this must be changed to static mehtod with all arguments of the new session
+
 
         $db = new db_connect();
         $pdo = $db->connection();
@@ -174,7 +178,9 @@ class Session {
     }
 
 
+
     private static function validateDate($date, $format = 'Y-m-d') {
+
 
         $d = DateTime::createFromFormat('Y-m-d', $date);
         if ($d && $d->format('Y-m-d') == $date)
@@ -192,7 +198,9 @@ class Session {
     }
 
 
+
     public static function search_sessions($patient_id, $input = null) { // patient use this method
+
 
         // only return session which the patient is not registed yet
         // $input can be doctor name, doctor email, date of session
@@ -214,8 +222,6 @@ class Session {
                     WHERE patient_id = :patient_id
                 )
                 ';
-
-        
 
         $params = [
             'patient_id' => $patient_id,
@@ -242,8 +248,6 @@ class Session {
                 return [];
             }
         }
-
-
         $sql .= '
                 GROUP BY S.id;';
 

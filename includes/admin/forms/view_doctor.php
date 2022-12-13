@@ -1,17 +1,20 @@
-<div class="modal fade" id="view-doctor">
+<div class="modal fade" id="view-doctor-modal">
         <div class="modal-dialog">
-            <div class="d-flex justify-content-around align-items-center bg-white p-3 rounded">
-                <div >
-                    <img class="rounded-circle" src="img/photos/doctor.avif" width="100px" height="100px" alt="" srcset="">
+            <div class="modal-content">
+            <div class="d-flex flex-column justify-content-around m-auto bg-white p-3 rounded">
+                <div class="m-auto my-4">
+                    <img class="rounded-circle" width="130px" height="130px" alt=""  id="imageDoctor">
                 </div>
-                <div>
-                    <p>Name : <span class="fw-bold">Ossama</span></p>
-                    <p>Email : <span class="fw-bold" class="">Ossama@gmail.com</span></p>
-                </div>
-                <div>
-                    <p>Specialty : <span class="fw-bold">Cardiac</span></p>
-                    <p>Phone : <span class="fw-bold">+212653436475</span></p>
-                </div>
+                    <p  class="my-3">Name : <span class="fw-bold float-end ms-5" id="nameDoctor"></span></p>
+                    <p  class="my-3">Email : <span class="fw-bold float-end ms-5" id="emailDoctor"></span></p>
+                    <p  class="my-3">Specialty : <span class="fw-bold float-end ms-5"  id="specialityDoctor"></span></p>
+                    <p  class="my-3">Phone : <span class="fw-bold float-end ms-5"  id="phoneDoctor"></span></p>
             </div>
         </div>
     </div>
+</div>
+
+
+<!-- id="phoneDoctor"id="specialityDoctor"id="emailDoctor"id="nameDoctor"id="imageDoctor" -->
+
+

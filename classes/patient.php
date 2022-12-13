@@ -1,6 +1,9 @@
 <?php
+
 include __DIR__."/../autoloader.php";
 class patient extends user{
+
+
     private $birthday;
     public function __construct($id,$full_name, $email, $phone, $password, $photo ="user.png", $cin ,$birthday,$role_id){
         parent::__construct($full_name, $email, $phone, $password, $id, $cin, 3, $photo);
