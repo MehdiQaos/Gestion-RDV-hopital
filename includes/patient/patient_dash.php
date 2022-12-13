@@ -101,7 +101,7 @@
                             </thead>
                             <tbody class=" border-none">
                             <?php
-                          $objects = viewAppointment();
+                          $objects = viewAppointment(null,null,null);
                                 if(is_array($objects)){
                                     foreach($objects as $object){
                                  ?>

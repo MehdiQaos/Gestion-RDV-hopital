@@ -110,13 +110,13 @@ class appointment{
         elseif(!empty($doc_filter) && !empty($input_date)){
             $validated_date = Session::validateDate($input_date);
             if($option=="doctor"){
-            $sql .= " where  d.id=:doctor_id and a.booking_date=:input_date ";
+            $sql .= " where  d.id=:doctor_id and date(a.booking_date)=:input_date ";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':doctor_id', $user_id);
             $stmt->bindParam(':input_date', $validated_date);
             }
             elseif($option=="patient"){
-            $sql .= " where  p.id=:patient_id and a.booking_date=:input_date and d.id=:doctor_id";
+            $sql .= " where  p.id=:patient_id and date(a.booking_date)=:input_date and d.id=:doctor_id";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':patient_id', $user_id);
             $stmt->bindParam(':input_date', $validated_date);
@@ -124,7 +124,7 @@ class appointment{
     
             }
             else{
-            $sql .= "where  a.booking_date=:input_date and d.id=:doctor_id";
+            $sql .= "where  date(a.booking_date)=:input_date and d.id=:doctor_id";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':input_date', $validated_date);
             $stmt->bindParam(':doctor_id', $doc_filter);
@@ -132,18 +132,18 @@ class appointment{
         }
         elseif(!empty($doc_filter) && empty($input_date)){
             if($option=="doctor"){
-            $sql .="where  d.id=:doctor_id and a.booking_date>=:today";
+            $sql .="where  d.id=:doctor_id and date(a.booking_date)>=:today";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':doctor_id', $user_id);
             }
             elseif($option=="patient"){
-            $sql .= "where  p.id=:patient_id and d.id=:doctor_id and a.booking_date>=:today ";
+            $sql .= "where  p.id=:patient_id and d.id=:doctor_id and date(a.booking_date)>=:today ";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':patient_id', $user_id);
             $stmt->bindParam(':doctor_id', $doc_filter);
             }
             else{
-            $sql .= "where  a.booking_date>=:today and d.id=:doctor_id";
+            $sql .= "where  date(a.booking_date)>=:today and d.id=:doctor_id";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':doctor_id', $doc_filter);
             }
@@ -152,19 +152,19 @@ class appointment{
         else{
             $validated_date = Session::validateDate($input_date);
             if($option=="doctor"){
-            $sql .= "where  d.id=:doctor_id and a.booking_date=:input_date ";
+            $sql .= "where  d.id=:doctor_id and date(a.booking_date)=:input_date ";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':doctor_id', $user_id);
             $stmt->bindParam(':input_date', $validated_date);
             }
             elseif($option=="patient"){
-            $sql .= "where  p.id=:patient_id and a.booking_date=:input_date";
+            $sql .= "where  p.id=:patient_id and date(a.booking_date)=:input_date";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':patient_id', $user_id);
             $stmt->bindParam(':input_date', $validated_date);
             }
             else{
-            $sql .= " where  a.booking_date=:input_date";
+            $sql .= " where  date(a.booking_date)=:input_date";
             $stmt =  $pdo->prepare($sql);
             $stmt->bindParam(':input_date', $validated_date);
             }

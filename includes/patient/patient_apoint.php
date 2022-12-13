@@ -11,29 +11,40 @@
                           <p class="fs-6 text-black fw-bold"><?= date("Y-m-d") ?></p>
                         </div>
                         <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>
-                    </div>
+                    </div>  
                     </nav>        
                         <div class="d-flex justify-content-between">
                             <p class="fs-5 ms-2">All My Bookings(<?= $countArr[2]?>)</p>
-               
                         </div>
-                        <div class="w-100 d-flex justify-content-around border align-items-center py-2 shadow-sm mt-4">
+                        
+                            <form  class="w-100 d-flex justify-content-around border align-items-center py-2 shadow-sm mt-4"action="" method="post">
                             <div>
                                 <label for="session-date">Date : </label>
-                                <input type="date" class="rounded border-0 button1 px-4 ms-2" name="session-date">
+                                <input type="date" class="rounded border-0 button1 px-4 ms-2" name="app_date">
                             </div>
                             <div>
                                 <label for="doctor-name">Doctor : </label>
-                                <select class="rounded border-0 button1 px-4 ms-2" name="doctor-name" id="">
+                                <select class="rounded border-0 button1 px-4 ms-2" name="doctor_id">
                                     <option value="">Choose Doctor Name From The List</option>
+                                    <?php $rows  = view_doctors();
+                                            if($rows!=null){
+                                              foreach($rows as $row){
+                                    ?>
+                                     <option value="<?= $row['id']?>"><?= $row['full_name']?></option>
+                                    <?php }}?>
                                 </select>
                             </div>
-                                
-                            <button class="btn mycolor button1 rounded-pill"><i class="uil uil-filter me-2 mycolor"></i></i>Filter</button>
-                         </div>
+                            <button type="submit" name="filter_app" class="btn mycolor button1 rounded-pill"><i class="uil uil-filter me-2 mycolor"></i></i>Filter</button>
+                        </form>
                          <div class="row pt-5 justify-content-around">
                          <?php
-                          $objects = viewAppointment(NULL,12,null);
+                         if(isset($_POST["filter_app"])){
+                            echo $_POST["doctor_id"];
+                            die;
+                            $objects = viewAppointment(null,$_POST["doctor_id"],$_POST["app_date"]);
+                         }else{
+                            $objects = viewAppointment(null,null,null);
+                         }
                                 if(is_array($objects)){
                                     foreach($objects as $object){
                                  ?>
@@ -56,10 +67,7 @@
                                         </div>
                                     </div>
                                     <?php }}else{ echo "no records";}?>
-                                    
                            </div>
-                         
-                       
                    </section>
                    <script>
         var el = document.getElementById("wrapper");

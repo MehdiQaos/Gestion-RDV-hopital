@@ -127,7 +127,7 @@ class Session {
         return $results;
     }
 
-    private static function validateDate($date, $format ='Y-m-d') {
+    public static function validateDate($date, $format ='Y-m-d'){
         $d = DateTime::createFromFormat('Y-m-d', $date);
         if ($d && $d->format('Y-m-d') == $date)
             return $d->format($format);
