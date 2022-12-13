@@ -2,11 +2,10 @@
 <html lang="en">
 
 <?php
-include "scripts/scripts.php";
+include "scripts/scripts_patient.php";
 include "scripts/session_check.php";
 
 ?>
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +16,6 @@ include "scripts/session_check.php";
     <link rel="stylesheet" href="assets/css/style_patient.css" />
     <title>Hopital system management</title>
 </head>
-
 <body>
     <div class="d-flex shadow-sm bg-light" id="wrapper" >
         <!-- Sidebar -->
@@ -48,7 +46,6 @@ include "scripts/session_check.php";
         <!-- Page Content -->
         <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
         <?php
-        view_sessions();
          if(isset($_GET["file"])){
             $countArr = get_count_data();
             if($_GET['file']=="dash"){
@@ -57,6 +54,7 @@ include "scripts/session_check.php";
                 }
                 else if($_GET['file']=="doct"){
                     include("includes/patient/patient_doct.php");
+                    include("includes/modals/doctor_view.php");
                 }
                 else if($_GET['file']=="session"){
                     include("includes/patient/patient_session.php");
@@ -65,19 +63,16 @@ include "scripts/session_check.php";
                   include("includes/patient/patient_apoint.php");
                }
                else{
-                  include("includes/patient/patient_settings.php");
-                  include("includes/modals/patient_profile.php");
-                  include("includes/modals/patient_delete.php");
+                include("includes/patient/patient_settings.php");
+                include_once("includes/modals/patient_profile.php");
+                include_once("includes/modals/patient_delete.php");
                } 
          }
          else{
             $countArr = get_count_data();
             include("includes/patient/patient_dash.php");
-
-         }
-          
+         } 
         ?>
-        
         </div>
 <!-- forms that should be in a separate fille includable -->
                    <div class="modal fade" id="modal-doctor">
@@ -119,12 +114,9 @@ include "scripts/session_check.php";
                         </div>
                     </div>
                 </div>
-
     <!-- /#page-content-wrapper -->
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/js/script_patient.js"></script>
 </body>
 

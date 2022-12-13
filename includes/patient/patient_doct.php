@@ -38,14 +38,13 @@
                                                 <td class="text-dark"><?= $row['email']?></td>
                                                 <td class="text-dark"><?= $row['name']?></td>
                                                 <td class="text-dark">
-                                                    <button class="btn mycolor button1 rounded-pill"><i class="mycolor uil uil-eye pe-1"></i>view</button>
-                                                    <button class="btn mycolor button1 rounded-pill "><i class="mycolor uil uil-heart-rate pe-1"></i>Sessions</button>
+                                                    
+                                                    <button class="btn mycolor button1 rounded-pill" onclick="show_doc_info('<?= $row['full_name']?>','<?= $row['email']?>','<?= $row['name']?>','<?= $row['phone']?>','<?= $row['photo']?>')" data-bs-toggle="modal" data-bs-target="#doctorss"><i class="mycolor uil uil-eye pe-1"></i>view</button>
+                                                    <a href="?file=session&search_sess=<?= $row['full_name']?>" class="btn mycolor button1 rounded-pill "><i class="mycolor uil uil-heart-rate pe-1"></i>Sessions</a>
                                                 </td>
                                             </tr> 
                                             <?php }}else{ echo "no doctors today thank you";}
-                                              ?>
-
-                                                    
+                                            ?>
                                            </table>
                          </div>
                         

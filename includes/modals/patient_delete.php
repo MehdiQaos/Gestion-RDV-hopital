@@ -1,4 +1,4 @@
-<div class="modal fade" id="delete_account" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="delete_account">
 			<div class="modal-dialog modal-sm">
 				<div class="modal-content">
 				<div class="modal-header">
@@ -6,12 +6,13 @@
 					<button type="button"   class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form action="includes/logout.php" method="post">
+				<?php $rows = view_patient_by_patient();
+				    foreach($rows as $row){
+					}?>
+					<form action="" method="post">
 						<h4 class="text-danger">Confirm your Password to delete Account</h4>
-					<input type="password" class="form-control mt-3" id="current_pass2"  placeholder="Current password" >
-					<input type="hidden" id="hdn_session_pass2" value="">
-					<span class="text-danger mt-2" id="match_cc_none"style="display:none"> Password don't match The current password !</span>
-				
+					<input type="password" class="form-control mt-3" id="current_pass2" name="curent_pass"  placeholder="Current password" >
+					<input type="hidden" name="real_pass" value="<?= $row["password"];?>">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

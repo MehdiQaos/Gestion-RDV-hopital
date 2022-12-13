@@ -9,11 +9,9 @@
     font-size: small;
 
 }
-
 .box{
     background-color: #9f9f9f27;
 }
-
 .mycolor{
   color:#007A69;
 }
@@ -25,7 +23,7 @@
  
   #sidebar-wrapper {
     min-height: 100vh;
-    margin-left: -19rem;
+    margin-left: -21rem;
   }
   
   #sidebar-wrapper .sidebar-heading {
@@ -68,7 +66,7 @@
     }
   
     #wrapper.toggled #sidebar-wrapper {
-      margin-left: -19rem;
+      margin-left: -21rem;
     }
   }
 

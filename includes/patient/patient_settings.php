@@ -13,11 +13,8 @@
                 </div>
                 <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>
             </div>
-
             </nav>
             <div class="container-fluid px-4">
-                
-                
                   <section class="mt-5 ">
                         <div  class="rounded shadowborder " >
                             <div class="my-2 ">
@@ -69,3 +66,4 @@
         };
        
     </script>
+   

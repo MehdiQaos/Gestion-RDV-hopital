@@ -3,16 +3,24 @@
 include __DIR__."/../autoloader.php";
 class user{
 
-    private $id;
-    private $full_name;
-    private $email;
-    private $phone = "null";
-    private $photo ="user.png";
-    private $password;
-    private $role_id;
-    private $cin;
-
-
+    protected $id;
+    protected $full_name;
+    protected $email;
+    protected $phone;
+    protected $photo ;
+    protected $password;
+    protected $role_id;
+    protected $cin;
+    public function __construct($full_name, $email, $phone, $password, $id, $cin, $role_id, $photo){
+        $this->id = $id;
+        $this->full_name = $full_name;
+        $this->cin = $cin;
+        $this->role_id = $role_id;
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->photo = $photo;
+        $this->password = $password;
+    }
     public function __get($var){
         return $this->$var;
     }
@@ -20,6 +28,9 @@ class user{
     public function __set($var,$val){
         $this->$var = $val;
     }
+
+
+    
     public static function login($email,$password){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection(); 

@@ -1,24 +1,16 @@
 <?php
-
 include __DIR__."/../autoloader.php";
 class patient extends user{
-
     private $birthday;
+    public function __construct($id,$full_name, $email, $phone, $password, $photo ="user.png", $cin ,$birthday,$role_id){
+        parent::__construct($full_name, $email, $phone, $password, $id, $cin, 3, $photo);
+        $this->birthday = $birthday;
+    }
     public function __get($var){
         return $this->$var;
     }
     public function __set($var,$val){
         $this->$var = $val;
-    }
-    public function __construct($id,$full_name,$email,$phone,$password,$photo,$cin, $birthday,$role_id){
-        $this->full_name= $full_name;
-        $this->email = $email;
-        $this->phone  =$phone;
-        $this->password = $password;
-        $this->photo = $photo;
-        $this->cin = $cin;
-        $this->birthday  = $birthday;
-        $this->role_id  =$role_id;
     }
     public function signup(){
         $db_connect = new db_connect;
@@ -95,31 +87,50 @@ class patient extends user{
     }
     public function edit_profile(){
         $db_connect = new db_connect;
-            $fack=null;
-            $pdo = $db_connect->connection();
-            $sql = "UPDATE users SET full_name=:full_name,email=:email,phone=:phone,password=:password,photo=:photo,cin=:cin,birthday=:birthday,role_id=:role_id,doc_speciality_id=:doc_speciality_id'WHERE 1"; 
-            $stmt =  $pdo->prepare($sql);
-            $stmt->bindParam(':id',               $this->id);
-            $stmt->bindParam(':full_name',        $this->full_name);
-            $stmt->bindParam(':email',            $this->email);
-            $stmt->bindParam(':phone',            $this->phone);
-            $stmt->bindParam(':password',         $this->password); 
-            $stmt->bindParam(':photo',            $this->photo); 
-            $stmt->bindParam(':cin',              $this->cin); 
-            $stmt->bindParam(':birthday',         $this->birthday); 
-            $stmt->bindParam(':role_id',          $this->role_id);
-            $stmt->bindParam(':doc_speciality_id', $fack);
-            if($stmt->execute()) {
-                return true;
-               
-            }  
-            else{
-                return false;
-            }
-            unset($$stmt);
-            unset($pdo);
+        $fack=null;
+        $pdo = $db_connect->connection();
+        $sql = "UPDATE users SET full_name=:full_name,email=:email,phone=:phone,password=:password,photo=:photo,cin=:cin,birthday=:birthday,role_id=:role_id,doc_speciality_id=:doc_speciality_id WHERE id=:id"; 
+        $stmt =  $pdo->prepare($sql);
+        $stmt->bindParam(':id',               $this->id);
+        $stmt->bindParam(':full_name',        $this->full_name);
+        $stmt->bindParam(':email',            $this->email);
+        $stmt->bindParam(':phone',            $this->phone);
+        $stmt->bindParam(':password',         $this->password); 
+        $stmt->bindParam(':photo',            $this->photo); 
+        $stmt->bindParam(':cin',              $this->cin); 
+        $stmt->bindParam(':birthday',         $this->birthday); 
+        $stmt->bindParam(':role_id',          $this->role_id);
+        $stmt->bindParam(':doc_speciality_id', $fack);
+        if($stmt->execute()){
+            return true;
+            
+        }  
+        else{
+            return false;
+        }
+        unset($$stmt);
+        unset($pdo);
         
     
+    }
+    public static function delete_profile($user_id){
+        $db_connect = new db_connect;
+        $pdo = $db_connect->connection();
+        $sql = "DELETE FROM `users` WHERE id=:user_id";
+        $stmt =  $pdo->prepare($sql);
+        $stmt->bindParam(':user_id' ,$user_id);
+        $stmt->execute();
+        if($stmt->execute()){
+            return true;
+        }  
+        else{
+            return false;
+        }
+        unset($stmt);
+        unset($pdo);
+
+
+
     }
 }
 ?>

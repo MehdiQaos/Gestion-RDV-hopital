@@ -3,10 +3,12 @@
                         <div class="d-flex align-items-center">
                             <i class="fas fa-align-left mycolor fs-4 " id="menu_toggles"></i>
                             <!-- <h2 class="fs-2 m-0"> </h2> -->
-                            <div class="input-group ms-5" style="width:500px;">
-                                <input type="search" class="form-control rounded" placeholder="Search Doctor Name, Email or Date " aria-label="Search" aria-describedby="search-addon" />
-                                <button type="button" class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</button>
-                              </div>
+                            
+                            <form action="" class="input-group ms-5" method="post" style="width:500px;">
+                                <input type="search" name="search_value" class="form-control rounded" placeholder="Search Doctor Name, Email or Date " aria-label="Search" aria-describedby="search-addon" />
+                                <button type="submit" name="search_sess"class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</button>
+                            </form>
+                              
                         </div>
                     <div class="d-flex align-items-center end-50">
                         <div class="pt-3 me-3">
@@ -15,18 +17,21 @@
                         </div>
                         <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>
                     </div>
-        
                     </nav>        
-                    
                         <div class="d-flex justify-content-between ">
-                            <p class="fs-5 ms-2">All Sessions(<?php if(is_array(view_sessions())){ echo count(view_sessions());}else{ echo 0;};?>)</p>
-               
+                            <p class="fs-5 ms-2">All Sessions(<?php if(is_array(view_sessions(null))){ echo count(view_sessions(null));}else{ echo 0;};?>)</p>
                         </div>
                         <?php 
-                            $objects  = view_sessions();
+                        if(isset($_POST["search_sess"])){
+                            $objects  = view_sessions($_POST["search_value"]);
+                        }
+                        else if(isset($_GET["search_sess"])){
+                            $objects  = view_sessions($_GET["search_sess"]);
+                        }
+                        else{
+                            $objects  = view_sessions(null);
+                        }
                             if(is_array($objects)){
-
-                            
                             foreach($objects as $object){
                         ?>
                          <div class="justify-content-center"style="; overflow: scroll;">
@@ -47,14 +52,11 @@
                             </div>
                             <?php }}else{ echo $objects;}
                         ?>
-                           
-                            
                         </div>
                        
                    </section>
                    <script>
         var el = document.getElementById("wrapper");
-       
         var toggleButton_ss = document.getElementById("menu_toggles");
 
         toggleButton_ss.onclick = function () {

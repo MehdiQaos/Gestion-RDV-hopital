@@ -33,7 +33,7 @@
                          </div>
                          <div class="row pt-5 justify-content-around">
                          <?php
-                          $objects = viewAppointment();
+                          $objects = viewAppointment(NULL,12,null);
                                 if(is_array($objects)){
                                     foreach($objects as $object){
                                  ?>
@@ -69,3 +69,4 @@
             el.classList.toggle("toggled");
         };
     </script>
+    
