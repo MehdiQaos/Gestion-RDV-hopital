@@ -41,6 +41,7 @@ function  get_count_data(){
 function addAppointment(){
     $appointment1 = new appointment(NULL,null,null,"sbdf12",$_SESSION["user_id"],$_POST['id_session'],NULL,Null,Null);
     if($appointment1->addAppointment()){
+        header("location:dashboard_patient.php?file=appoint");
     }
     else{
     }
@@ -83,10 +84,9 @@ else{
     return "no records";
 }
 }
-function view_doctors(){
-    $rows = Doctor::viewDoctor();
-    return $rows;
-   
+function view_doctors($input){
+    $objects = Doctor::viewDoctors($input);
+    return $objects;
 }
 function edit_profile(){
     if($_POST["curent_pass"]!=$_POST["curent_pass_real"]){

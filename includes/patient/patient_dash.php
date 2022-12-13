@@ -29,8 +29,8 @@
                                 </p>
                                 <h6 class="fw-bolder">Channel a Doctor here </h6>
                                 <div class="input-group pt-2" style="min-width:200px; max-width:500px">
-                                    <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                    <button type="button" class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</button>
+                                    <input type="search" class="form-control rounded " id="saerch_doc_value" placeholder="Search" onkeyup='fill_search()' aria-label="Search" aria-describedby="search-addon" />
+                                    <a href="" id="search_a_href" class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</a>
                                 </div>
                             </div>
                         </div>

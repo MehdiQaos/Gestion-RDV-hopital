@@ -1,20 +1,30 @@
 <?php
-
 include __DIR__."/../autoloader.php";
 
+
 class Doctor extends User {
-    private $speciality;
 
-    public function __construct($full_name, $email, $phone, $photo, $password, $speciality){
-        $this->full_name = $full_name;
-        $this->email = $email;
-        $this->phone = $phone;
-        $this->photo = $photo;
-        $this->password = $password;
-        $this->speciality = $speciality;
-        $this->role = 2;
+    protected $speciality;
 
+    public function __get($var){
+        return $this->$var;
     }
+    public function __set($var,$val){
+        $this->$var = $val;
+    }
+
+    public function __construct($full_name, $email, $phone, $password, $speciality, $id = null, $cin = null, $role = null, $photo = null){
+        parent::__construct($full_name, $email, $phone, $password, $id, $cin, 2, $photo);
+        $this->speciality = $speciality;
+    }
+
+    // public static function viewDoctors(){
+    //     $db_connect = new db_connect;
+    //     $pdo = $db_connect->connection();
+    //     $sql = "SELECT Users.*, specialities.name AS speciality FROM Users INNER JOIN specialities ON specialities.id = Users.doc_speciality_id WHERE Users.role_id= ? ";
+    //     $query =  $pdo->prepare($sql);
+    //     $query->execute([2]);
+
     public function createDoctor(){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
@@ -46,17 +56,37 @@ class Doctor extends User {
             header('location: ../dashboard_admin.php');
         }
     }
-    public static function viewDoctor(){
+
+    public static function viewDoctors($input = null){
+        $input = trim($input);
+
+        $sql = 'SELECT Users.*, specialities.name AS speciality
+                FROM Users
+                INNER JOIN specialities ON specialities.id = Users.doc_speciality_id
+                WHERE Users.role_id = 2
+               ';
+        
+        $params = [];
+
+        if ($input && !empty($input)) {
+            $sql .= 'AND Users.email LIKE :input
+                        OR Users.full_name LIKE :input
+                    ;';
+            $params['input'] = $input . '%';
+        }
+
         $db_connect = new db_connect;
         $pdo = $db_connect->connection();
-        $sql = "SELECT * FROM users u inner join specialities s on u.doc_speciality_id = s.id WHERE u.role_id=?";
-        $query =  $pdo->prepare($sql);
-        $query->execute([2]);
-        $rows = $query->fetchAll();
-        if($rows!=null){
-            return $rows;
-        }else{
-            $_SESSION['noDoctors'] = 'There is no doctors for the moment';
+        $stm =  $pdo->prepare($sql);
+        $stm->execute($params);
+        $rows = $stm->fetchAll(PDO::FETCH_OBJ);
+
+        $results = [];
+        foreach($rows as $row) {
+            $doctor = new Doctor($row->full_name, $row->email, $row->phone, $row->password, $row->speciality, $row->id, $row->cin, $row->role_id, $row->photo);
+            array_push($results, $doctor);
         }
+
+        return $results;
     }
 }

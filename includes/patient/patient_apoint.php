@@ -26,11 +26,11 @@
                                 <label for="doctor-name">Doctor : </label>
                                 <select class="rounded border-0 button1 px-4 ms-2" name="doctor_id">
                                     <option value="">Choose Doctor Name From The List</option>
-                                    <?php $rows  = view_doctors();
-                                            if($rows!=null){
-                                              foreach($rows as $row){
+                                    <?php $objects  = view_doctors(null);
+                                            if($objects!=null){
+                                              foreach($objects as $object){
                                     ?>
-                                     <option value="<?= $row['id']?>"><?= $row['full_name']?></option>
+                                     <option value="<?= $object->id?>"><?= $object->full_name?></option>
                                     <?php }}?>
                                 </select>
                             </div>
@@ -39,8 +39,6 @@
                          <div class="row pt-5 justify-content-around">
                          <?php
                          if(isset($_POST["filter_app"])){
-                            echo $_POST["doctor_id"];
-                            die;
                             $objects = viewAppointment(null,$_POST["doctor_id"],$_POST["app_date"]);
                          }else{
                             $objects = viewAppointment(null,null,null);

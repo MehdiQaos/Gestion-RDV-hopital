@@ -9,8 +9,7 @@ function show_doc_info(full_name,email,name,phone,photo){
     document.getElementById("email_info").innerText    = email;
     document.getElementById("spec_info").innerText     = name;
     document.getElementById("phone_info").innerText    = phone;
-    
-    
-
-    
+}
+function fill_search(){
+    document.getElementById("search_a_href").setAttribute("href","?file=session&search_sess="+document.getElementById("saerch_doc_value").value)
 }

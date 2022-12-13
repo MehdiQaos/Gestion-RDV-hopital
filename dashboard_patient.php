@@ -74,6 +74,7 @@ include "scripts/session_check.php";
          } 
         ?>
         </div>
+        
 <!-- forms that should be in a separate fille includable -->
                    <div class="modal fade" id="modal-doctor">
                     <div class="modal-dialog">

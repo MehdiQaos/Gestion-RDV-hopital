@@ -4,10 +4,10 @@
                         <div class="d-flex align-items-center">
                             <i class="fas fa-align-left mycolor fs-4 " id="menu-toggle_d"></i>
                             <!-- <h2 class="fs-2 m-0"> </h2> -->
-                            <div class="input-group ms-5" style="width:500px;">
-                                <input type="search" class="form-control rounded" placeholder="Search Doctor Name or Email" aria-label="Search" aria-describedby="search-addon" />
-                                <button type="button" class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</button>
-                            </div>
+                            <form class="input-group ms-5" style="width:500px;" method="post"action="">
+                                <input type="search" name="search_data" class="form-control rounded" placeholder="Search Doctor Name or Email" aria-label="Search" aria-describedby="search-addon" />
+                                <button type="submit" name="search_doc" class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</button>
+                            </form>
                         </div>
                     <div class="d-flex align-items-center end-50">
                         <div class="pt-3 me-3">
@@ -16,7 +16,7 @@
                         </div>
                         <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>
                     </div>
-                    </nav>        
+                    </nav> 
                         <div class="d-flex justify-content-between">
                             <p class="fs-5 ms-4">All Doctors(<?= $countArr[1]?>)</p>
                         </div>
@@ -28,19 +28,23 @@
                                                 <td class="mycolor fw-bold">Speciality</td>
                                                 <td class="mycolor fw-bold">Events</td>
                                             </tr> 
-                                            <?php $rows  = view_doctors();
-                                            
-                                            if($rows!=null){
-                                              foreach($rows as $row){
+                                            <?php 
+                                            if(isset($_POST["search_doc"])){
+                                                $objects = view_doctors($_POST['search_data']);
+                                            }
+                                            else{
+                                                $objects = view_doctors(null);
+                                            }
+                                            if($objects!=null){
+                                              foreach($objects as $object){
                                               ?>
                                             <tr class="">
-                                                <td class="text-dark"><?= $row['full_name']?></td>
-                                                <td class="text-dark"><?= $row['email']?></td>
-                                                <td class="text-dark"><?= $row['name']?></td>
+                                                <td class="text-dark"><?= $object->full_name?></td>
+                                                <td class="text-dark"><?= $object->email?></td>
+                                                <td class="text-dark"><?= $object->speciality?></td>
                                                 <td class="text-dark">
-                                                    
                                                     <button class="btn mycolor button1 rounded-pill" onclick="show_doc_info('<?= $row['full_name']?>','<?= $row['email']?>','<?= $row['name']?>','<?= $row['phone']?>','<?= $row['photo']?>')" data-bs-toggle="modal" data-bs-target="#doctorss"><i class="mycolor uil uil-eye pe-1"></i>view</button>
-                                                    <a href="?file=session&search_sess=<?= $row['full_name']?>" class="btn mycolor button1 rounded-pill "><i class="mycolor uil uil-heart-rate pe-1"></i>Sessions</a>
+                                                    <a href="?file=session&search_sess=<?= $object->full_name?>" class="btn mycolor button1 rounded-pill "><i class="mycolor uil uil-heart-rate pe-1"></i>Sessions</a>
                                                 </td>
                                             </tr> 
                                             <?php }}else{ echo "no doctors today thank you";}
