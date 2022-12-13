@@ -2,14 +2,41 @@
 
 include 'autoloader.php';
 
+
+/*
+functions to add:
+    today_sessions: 
+        admin dashboard: show all today's session
+        doctor dashboard: show all today's session of doctor only
+        patient
+    week_sessions, 
+        admin: all
+        doctor: only doctors's
+*/
 class Session {
     private $id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
 
-    public function __get($var){
-        return $this->$var;
+    public static function today_sessions($role, $user_id) {
+        $today_date = date('Y-m-d');    // date('Y-m-d H:i:s');
+        $filters = ['exact_date' => $today_date];
+        if ($role == 'patient')
+            $filters['patient'] = $user_id;
+        else if ($role == 'doctor')
+            $filters['doctor'] = $user_id;
+        
+        return self::view_sessions($filters);
     }
-    public function __set($var,$val){
-        $this->$var = $val;
+
+    public static function week_sessions($role, $user_id) {
+        $next_week = mktime(0, 0, 0, date('m'), date('d') + 7, date('Y'));
+        $filters = ['until_date' => $next_week];
+        if ($role == 'patient')
+            $filters['patient'] = $user_id;
+        else if ($role == 'doctor')
+            $filters['doctor'] = $user_id;
+        
+        return self::view_sessions($filters);
+
     }
 
     public function __construct($title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $id = null, $doctor_name = null) {
@@ -24,7 +51,9 @@ class Session {
         $this->max_num = $max_num;
     }
 
-    public function add_session() {
+
+    public function add_session() { // TODO: this must be changed to static mehtod with all arguments of the new session
+
         $db = new db_connect();
         $pdo = $db->connection();
         $sql = 'INSERT INTO Sessions (title, description, start_time, end_time, doctor_id, max_num)
@@ -98,7 +127,8 @@ class Session {
             $sql = 'SELECT title, description, start_time, end_time, max_num, doctor_id
                     FROM Appointments
                     INNER JOIN Sessions ON session_id = Sessions.id
-                    WHERE patient_id = :patient_id AND;
+                    WHERE patient_id = :patient_id AND ;
+
                     ';
             $params = ['patient_id' => $filters['patient']];
         } else if (isset($filters["doctor"])) {
@@ -106,13 +136,23 @@ class Session {
             $params['doctor_id'] = $filters['doctor'];
         }
 
-        if (isset($filters["date"])) {
-            $sql .= 'DATE(end_time) = :date;';
-            $params['date'] = $filters['date'];
+
+        if (isset($filters["exact_date"])) {
+            $sql .= 'DATE(end_time) = :exact_date
+                    ';
+            $params['exact_date'] = $filters['exact_date'];
         } else {
-            $sql .= 'DATE(end_time) >= :date;';
+            $sql .= 'DATE(end_time) >= :date
+                    ';
             $params['date'] = $current_date;
         }
+
+        if (isset($filters["until_date"])) {
+            $sql .= 'DATE(end_time) < :until_date;';
+            $params['until_date'] = $filters['until_date'];
+        } else
+            $sql .= ';';
+
 
         $stm = $pdo->prepare($sql);
         $stm->execute($params);
@@ -127,7 +167,9 @@ class Session {
         return $results;
     }
 
-    public static function validateDate($date, $format ='Y-m-d'){
+
+    private static function validateDate($date, $format = 'Y-m-d') {
+
         $d = DateTime::createFromFormat('Y-m-d', $date);
         if ($d && $d->format('Y-m-d') == $date)
             return $d->format($format);
@@ -142,11 +184,16 @@ class Session {
             return $d->format($format);
         return false;
     }
-    public static function search_sessions($patient_id, $input = null){ // patient use this method
+
+
+    public static function search_sessions($patient_id, $input = null) { // patient use this method
+
         // only return session which the patient is not registed yet
         // $input can be doctor name, doctor email, date of session
         $name_pattern = "/^[a-zA-Z ]+$/";
         $input = trim($input);
+
+
         $db = new db_connect();
         $pdo = $db->connection();
         $sql = 'SELECT S.id, S.title, S.description, S.start_time, S.end_time, S.max_num, S.occupied, S.doctor_id, U.full_name as doctor_name, A.patient_id as appointementId
@@ -161,32 +208,43 @@ class Session {
                     WHERE patient_id = :patient_id
                 )
                 ';
+
+        
+
         $params = [
             'patient_id' => $patient_id,
             'min_date'       => date('Y-m-d')
         ];
         
         if ($input && !empty($input)) {
-            if ($d = self::validateDate($input)){
-                $sql .= 'AND DATE(S.start_time) = :exact_date';
+
+            if ($d = self::validateDate($input)) {
+                echo "date validated: $d\n"; 
+                $sql .= 'AND DATE(S.end_time) = :exact_date';
                 $params['exact_date'] = $d;
             } 
-            else if (filter_var($input, FILTER_VALIDATE_EMAIL)){
+            else if (filter_var($input, FILTER_VALIDATE_EMAIL)) {
+                echo "email validated: $d\n"; 
                 $sql .= 'AND U.email LIKE :email';
                 $params['email'] = $input;
             }
-            else if (preg_match($name_pattern, $input)){
+            else if (preg_match($name_pattern, $input)) {
                 $sql .= 'AND U.full_name LIKE :full_name';
-                $params['full_name'] = $input ."%";
+                $params['full_name'] = $input . "%";
+
             } else {
                 return [];
             }
         }
+
+
         $sql .= '
                 GROUP BY S.id;';
+
         $stm = $pdo->prepare($sql);
         $stm->execute($params);
         $rows = $stm->fetchAll(PDO::FETCH_OBJ);
+
         $results = [];
         foreach($rows as $row) {
             $session = new self($row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->id, $row->doctor_name);
