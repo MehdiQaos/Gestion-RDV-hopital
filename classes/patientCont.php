@@ -1,5 +1,7 @@
 <?php
-// include "../autoloader_classes.php";
+include __DIR__."/../autoloader_classes.php";
+
+
 class patientCont{
     public function patientLogin($email,$password,$table){
         $patient1 = new patient;

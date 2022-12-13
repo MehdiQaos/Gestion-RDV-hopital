@@ -1,18 +1,18 @@
 <?php
-// include "../autoloader_classes.php";
-// include './user.php';
-require_once 'db_connect.php';
+include __DIR__."/../autoloader_classes.php";
+
+
 
 abstract class User{
 
-    private $id;
-    private $full_name;
-    private $email;
-    private $phone;
-    private $photo;
-    private $password;
-    private $cin;
-    private $role;
+    protected $id;
+    protected $full_name;
+    protected $email;
+    protected $phone;
+    protected $photo;
+    protected $password;
+    protected $cin;
+    protected $role;
 
     public function __construct($full_name, $email, $phone, $password, $id = null, $cin = null, $role = null, $photo = null){
         $this->id = $id;

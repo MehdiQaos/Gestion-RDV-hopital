@@ -1,8 +1,6 @@
 <?php
-// include "../autoloader_classes.php";
-require_once 'user.php';
-require_once 'doctor.php';
-require_once 'db_connect.php';
+include __DIR__."/../autoloader_classes.php";
+
 
 class Admin extends User{
 
@@ -25,7 +23,7 @@ class Admin extends User{
                         $doctor->password,
                         $doctor->photo, 
                         $doctor->role, 
-                        $doctor->speciality]);
+                        $doctor->doc_speciality_id]);
                         if($query){
                             $_SESSION['doctorAdded'] = 'doctor added successfully';
                             header('location: ./../dashboard_admin.php');

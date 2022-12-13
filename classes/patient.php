@@ -1,8 +1,7 @@
 <?php
-// include "../autoloader_classes.php";
+include __DIR__."/../autoloader_classes.php";
 
-require_once 'db_connect.php';
-require_once 'user.php';
+
 
 
 class patient extends User{

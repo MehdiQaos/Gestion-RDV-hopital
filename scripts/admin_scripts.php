@@ -1,8 +1,7 @@
 <?php
-// include "./../autoloader_classes.php";
-require_once 'user.php';
-require_once 'admin.php';
-require_once 'db_connect.php';
+
+ include __DIR__."/../autoloader_classes.php";
+
 
 session_start();
 
@@ -76,42 +75,42 @@ function listSpecialities(){
     
 }
 
-function listDoctors(){
-    $result = Doctor::viewDoctors();
+function listDoctors($input = null){
+    $results = Doctor::viewDoctors($input);
     // var_dump($result);
-    foreach($result as $item){
+    foreach($results as $item){
         ?>
     <tr class="">
-        <td class="text-dark text-nowrap"><?=  $item["full_name"]; ?></td>
-        <td class="text-dark text-nowrap"><?=  $item["email"]; ?></td>
-        <td class="text-dark text-nowrap"><?=  $item["speciality"]; ?></td>
+        <td class="text-dark text-nowrap"><?=  $item->full_name; ?></td>
+        <td class="text-dark text-nowrap"><?=  $item->email; ?></td>
+        <td class="text-dark text-nowrap"><?=  $item->speciality; ?></td>
         <td class="text-dark d-flex flex-nowrap">
                 <button class="btn ms-2 mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-doctor" id="update-btn"
 
                 onclick="fillForm(
-                    <?=  $item['id']; ?>,
-                    '<?=  $item['full_name']; ?>',
-                    '<?=  $item['email']; ?>',
-                    <?=  $item['doc_speciality_id']; ?>,
-                    '<?=  $item['password']; ?>',
-                    '<?=  $item['phone']; ?>'
+                    <?=  $item->id; ?>,
+                    '<?=  $item->full_name; ?>',
+                    '<?=  $item->email; ?>',
+                    <?=  $item->doc_speciality_id; ?>,
+                    '<?=  $item->password; ?>',
+                    '<?=  $item->phone; ?>'
                     
                 )"
                 ><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
                 <button class="btn ms-2 mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#view-doctor-modal" id="view-doctor"
                 
                 onclick="viewDoctor(
-                    '<?=  $item['photo']; ?>',
-                    '<?=  $item['full_name']; ?>',
-                    '<?=  $item['email']; ?>',
-                    '<?=  $item['speciality']; ?>',
-                    '<?=  $item['phone']; ?>'
+                    '<?=  $item->photo; ?>',
+                    '<?=  $item->full_name; ?>',
+                    '<?=  $item->email; ?>',
+                    '<?=  $item->speciality; ?>',
+                    '<?=  $item->phone; ?>'
                 );"
 
                 ><i class="mycolor me-1 uil uil-eye"></i>view</button>
                 <button class="btn ms-2 mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#remove-doctor" id="remove-btn"
 
-                onclick = "removeDoctor(<?=  $item['id']; ?>);"
+                onclick = "removeDoctor(<?=  $item->id; ?>);"
 
                 ><i class="mycolor me-1 uil uil-trash"></i>remove</button>
         </td>
@@ -120,8 +119,3 @@ function listDoctors(){
        }
 }
 
-echo '<pre>';
-var_dump(User::count_users(1));
-var_dump(User::count_users(2));
-var_dump(User::count_users(3));
-echo '</pre>';

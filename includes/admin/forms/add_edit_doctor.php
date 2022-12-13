@@ -2,7 +2,7 @@
 <div class="modal fade" id="modal-doctor">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="classes/scripts.php" method="POST" name="form_add_doctor">
+                            <form action="scripts/admin_scripts.php" method="POST" name="form_add_doctor">
                                 <div class="modal-header">
 
                                     <h5 class="modal-title" id="add-title">Add New Doctor</h5>

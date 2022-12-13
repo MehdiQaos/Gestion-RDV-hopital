@@ -1,7 +1,7 @@
 <div class="modal fade" id="remove-doctor">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="./classes/scripts.php" method="post" class="p-3">
+                <form action="scripts/admin_scripts.php" method="post" class="p-3">
                     <div class="d-flex align-items-center justify-content-center">
                         <i class="uil uil-exclamation-triangle fs-1 text-danger me-3"></i>
                         <p class="fw-bold pt-3">Are you sure you want to remove this Doctor?</p>

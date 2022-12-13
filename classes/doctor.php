@@ -1,11 +1,10 @@
 <?php
-// include "../autoloader_classes.php";
-require_once 'user.php';
-require_once 'db_connect.php';
+include __DIR__."/../autoloader_classes.php";
+
 
 class Doctor extends User {
 
-    private $speciality;
+    protected $speciality;
 
     public function __get($var){
         return $this->$var;

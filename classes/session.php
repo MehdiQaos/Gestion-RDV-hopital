@@ -1,6 +1,7 @@
 <?php
 
-include 'autoloader.php';
+include __DIR__."/../autoloader_classes.php";
+
 
 /*
 functions to add:
