@@ -15,6 +15,12 @@ functions to add:
 */
 class Session {
     private $id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
+    public function __get($var){
+        return $this->$var;
+    }
+    public function __set($var,$val){
+        $this->$var = $val;
+    }
 
     public static function today_sessions($role, $user_id) {
         $today_date = date('Y-m-d');    // date('Y-m-d H:i:s');
