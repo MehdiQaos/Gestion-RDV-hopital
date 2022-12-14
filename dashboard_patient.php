@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include "scripts/scripts_patient.php";
+include "scripts/session_check.php";
 
+?>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,7 +16,6 @@
     <link rel="stylesheet" href="assets/css/style_patient.css" />
     <title>Hopital system management</title>
 </head>
-
 <body>
     <div class="d-flex shadow-sm bg-light" id="wrapper" >
         <!-- Sidebar -->
@@ -21,11 +24,11 @@
                 <div class="d-flex align-items-center">
                     <img src="img/photos/user.png" width="40px" class="rounded-circle me-3" alt="">
                     <div>
-                        <p style="margin:-5px;">admin</p>
-                        <p class="text-secondary fs-6">admin@admin.com</p>
+                        <p style="margin:-5px;"><?= $_SESSION["user_name"]?></p>
+                        <p class="text-secondary fs-6"><?= $_SESSION["user_email"]?></p>
                     </div>
                 </div>
-                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
+                    <a href="scripts/logout.php" class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 ">Log out</a> </div>
             <div class="list-group list-group-flush my-3">
                 <a href="dashboard_patient.php?file=dash" class="list-group-item list-group-item-action  text-secondary "><i
                         class="uil uil-home fs-4 me-2"></i>Home</a>
@@ -44,11 +47,14 @@
         <div id="page-content-wrapper" style="height: 100vh; overflow: scroll;">
         <?php
          if(isset($_GET["file"])){
+            $countArr = get_count_data();
             if($_GET['file']=="dash"){
+               
                 include("includes/patient/patient_dash.php");
                 }
                 else if($_GET['file']=="doct"){
                     include("includes/patient/patient_doct.php");
+                    include("includes/modals/doctor_view.php");
                 }
                 else if($_GET['file']=="session"){
                     include("includes/patient/patient_session.php");
@@ -57,18 +63,16 @@
                   include("includes/patient/patient_apoint.php");
                }
                else{
-                  include("includes/patient/patient_settings.php");
-                  include("includes/modals/patient_profile.php");
-                  include("includes/modals/patient_delete.php");
+                include("includes/patient/patient_settings.php");
+                include_once("includes/modals/patient_profile.php");
+                include_once("includes/modals/patient_delete.php");
                } 
          }
          else{
+            $countArr = get_count_data();
             include("includes/patient/patient_dash.php");
-
-         }
-          
+         } 
         ?>
-        
         </div>
 <!-- forms that should be in a separate fille includable -->
                    <div class="modal fade" id="modal-doctor">
@@ -110,12 +114,9 @@
                         </div>
                     </div>
                 </div>
-
     <!-- /#page-content-wrapper -->
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/js/script_patient.js"></script>
 </body>
 

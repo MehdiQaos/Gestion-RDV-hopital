@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['user_id']))
+        header('location: sign.php');
+    include_once 'scripts/doctor_scripts.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,21 +27,21 @@
                 <div class="d-flex align-items-center">
                     <img src="img/photos/user.png" width="50px" class="rounded-circle me-3" alt="">
                     <div>
-                        <p class="fw-bold fs-4" style="margin:-5px;">Test Docto..</p>
-                        <p class="text-secondary fs-6">doctor@youcode.ma</p>
+                        <p class="fw-bold fs-4" style="margin:-5px;"><?= $_SESSION['user_name'] ?></p>
+                        <p class="text-secondary fs-6"><?= $_SESSION['user_email'] ?></p>
                     </div>
                 </div>
-                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
-            <form method="POST" action="doctor_dashboard.php" class="list-group list-group-flush my-3">
-                <button type="submit" name="dashboard" class="list-group-item list-group-item-action fw-bold"><i
+                    <a href="scripts/logout.php" class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</a> </div>
+            <form method="GET" action="dashboard_doctor.php" class="list-group list-group-flush my-3">
+                <button name="dashboard" class="list-group-item list-group-item-action fw-bold"><i
                         class="uil uil-chart-bar fs-4 me-2"></i>Dashboard</button>
-                <button type="submit" name="appointements" class="list-group-item list-group-item-action fw-bold"><i
+                <button name="appointements" class="list-group-item list-group-item-action fw-bold"><i
                         class="uil uil-medkit me-2 fs-4" ></i>My Appointments</button>
-                <button type="submit" name="sessions" class="list-group-item list-group-item-action fw-bold"><i
+                <button name="sessions" class="list-group-item list-group-item-action fw-bold"><i
                         class="uil uil-stopwatch me-2 fs-4" ></i>My Sessions</button>        
-                <button type="submit" name="patients" class="list-group-item list-group-item-action fw-bold"><i
+                <button name="patients" class="list-group-item list-group-item-action fw-bold"><i
                         class="uil uil-bookmark me-2 fs-4"></i>My Patients</button>
-                <button type="submit" name="settings" class="list-group-item list-group-item-action fw-bold"><i
+                <button name="settings" class="list-group-item list-group-item-action fw-bold"><i
                         class="uil uil-setting me-2 fs-4"></i>Settings</button>
             </form>
         </div>
@@ -50,7 +57,7 @@
             <div class="d-flex align-items-center end-50">
                 <div class="pt-3 me-3">
                   <p class="fs-6 text-secondary" style="margin-bottom: -5px;">Today's date</p>
-                  <p class="fs-6 text-black fw-bold">2022-11-23</p>
+                  <p class="fs-6 text-black fw-bold"><?= Date('Y-m-d'); ?></p>
                 </div>
                 <i class="uil uil-calendar-alt fs-2 mt-1 box rounded p-2"></i>
             </div>
@@ -60,13 +67,13 @@
             <main class="container-fluid px-4">
 
                 <?php
-                    if(isset($_POST["appointements"]))
+                    if(isset($_GET["appointements"]))
                         require "./includes/doctor/appointements_section.php";
-                    else if(isset($_POST["sessions"]))
+                    else if(isset($_GET["sessions"]))
                         require "./includes/doctor/sessions_section.php";
-                    else if(isset($_POST["patients"]))
+                    else if(isset($_GET["patients"]))
                         require "./includes/doctor/patients_section.php";
-                    else if(isset($_POST["settings"]))
+                    else if(isset($_GET["settings"]))
                         require "./includes/doctor/settings_section.php";
                     else
                         require "./includes/doctor/dashboard_section.php";

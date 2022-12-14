@@ -1,22 +1,33 @@
 <?php
-include "../autoloader.php";
+// include "../autoloader.php";
+include __DIR__."/../autoloader.php";
+session_start();
 if(isset($_POST["login"])) login();
-if(isset($_POST["signup"])) signup();
-
-
-
 function login(){
- $email = $_POST["email"];
- $pass = $_POST["password"];
- $patientCont1 = new patientCont;
- $patientCont1->patientLogin($email,$pass,"patients");
+        $email = $_POST["email"];
+        $pass = $_POST["password"];
+        $resul = user::login($email,$pass);
+        // echo "<pre>";
+        // var_dump($resul);
+        // echo "</pre>";
+        if($resul!=false){
+                $_SESSION["user_id"]=$resul["id"];
+                $_SESSION["user_name"]=$resul["full_name"];
+                $_SESSION["user_email"]=$resul["email"];
+                $_SESSION["user_photo"]=$resul["photo"];
+            if($resul["role_id"] ==1){
+                header("location:../dashboard_admin.php");
+            }
+            else if($resul["role_id"]==2){
+                header("location:../dashboard_doctor.php");
+            }
+            else{
+                header("location:../dashboard_patient.php");
+            }
+        }
+        else{
+            header("location:../sign.php");
+        }
+       
 }
-
-function signup(){
-    $full_name= $_POST["first_name"].$_POST["last_name"];
-    $info_patient = array($full_name,$_POST["email"],$_POST["password"],$_POST["birthday"],$_POST["cin"]);
-    $patientCont1 = new patientCont;
-    $patientCont1->patientsignup($info_patient);
-}
-?>
 

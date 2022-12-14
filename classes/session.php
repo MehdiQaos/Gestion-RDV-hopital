@@ -1,19 +1,30 @@
 <?php
 
-include 'autoloader.php';
+// include 'autoloader.php';
 
-/*
-functions to add:
-    today_sessions: 
-        admin dashboard: show all today's session
-        doctor dashboard: show all today's session of doctor only
-        patient
-    week_sessions, 
-        admin: all
-        doctor: only doctors's
-*/
 class Session {
+    // TODO: make properties public
     private $id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
+
+    public function __get($property) {
+        return $this->$property;
+    }
+
+    public function __set($property, $value) {
+        $this->$property = $value;
+    }
+
+    public function __construct($title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $id = null, $doctor_name = null) {
+        $this->id = $id;
+        $this->title = $title;
+        $this->occupied = $occupied;
+        $this->description = $description;
+        $this->start_time = $start_time;
+        $this->end_time = $end_time;
+        $this->doctor_id = $doctor_id;
+        $this->doctor_name = $doctor_name;
+        $this->max_num = $max_num;
+    }
 
     public static function today_sessions($role, $user_id) {
         $today_date = date('Y-m-d');    // date('Y-m-d H:i:s');
@@ -28,6 +39,7 @@ class Session {
 
     public static function week_sessions($role, $user_id) {
         $next_week = mktime(0, 0, 0, date('m'), date('d') + 7, date('Y'));
+        $next_week = date('Y-m-d', $next_week);
         $filters = ['until_date' => $next_week];
         if ($role == 'patient')
             $filters['patient'] = $user_id;
@@ -35,18 +47,6 @@ class Session {
             $filters['doctor'] = $user_id;
         
         return self::view_sessions($filters);
-    }
-
-    public function __construct($title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $id = null, $doctor_name = null) {
-        $this->id = $id;
-        $this->title = $title;
-        $this->occupied = $occupied;
-        $this->description = $description;
-        $this->start_time = $start_time;
-        $this->end_time = $end_time;
-        $this->doctor_id = $doctor_id;
-        $this->doctor_name = $doctor_name;
-        $this->max_num = $max_num;
     }
 
     public function add_session() { // TODO: this must be changed to static mehtod with all arguments of the new session
@@ -94,8 +94,8 @@ class Session {
         return null;
     }
     
-    public function cancel_session() {
-        if ($this->id == null)
+    public static function cancel_session($id) {
+        if ($id == null)
             return false;
         $db = new db_connect();
         $pdo = $db->connection();
@@ -104,14 +104,14 @@ class Session {
                 ';
         
         $stm = $pdo->prepare($sql);
-        return $stm->execute(['session_id' => $this->id]);
+        return $stm->execute(['session_id' => $id]);
     }
 
     public static function view_sessions($filters = []) {
         // how to set $filters:
         // patient sessions: $filters['patient'] = 'patient_id'
         // doctor sessions: $filters['doctor'] = 'doctor_id'
-        // session at date 2022-12-31: $filters['date'] = '2022-12-31'
+        // session at date 2022-12-31: $filters['exact_date'] = '2022-12-31'
         // if date key is not set in $filters, only future sessions are returned
         $db = new db_connect();
         $pdo = $db->connection();
@@ -142,7 +142,7 @@ class Session {
         }
 
         if (isset($filters["until_date"])) {
-            $sql .= 'DATE(end_time) < :until_date;';
+            $sql .= 'AND DATE(end_time) < :until_date;';
             $params['until_date'] = $filters['until_date'];
         } else
             $sql .= ';';
@@ -153,7 +153,7 @@ class Session {
 
         $results = [];
         foreach($rows as $row) {
-            $session = new self($row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->id, $row->doctor_name);
+            $session = new self($row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->id);
             array_push($results, $session);
         }
 
@@ -204,7 +204,6 @@ class Session {
         
         if ($input && !empty($input)) {
             if ($d = self::validateDate($input)) {
-                echo "date validated: $d\n"; 
                 $sql .= 'AND DATE(S.end_time) = :exact_date';
                 $params['exact_date'] = $d;
             } 

@@ -1,7 +1,15 @@
 <?php
 
-$d = mktime(0, 0, 0, date('m'), date('d') + 7, date('Y'));
-echo date('Y-m-d', $d);
+// $d = mktime(0, 0, 0, date('m'), date('d') + 7, date('Y'));
+// echo date('Y-m-d', $d);
+
+$s = '2022-12-15 15:16:12';
+$dt = new DateTime($s);
+
+$date = $dt->format('Y-m-d');
+$time = $dt->format('H:i:s');
+
+echo $date, ' | ', $time;
 
 
 // class A {
