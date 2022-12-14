@@ -59,7 +59,8 @@ function removeDoctor(doctorId){
 }
 
 function viewDoctor(image,name,email,speciality,phone){
-    $('#imageDoctor').attr("src", "./img/photos/user.png");
+    if(image == '') $('#imageDoctor').attr("src", "./img/photos/user.png");
+    else $('#imageDoctor').attr("src", "./img/photos/"+image);
     $('#nameDoctor').text(name);
     $('#emailDoctor').text(email);
     $('#specialityDoctor').text(speciality);

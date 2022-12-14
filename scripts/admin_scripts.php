@@ -77,7 +77,10 @@ function listSpecialities(){
 
 function listDoctors($input = null){
     $results = Doctor::viewDoctors($input);
-    // var_dump($result);
+    // echo '<pre>';
+    //  var_dump($results);
+    //  echo '</pre>';
+    //  die();
     foreach($results as $item){
         ?>
     <tr class="">
@@ -91,12 +94,15 @@ function listDoctors($input = null){
                     <?=  $item->id; ?>,
                     '<?=  $item->full_name; ?>',
                     '<?=  $item->email; ?>',
-                    <?=  $item->doc_speciality_id; ?>,
+                    <?=  $item->speciality_id; ?>,
                     '<?=  $item->password; ?>',
                     '<?=  $item->phone; ?>'
                     
                 )"
                 ><i class="mycolor me-1 uil uil-pen"></i>Edit</button>
+
+
+                
                 <button class="btn ms-2 mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#view-doctor-modal" id="view-doctor"
                 
                 onclick="viewDoctor(

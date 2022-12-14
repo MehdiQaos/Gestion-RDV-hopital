@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,11 +34,9 @@
         <p class="text-center text-secondary">login with your details to continue</p>
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
-        <label class="mb-2" for="email">Email :</label>
         <input class="border-0 shadow-sm p-2" style="border: 0.3px solid black;" type="email" name="email" id="emailIn" placeholder="Email Address">
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
-        <label class="mb-2" for="password" >Password :</label>
         <input class="border-0 shadow-sm p-2" style="border: 0.3px solid black;" type="password" name="password" id="passwordIn" placeholder="Password">
     </div>
     <p id="message2" class="text-danger text-center" style="font-size: 10px; margin-bottom: 0px;"></p>
@@ -59,36 +56,30 @@
         <h3 class="text-center">Let's Get Started</h3>
         <p class="text-center text-secondary">add your personal details to continue</p>
     </div>
-    <div class="d-flex flex-column my-2 col-9 m-auto">
-        <label class="mb-2" for="email">Name :</label>
+    <div class="d-flex flex-column my-3 col-9 m-auto">
         <div class="w-100 d-flex">
             <input class="border-0 shadow-sm p-2 col-6 me-2" type="name1" name="name1" id="name1" placeholder="First Name">
         <input class="border-0 shadow-sm p-2 col-6" type="name2" name="name2" id="name2" placeholder="Last Name">
         </div>
         
     </div>
-    <div class="d-flex flex-column my-2 col-9 m-auto">
-        <label class="mb-2" for="email">Email :</label>
+    <div class="d-flex flex-column my-3 col-9 m-auto">
         <input class="border-0 shadow-sm p-2" type="email" name="email" id="email" placeholder="Email Address">
     </div>
-    <div class="d-flex flex-column my-2 col-9 m-auto">
-        <label class="mb-2" for="cin" >CIN :</label>
+    <div class="d-flex flex-column my-3 col-9 m-auto">
         <input class="border-0 shadow-sm p-2" type="text" name="cin" id="cin" placeholder="CIN">
     </div>
-    <div class="d-flex flex-column my-3 col-9 m-auto">
+    <div class="d-flex align-items-center justify-content-between my-3 col-9 m-auto">
         <label class="mb-2" for="birthday" >Date Of Birth :</label>
         <input class="border-0 shadow-sm p-2" type="date" name="birthday" id="birthday" required>
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
-        <label class="mb-2" for="phone" >Phone Number :</label>
-        <input class="border-0 shadow-sm p-2" type="string" name="phone" id="phone" placeholder="+12312312312">
+        <input class="border-0 shadow-sm p-2" type="string" name="phone" id="phone" placeholder="Phone Number : +12312312312">
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
-        <label class="mb-2" for="password" >Password :</label>
-        <input class="border-0 shadow-sm p-2" type="password" name="password" id="password" placeholder="At Least 8 Characters, One Uppercase, And One Number">
+        <input class="border-0 shadow-sm p-2" type="password" name="password" id="password" placeholder="Password : At Least 8 Characters, One Uppercase, And One Number">
     </div>
     <div class="d-flex flex-column my-3 col-9 m-auto">
-        <label class="mb-2" for="pass-confirmation" >Password Confirmation :</label>
         <input class="border-0 shadow-sm p-2" type="password" name="pass-confirmation" id="pass-confirmation" placeholder="Repeat Your Password">
     </div>
     <p id="message" class="text-danger text-center" style="font-size: 10px; margin-bottom: 0px;"></p>
