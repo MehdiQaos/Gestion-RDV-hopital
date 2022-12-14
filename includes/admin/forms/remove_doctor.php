@@ -8,7 +8,7 @@
                     </div>
                     <input type="hidden" id="doctorId" name="doctorId">
                     <div class="d-flex justify-content-around w-75 m-auto">
-                        <button type="submit" class="btn btn-white" data-bs-dismiss="modal">Cancel</button>
+                        <!-- <button type="submit" class="btn btn-white" data-bs-dismiss="modal">Cancel</button> -->
                         <button type="submit" name="removeDoctor" class="btn text-white bg-danger" id="session-save-btn">remove</button>
                     </div>
                 </form>

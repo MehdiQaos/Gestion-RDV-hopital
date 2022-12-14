@@ -1,6 +1,6 @@
 <?php
 
- include __DIR__."/../autoloader_classes.php";
+ include __DIR__."/../autoloader.php";
 
 
 session_start();
@@ -124,4 +124,3 @@ function listDoctors($input = null){
             <?php
        }
 }
-

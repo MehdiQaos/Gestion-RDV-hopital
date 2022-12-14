@@ -34,7 +34,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+                        <!-- <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a> -->
                         <button type="submit" name="saveSession" class="btn mycolor button1" id="session-save-btn">Save</button>
                     </div>
                 </form>
