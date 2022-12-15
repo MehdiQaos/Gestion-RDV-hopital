@@ -39,15 +39,14 @@ class Doctor extends User {
                         $this->role, 
                         $this->speciality]);
                         if($query){
-                            $_SESSION['doctorAdded'] = 'doctor added successfully';
+                            $_SESSION['message'] = 'doctor added successfully';
                             header('location: ../dashboard_admin.php');
                         }else{
-                            $_SESSION['failed'] = 'something goes wrong';
+                            $_SESSION['message'] = 'something goes wrong';
                             header('location: ../dashboard_admin.php');
                         }
-                        
                 }else{
-            $_SESSION['failed'] = 'The email is already exist !!';
+            $_SESSION['message'] = 'The email is already exist !!';
             header('location: ../dashboard_admin.php');
         }
     }
@@ -83,5 +82,9 @@ class Doctor extends User {
         }
 
         return $results;
+    }
+
+    public static function doctorName($id){
+
     }
 }

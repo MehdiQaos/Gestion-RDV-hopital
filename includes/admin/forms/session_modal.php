@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal-session">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="" method="POST" name="form_add_session">
+                <form action="scripts/admin_scripts.php" method="POST" name="form_add_session">
                     <div class="modal-header">
                         <h5 class="modal-title">Add New Session</h5>
                         <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -14,7 +14,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Doctor Name</label>
-                                <input type="text" name="doctorSession" class="form-control" id="doctor-session"/>
+                                <select name="sessionDoctor" class="form-control" id="doctor-session">
+                                        <?php
+                                            doctorSelect();
+                                        ?>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Session Start</label>
@@ -26,7 +30,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Max number of Appointement</label>
-                                <input type="number" name="sessionNumber" class="form-control" id="session-number"/>
+                                <input type="number" min="1" max="50" name="sessionNumber" class="form-control" id="session-number"/>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Description</label>

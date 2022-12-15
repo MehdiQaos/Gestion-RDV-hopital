@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent p-4 pt-1 justify-content-between" id="">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center w-75">
                     <i class="fas fa-align-left mycolor fs-4 me-3" id="menu-toggle"></i>
                     <!-- <h2 class="fs-2 m-0"> </h2> -->
-                    <form method="post" class="input-group ms-5">
-                        <input name="search-doctor" type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <form method="post" class="input-group ms-5 w-75">
+                        <input name="search-doctor" type="search" class="form-control rounded w-50" placeholder="Search Doctor Name Or Email" aria-label="Search" aria-describedby="search-addon" />
                         <button name="search-doctor-btn" type="submit" class="btn btn-secondary mycolor ms-2 rounded button1 border-0">search</button>
                       </form>
                 </div>

@@ -41,7 +41,13 @@
                     <div class="col-lg-3 col-md-5 col-11">
                         <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded border"> 
                             <div>
-                                <h3 class="fs-2 mycolor">2</h3>
+                                <h3 class="fs-2 mycolor">2
+                                    <?
+                                   
+                                    // $ts = count(Session::today_sessions());
+                                    // echo $ts;
+                                    ?>
+                                </h3>
                                 <p class="fs-5 text-black">Today sessions</p>
                             </div>
                             <i class="uil uil-heart-rate fs-3 mycolor  rounded py-2  px-3 box"></i>
@@ -49,8 +55,8 @@
                     </div>
                 </div>
 
-                  <section class="mt-5 d-flex justify-content-between">
-                        <form method="post"  style="width: 49%; height: 25em;" class="position-relative appointment-table rounded shadowborder" >
+                  <section class="mt-5 d-sm-flex justify-content-between gap-3">
+                        <form method="post"  style="height: 25em;" class="position-relative appointment-table rounded shadowborder" >
                            <p class="ms-3 mycolor fs-4 fw-bold">Upcoming Appointements until Next Tuesday</p>
                            <p class="ms-3">Here's a quick access to Upcoming Appointements until 7 days <br> More details available in @Appointement section.</p>
                            <div class="card-body table-responsive position-relative" style="height: 15em; overflow: scroll;
@@ -78,7 +84,7 @@
                         <button class="w-100 btn mycolor button1 position-absolute bottom-0" name="allAppointment" type="submit">Show all Appointements</button>
                         
                         </form>
-                        <form method="post" style="width: 49%; height: 25em;" class="position-relative appointment-table rounded shadowborder" >
+                        <form method="post" style=" height: 25em;" class="position-relative appointment-table rounded shadowborder" >
                             <p class="ms-3 mycolor fs-4 fw-bold">Upcoming Sessions until Next Tuesday</p>
                            <p class="ms-3">Here's a quick access to Upcoming Sessions that Scheduled until 7 days <br> Add,remove and many features available in @Schedule section.</p>
                            <div class="card-body table-responsive position-relative" style="height: 15em; overflow: scroll; background-image:  url(img/icons/notfound.svg);
@@ -91,7 +97,9 @@
                                 <td class="mycolor fw-bold">Doctor</td>
                                 <td class="mycolor fw-bold">Scheduled Date & Time</td>
                                 </tr>
-                            
+                            <?php
+                                listWeekSession();
+                            ?>
                            </table>
                         </div>
                         <button class="w-100 btn mycolor button1 position-absolute bottom-0" name="allSessions" type="submit">Show all Sessions</button>
