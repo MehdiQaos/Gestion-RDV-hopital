@@ -50,7 +50,8 @@ include "scripts/scripts.php";
         
     <div class="container-fluid px-4">
             <?php
-                if(isset($_POST['dashboard-displayer']))            include 'includes/admin/dashboard.php';
+                $countArr = get_count_data();
+                if(isset($_POST['dashboard-displayer']))           include 'includes/admin/dashboard.php';
                 else if(isset($_POST['doctors-displayer']) || isset($_POST['search-doctor-btn']))         include './includes/admin/doctors.php';
                 else if(isset($_POST['schedule-displayer']) || isset($_POST['allSessions']))        
                                                                     include './includes/admin/schedule.php';

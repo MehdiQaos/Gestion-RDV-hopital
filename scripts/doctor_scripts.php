@@ -14,7 +14,9 @@ if (isset($_POST['cancel-session'])) {
 //     $_SESSION['filter-sessions-by-date'] = $_POST['filter-sessions-by-date'];
 //     header('location: ../dashboard_doctor.php?sessions=');
 // }
-
+function  get_count_data(){
+    return user::count_data();
+ }
 function show_sessions_rows() {
     $filters = ['doctor' => $_SESSION['user_id']];
     if(isset($_GET['session-filter-date']) && !empty($_GET['session-filter-date']))

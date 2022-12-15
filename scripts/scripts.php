@@ -7,12 +7,8 @@ function login(){
         $email = $_POST["email"];
         $pass = $_POST["password"];
         $resul = user::login($email,$pass);
-<<<<<<< HEAD
-=======
-        // echo "<pre>";
-        // var_dump($resul);
-        // echo "</pre>";
->>>>>>> Mehdi
+
+
         if($resul!=false){
                 $_SESSION["user_id"]=$resul["id"];
                 $_SESSION["user_name"]=$resul["full_name"];

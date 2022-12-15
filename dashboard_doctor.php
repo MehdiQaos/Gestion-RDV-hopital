@@ -71,6 +71,7 @@
             <main class="container-fluid px-4">
 
                 <?php
+               
                     if(isset($_GET["appointements"]))
                         require "./includes/doctor/appointements_section.php";
                     else if(isset($_GET["sessions"]))

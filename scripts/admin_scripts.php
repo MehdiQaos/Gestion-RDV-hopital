@@ -25,6 +25,9 @@ function saveDoctor(){
     $doctor = new Doctor("$doctorName","$doctorEmail","$doctorNumber",'',"$doctorPassword",$speciality);
     Admin::createDoctor($doctor);
 }
+function  get_count_data(){
+    return user::count_data();
+ }
 
 
 

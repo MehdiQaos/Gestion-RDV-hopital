@@ -1,7 +1,5 @@
 <section id="dashboard">
-    <?php
-                $countArr = get_count_data();
-    ?>
+  
                 <h3 class="fw-bold" style="color: #007A69;"><i
                     class="uil uil-chart-bar fs-4 me-2"></i> Status</h3>
                 <div class="row g-3 d-flex justify-content-around">

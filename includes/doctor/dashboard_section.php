@@ -30,7 +30,7 @@
                 <div class="col-lg-6 col-md-12 col-11">
                     <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded border">
                         <div>
-                            <h3 class="fs-2 mycolor"><?= count(Patient::view_patient('doctor', $_SESSION['user_id'])); ?></h3>
+                            <h3 class="fs-2 mycolor"><?php if(is_array(Patient::view_patient('doctor', $_SESSION['user_id']))){echo count(Patient::view_patient('doctor', $_SESSION['user_id']));}else{ echo  0;} ?></h3>
                             <p class="fs-5 text-black">All Patients</p>
                         </div>
                         <i class="uil uil-accessible-icon-alt fs-3 mycolor box rounded py-2  px-3 "></i>
@@ -40,7 +40,7 @@
                 <div class="col-lg-6 col-md-12 col-11">
                     <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded  border">
                         <div>
-                            <h3 class="fs-2 mycolor"><?= User::count_data()['appointements']; ?></h3>
+                            <h3 class="fs-2 mycolor"><?= $countArr[2]?></h3>
                             <p class="fs-5 text-black">New Booking</p>
                         </div>
                         <i class="uil uil-bookmark fs-3 mycolor rounded py-2  px-3 box"></i>
