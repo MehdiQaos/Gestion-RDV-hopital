@@ -24,7 +24,7 @@
                         <p class="text-secondary fs-6">doctor@youcode.ma</p>
                     </div>
                 </div>
-                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
+                <a href="scripts/logout.php" class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 ">Log out</a> </div>
 
             <form method="POST" action="dashboard_doctor.php" class="list-group list-group-flush my-3">
 

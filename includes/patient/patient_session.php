@@ -40,7 +40,7 @@
                                     <div>
                                         <h3 class="fs-4 mycolor"><?= $object->title?></h3>
                                         <p class="fs-5 pt-4 text-black fw-bold mb-0">New Booking</p>
-                                        <p class="m-0"><?= $object->start_time?></p>
+                                        <p class="m-0">Doctor Name :<?= $object->doctor_name?></p>
                                         <p class="m-0">Starts at <span class="fw-bold"><?= $object->start_time?></span></p>
                                     </div>
                                     <form action="" method="post">

@@ -98,13 +98,9 @@
         <div class="d-flex justify-content-between col-9 m-auto">
             <button style="width: 45%;" class="my-2 mb-4 text-center bg-white  myborder rounded py-1 mycolor  m-auto">Reset</button>
         <button style="width: 45%;" type="submit" name="signup" class="my-2 mb-4 text-center  border-0 rounded button1 py-1 mycolor m-auto">signup</button></div>
-        
     </div>
-
 </form>
 <!-- sign up form ends here  -->
 <script src="assets/js/sign.js"></script>
-
-
 </body>
 </html>

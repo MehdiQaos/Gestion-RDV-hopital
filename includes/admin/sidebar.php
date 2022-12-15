@@ -7,7 +7,7 @@
                         <p class="text-secondary fs-6">admin@admin.com</p>
                     </div>
                 </div>
-                    <button class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 " type="button">Log out</button> </div>
+                <a href="scripts/logout.php" class="btn btn-lg btn-block btn-light my-3 mycolor button1 fs-6 ">Log out</a> </div>
             <form class="list-group list-group-flush my-3" method="post" action="">
                 <button name="dashboard-displayer" type="submit"  class="list-group-item list-group-item-action  text-secondary "><i
                         class="uil uil-chart-bar fs-4 me-2"></i>dashboard</button>

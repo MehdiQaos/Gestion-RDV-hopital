@@ -1,10 +1,5 @@
 <?php
-
- include __DIR__."/../autoloader_classes.php";
-
-
-session_start();
-
+include __DIR__."/../autoloader.php";
 
 if(isset($_POST["login"])) login();
 if(isset($_POST["signup"])) signup();
@@ -13,17 +8,6 @@ if(isset($_POST['removeDoctor'])) removeDoctor();
 if(isset($_POST['updateDoctor'])) updateDoctor();
 
 
-function login(){
- $email = $_POST["email"];
- $pass = $_POST["password"];
- $patientCont1 = new patientCont;
- $patientCont1->patientLogin($email,$pass,"patients");
-}
-
-function signup(){
-    $email = $_POST["email"];
-    $pass = $_POST["password"];
-}
 
 
 function saveDoctor(){

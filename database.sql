@@ -21,7 +21,7 @@ CREATE TABLE Users (
     password VARCHAR(255) NOT NULL,
     photo VARCHAR(255),
     cin VARCHAR(255),
-    date_of_birth DATE,
+    birthday DATE,
     role_id INT,
     doc_speciality_id INT,
     FOREIGN KEY (doc_speciality_id) REFERENCES Specialities(id) ON DELETE CASCADE ON UPDATE CASCADE,
