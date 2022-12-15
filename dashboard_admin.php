@@ -1,7 +1,5 @@
 <?php 
 include 'scripts/admin_scripts.php';
-
-
 ?>
 
 <!DOCTYPE html>
@@ -65,31 +63,24 @@ include "scripts/scripts.php";
     </div>
                 
     <?php
-                if(isset($_SESSION['doctorAdded'])){
+                if(isset($_SESSION['message'])){
                     ?>
                     <script>
-                        showAlert('<?= $_SESSION['doctorAdded'] ?>');
+                        showAlert('<?= $_SESSION['message'] ?>');
                     </script>
                     <?php
-                    unset($_SESSION['doctorAdded']);
+                    unset($_SESSION['message']);
                 }
             ?> 
 
 <!-- forms -->
     <?php 
-        include './includes/admin/forms/add_edit_doctor.php';
-    ?>
-    
-    <?php 
+        include './includes/admin/forms/add_edit_doctor.php';  
         include './includes/admin/forms/session_modal.php';
-    ?>  
-    
-    <?php 
         include './includes/admin/forms/view_doctor.php';
-    ?>  
-    
-    <?php 
         include './includes/admin/forms/remove_doctor.php';
+        include './includes/admin/forms/session.php';
+        include './includes/admin/forms/remove_session.php';
     ?>  
     <!-- /#page-content-wrapper -->
     </div>

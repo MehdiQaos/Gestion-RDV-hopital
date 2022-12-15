@@ -42,7 +42,7 @@
                                         
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+                                    <!-- <button class="btn btn-white" data-bs-dismiss="modal">Cancel</button> -->
                                     <button type="submit" name="updateDoctor" class="btn mycolor button1 d-none" id="doctor-update-btn">update</button>
                                     <button type="submit" name="saveDoctor" class="btn mycolor button1" id="doctor-save-btn">Save</button>
                                 </div>

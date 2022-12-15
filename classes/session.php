@@ -1,50 +1,17 @@
 <?php
 
 
-include 'autoloader.php';
-/*
-functions to add:
-    today_sessions: 
-        admin dashboard: show all today's session
-        doctor dashboard: show all today's session of doctor only
-        patient
-    week_sessions, 
-        admin: all
-        doctor: only doctors's
-*/
-class Session{
+include __DIR__."/../autoloader.php";
+
+class Session {
+    // TODO: make properties public
     private $id, $title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $doctor_name;
 
-    public function __get($var){
-        return $this->$var;
+    public function __get($property) {
+        return $this->$property;
     }
-    public function __set($var,$val){
-        $this->$var = $val;
-    }
-
-
-
-    public static function today_sessions($role, $user_id) {
-        $today_date = date('Y-m-d');    // date('Y-m-d H:i:s');
-        $filters = ['exact_date' => $today_date];
-        if ($role == 'patient')
-            $filters['patient'] = $user_id;
-        else if ($role == 'doctor')
-            $filters['doctor'] = $user_id;
-        
-        return self::view_sessions($filters);
-    }
-
-    public static function week_sessions($role, $user_id) {
-        $next_week = mktime(0, 0, 0, date('m'), date('d') + 7, date('Y'));
-        $filters = ['until_date' => $next_week];
-        if ($role == 'patient')
-            $filters['patient'] = $user_id;
-        else if ($role == 'doctor')
-            $filters['doctor'] = $user_id;
-        
-        return self::view_sessions($filters);
-
+    public function __set($property, $value){
+        $this->$property = $value;
     }
 
     public function __construct($title, $occupied, $description, $start_time, $end_time, $doctor_id, $max_num, $id = null, $doctor_name = null) {
@@ -60,13 +27,36 @@ class Session{
     }
 
 
+    public static function today_sessions($role = null, $user_id = null) {
+        $today_date = date('Y-m-d');    // date('Y-m-d H:i:s');
+        $filters = ['exact_date' => $today_date];
+        if ($role == 'patient')
+            $filters['patient'] = $user_id;
+        else if ($role == 'doctor')
+            $filters['doctor'] = $user_id;
+        
+        return self::view_sessions($filters);
+    }
+
+    public static function week_sessions($role = null, $user_id = null) {
+        $next_week = mktime(0, 0, 0, date('m'), date('d') + 7, date('Y'));
+        $next_week = date('Y-m-d', $next_week);
+        $filters = ['until_date' => $next_week];
+        if ($role == 'patient')
+            $filters['patient'] = $user_id;
+        else if ($role == 'doctor')
+            $filters['doctor'] = $user_id;
+        
+        return self::view_sessions($filters);
+    }
+
 
     public function add_session() { // TODO: this must be changed to static mehtod with all arguments of the new session
 
 
         $db = new db_connect();
         $pdo = $db->connection();
-        $sql = 'INSERT INTO Sessions (title, description, start_time, end_time, doctor_id, max_num)
+        $sql = 'INSERT INTO Sessions (title, occupied, description, start_time, end_time, doctor_id, max_num)
                 VALUES (:title, :occupied, :description, :start_time, :end_time, :doctor_id, :max_num);
                 ';
         $params = [
@@ -108,8 +98,8 @@ class Session{
         return null;
     }
     
-    public function cancel_session() {
-        if ($this->id == null)
+    public static function cancel_session($id) {
+        if ($id == null)
             return false;
         $db = new db_connect();
         $pdo = $db->connection();
@@ -118,25 +108,29 @@ class Session{
                 ';
         
         $stm = $pdo->prepare($sql);
-        return $stm->execute(['session_id' => $this->id]);
+        return $stm->execute(['session_id' => $id]);
     }
 
     public static function view_sessions($filters = []) {
         // how to set $filters:
         // patient sessions: $filters['patient'] = 'patient_id'
         // doctor sessions: $filters['doctor'] = 'doctor_id'
-        // session at date 2022-12-31: $filters['date'] = '2022-12-31'
+        // session at date 2022-12-31: $filters['exact_date'] = '2022-12-31'
         // if date key is not set in $filters, only future sessions are returned
         $db = new db_connect();
         $pdo = $db->connection();
         $current_date = date('Y-m-d');    // date('Y-m-d H:i:s');
         $params = [];
-        $sql = 'SELECT * FROM Sessions WHERE ';
+        $sql = 'SELECT s.*, Users.full_name
+                FROM Sessions s
+                INNER JOIN Users ON doctor_id = Users.id
+                WHERE ';
 
         if (isset($filters["patient"])) {
-            $sql = 'SELECT title, description, start_time, end_time, max_num, doctor_id
+            $sql = 'SELECT title, description, start_time, end_time, max_num, doctor_id, Users.full_name
                     FROM Appointments
                     INNER JOIN Sessions ON session_id = Sessions.id
+                    INNER JOIN Users ON doctor_id = Users.id
                     WHERE patient_id = :patient_id AND ;
 
                     ';
@@ -158,7 +152,7 @@ class Session{
         }
 
         if (isset($filters["until_date"])) {
-            $sql .= 'DATE(end_time) < :until_date;';
+            $sql .= 'AND DATE(end_time) < :until_date;';
             $params['until_date'] = $filters['until_date'];
         } else
             $sql .= ';';
@@ -170,7 +164,7 @@ class Session{
 
         $results = [];
         foreach($rows as $row) {
-            $session = new self($row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->id, $row->doctor_name);
+            $session = new self($row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->id, $row->full_name);
             array_push($results, $session);
         }
 
@@ -231,7 +225,6 @@ class Session{
         if ($input && !empty($input)) {
 
             if ($d = self::validateDate($input)) {
-                echo "date validated: $d\n"; 
                 $sql .= 'AND DATE(S.end_time) = :exact_date';
                 $params['exact_date'] = $d;
             } 

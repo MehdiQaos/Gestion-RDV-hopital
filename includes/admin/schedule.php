@@ -2,7 +2,11 @@
                      <h3  class="fw-bold
                    mb-5" style="color: #007A69;"><i class="uil uil-stopwatch me-2 fs-3" ></i>Schedule Manager</h3>
                          <div class="d-flex justify-content-between">
-                             <p class="fs-5 ms-2">All Sessions(0)</p>
+                             <p class="fs-5 ms-2">All Sessions(
+                                <?php
+                                    echo count(Session::view_sessions());    
+                                ?>
+                                )</p>
                              <button class="btn mycolor button1 rounded-pill" data-bs-toggle="modal" data-bs-target="#modal-session" ><i class="uil uil-plus text-white" onclick=""></i>&emsp; Add a Session</button>
                          </div>
                          <div class="w-100 d-flex justify-content-around border align-items-center py-2 shadow-sm mt-4">
@@ -14,6 +18,9 @@
                                 <label for="doctor-name">Doctor : </label>
                                 <select class="rounded border-0 button1 px-4 ms-2" name="doctor-name" id="">
                                     <option value="">Choose Doctor Name From The List</option>
+                                    <?php
+                                        doctorSelect();
+                                    ?>
                                 </select>
                             </div>
                                 
@@ -28,16 +35,16 @@
                                                  <td class="mycolor fw-bold">Capacity</td>
                                                  <td class="mycolor fw-bold">events</td>
                                              </tr> 
-                                                <tr class="">
-                                                    <td class="text-dark">Test</td>
-                                                    <td class="text-dark">Doctor</td>
-                                                    <td class="text-dark">2022-11-23 16:00</td>
-                                                    <td class="text-dark">20</td>
-                                                    <td class="text-dark">
-                                                        <button class="btn mycolor button1 rounded-pill"><i class="mycolor uil uil-eye"></i>view</button>
-                                                        <button class="btn mycolor button1 rounded-pill"><i class="mycolor uil uil-trash"></i>remove</button>
-                                                    </td>
-                                                </tr>    
+                                                <?php 
+                                                    
+                                                    // if(isset($_POST['search-doctor-btn'])){
+                                                        
+                                                    //     listDoctors($_POST['search-doctor']);
+                                                    // }else{
+                                                        listSessions();
+                                                    
+
+                                                ?> 
                                             </table>
                           </div>
                          

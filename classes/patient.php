@@ -1,7 +1,7 @@
 <?php
-
 include __DIR__."/../autoloader.php";
 class patient extends user{
+
 
 
     private $birthday;

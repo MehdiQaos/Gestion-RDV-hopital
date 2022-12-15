@@ -57,12 +57,26 @@ console.log("$('#doctorId')");
 function removeDoctor(doctorId){
     $('#doctorId').val(doctorId);
 }
+function cancelSession(sessionId){
+    $('#sessionId').val(sessionId);
+}
 
 function viewDoctor(image,name,email,speciality,phone){
-    $('#imageDoctor').attr("src", "./img/photos/user.png");
+    if(image == '') $('#imageDoctor').attr("src", "./img/photos/user.png");
+    else $('#imageDoctor').attr("src", "./img/photos/"+image);
     $('#nameDoctor').text(name);
     $('#emailDoctor').text(email);
     $('#specialityDoctor').text(speciality);
     $('#phoneDoctor').text(phone);
 
+}
+
+function sessionInfo(title,doctor_name,start,end,max,occupied,description){
+    $('.session-title').text(title);
+    $('.session-doctor').text(doctor_name);
+    $('.session-start').text(start);
+    $('.session-end').text(end);
+    $('.session-max').text(max);
+    $('.session-occupied').text(occupied);
+    $('.session-description').text(description);
 }
