@@ -1,13 +1,16 @@
 <?php
 
+
 include __DIR__."/../autoloader.php";
 class user{
+
 
 
     protected $id;
     protected $full_name;
     protected $email;
     protected $phone;
+
     protected $photo ;
     protected $password;
     protected $role_id;
@@ -17,11 +20,13 @@ class user{
         $this->full_name = $full_name;
         $this->cin = $cin;
         $this->role_id = $role_id;
+
         $this->email = $email;
         $this->phone = $phone;
         $this->photo = $photo;
         $this->password = $password;
     }
+
     public function __get($var){
         return $this->$var;
     }
@@ -31,24 +36,29 @@ class user{
     }
 
 
+
     
     public static function login($email,$password){
         $db_connect = new db_connect;
         $pdo = $db_connect->connection(); 
         $sql = "SELECT * FROM users WHERE email=:email AND password=:password";
+
         $stmt =  $pdo->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
         $row = $stmt->fetch();
+
        
         
         if($row){
+
             return $row;
-        }  
+        }
         else{
             return false;
         }
+
         unset($stmt);
         unset($pdo);
     }

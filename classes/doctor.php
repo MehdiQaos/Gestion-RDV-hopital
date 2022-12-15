@@ -1,6 +1,5 @@
 <?php
 
-
 include __DIR__."/../autoloader.php";
 
 
@@ -17,11 +16,18 @@ class Doctor extends User {
         $this->$var = $val;
     }
 
-    public function __construct($full_name, $email, $phone, $password, $speciality,$speciality_id, $id = null, $cin = null, $role = null, $photo = null){
+
+    public function __construct($full_name, $email, $phone, $password, $speciality, $id = null, $cin = null, $role = null, $photo = null){
         parent::__construct($full_name, $email, $phone, $password, $id, $cin, 2, $photo);
         $this->speciality = $speciality;
-        $this->speciality_id = $speciality_id;
     }
+
+    // public static function viewDoctors(){
+    //     $db_connect = new db_connect;
+    //     $pdo = $db_connect->connection();
+    //     $sql = "SELECT Users.*, specialities.name AS speciality FROM Users INNER JOIN specialities ON specialities.id = Users.doc_speciality_id WHERE Users.role_id= ? ";
+    //     $query =  $pdo->prepare($sql);
+    //     $query->execute([2]);
 
     public function createDoctor(){
         $db_connect = new db_connect;
@@ -42,14 +48,17 @@ class Doctor extends User {
                         $this->role, 
                         $this->speciality]);
                         if($query){
-                            $_SESSION['message'] = 'doctor added successfully';
+
+                            $_SESSION['doctorAdded'] = 'doctor added successfully';
                             header('location: ../dashboard_admin.php');
                         }else{
-                            $_SESSION['message'] = 'something goes wrong';
+                            $_SESSION['failed'] = 'something goes wrong';
                             header('location: ../dashboard_admin.php');
                         }
+                        
                 }else{
-            $_SESSION['message'] = 'The email is already exist !!';
+            $_SESSION['failed'] = 'The email is already exist !!';
+
             header('location: ../dashboard_admin.php');
         }
     }
@@ -57,9 +66,11 @@ class Doctor extends User {
     public static function viewDoctors($input = null){
         $input = trim($input);
 
-        $sql = 'SELECT Users.*, s.name AS speciality , s.id AS speciality_id 
+
+        $sql = 'SELECT Users.*, specialities.name AS speciality
                 FROM Users
-                INNER JOIN specialities s ON s.id = Users.doc_speciality_id
+                INNER JOIN specialities ON specialities.id = Users.doc_speciality_id
+
                 WHERE Users.role_id = 2
                ';
         
@@ -80,14 +91,11 @@ class Doctor extends User {
 
         $results = [];
         foreach($rows as $row) {
-            $doctor = new Doctor($row->full_name, $row->email, $row->phone, $row->password, $row->speciality, $row->speciality_id, $row->id, $row->cin, $row->role_id, $row->photo);
+            $doctor = new Doctor($row->full_name, $row->email, $row->phone, $row->password, $row->speciality, $row->id, $row->cin, $row->role_id, $row->photo);
+
             array_push($results, $doctor);
         }
 
         return $results;
-    }
-
-    public static function doctorName($id){
-
     }
 }

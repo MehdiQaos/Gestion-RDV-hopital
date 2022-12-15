@@ -1,7 +1,9 @@
 <?php
 
 
+
 include __DIR__."/../autoloader.php";
+
 
 class Session {
     // TODO: make properties public
@@ -9,6 +11,7 @@ class Session {
 
     public function __get($property) {
         return $this->$property;
+
     }
     public function __set($property, $value){
         $this->$property = $value;
@@ -49,6 +52,7 @@ class Session {
         
         return self::view_sessions($filters);
     }
+
 
 
     public function add_session() { // TODO: this must be changed to static mehtod with all arguments of the new session
@@ -164,7 +168,9 @@ class Session {
 
         $results = [];
         foreach($rows as $row) {
+
             $session = new self($row->title, $row->occupied, $row->description, $row->start_time, $row->end_time, $row->doctor_id, $row->max_num, $row->id, $row->full_name);
+
             array_push($results, $session);
         }
 
